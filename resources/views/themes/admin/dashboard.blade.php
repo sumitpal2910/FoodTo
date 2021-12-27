@@ -1,12 +1,9 @@
-Admin
-<br>
-{{Auth::guard('admin')->user()}}
-<br>
-@auth('admin')
-hello
-@endauth
+@extends('layouts.admin.app')
 
-<form action="{{route('admin.logout')}}" method="post">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
+@section('title', 'Admin')
+
+@section('content')
+<div class="content-wrapper">
+    <div class="col-12"></div>
+</div>
+@endsection

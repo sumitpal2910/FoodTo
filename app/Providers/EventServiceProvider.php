@@ -26,6 +26,10 @@ use App\Listeners\Rider\Auth\NotifyRiderThatPasswordChanged;
 
 use App\Events\UserRegistered;
 use App\Listeners\SendWelcomeMessageToUser;
+use App\Models\District;
+use App\Models\State;
+use App\Observers\DistrictObserver;
+use App\Observers\StateObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -95,6 +99,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        State::observe(StateObserver::class);
+        District::observe(DistrictObserver::class);
     }
 }

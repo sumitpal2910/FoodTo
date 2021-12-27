@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\NameAscScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ class State extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'states';
     /**
      * The attributes that are mass assignable.
      *
@@ -18,7 +20,17 @@ class State extends Model
     protected $fillable = [
         'name',
         'code',
+        'status',
     ];
+
+    /**
+     * Model boot method
+     */
+    static protected function booted()
+    {
+        # add global scope - orderby name, asc
+        static::addGlobalScope(new NameAscScope);
+    }
 
     /**
      * -----------------------------------

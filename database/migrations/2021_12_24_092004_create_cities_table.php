@@ -22,6 +22,7 @@ class CreateCitiesTable extends Migration
             $table->unsignedBigInteger('district_id');
             $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
 
+            $table->tinyInteger('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

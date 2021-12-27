@@ -4,67 +4,114 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>AdminLTE 3 | Dashboard</title>
+        <meta name="csrf-token" content="{{csrf_token()}}">
+        <title>@yield('title')</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- Tempusdominus Bootstrap 4 -->
-        <link rel="stylesheet" href="{{asset('')}}asset/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-        <!-- iCheck -->
-        <link rel="stylesheet" href="{{asset('')}}asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-        <!-- JQVMap -->
-        <link rel="stylesheet" href="{{asset('')}}asset/plugins/jqvmap/jqvmap.min.css">
+        <link rel="stylesheet" href="{{asset('asset/plugins/fontawesome-free/css/all.min.css')}}">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{{asset('asset/plugins/bootstrap/css/bootstrap.min.css')}}">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="{{asset('asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+        <link rel="stylesheet"
+            href="{{asset('asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+
+        <!-- Toastr -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+        <!-- Select2 -->
+        <link rel="stylesheet" href="{{asset('asset/plugins/select2/css/select2.min.css')}}">
+
         <!-- Theme style -->
-        <link rel="stylesheet" href="{{asset('')}}asset/dist/css/adminlte.min.css">
-        <!-- overlayScrollbars -->
-        <link rel="stylesheet" href="{{asset('')}}asset/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-        <!-- Daterange picker -->
-        <link rel="stylesheet" href="{{asset('')}}asset/plugins/daterangepicker/daterangepicker.css">
-        <!-- summernote -->
-        <link rel="stylesheet" href="{{asset('')}}asset/plugins/summernote/summernote-bs4.min.css">
+        <link rel="stylesheet" href="{{asset('asset/dist/css/adminlte.min.css')}}">
     </head>
 
-    <body class="hold-transition sidebar-mini layout-fixed">
+    <body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
+        <div class="wrapper">
+            <!--Loader -->
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__shake" src="{{asset('storage/asset/logo/logo-short.png')}}" alt="FoodTo"
+                    height="60" width="60">
+            </div>
 
+            <!--Header -->
+            @include('layouts.admin.body.header')
+
+            <!--Sidebar -->
+            @include('layouts.admin.body.sidebar')
+
+
+
+            <!--Page Content -->
+            @yield('content')
+
+
+
+
+            <!--Footer -->
+            @include('layouts.admin.body.footer')
+
+        </div>
         <!-- jQuery -->
-        <script src="{{asset('')}}asset/plugins/jquery/jquery.min.js"></script>
-        <!-- jQuery UI 1.11.4 -->
-        <script src="{{asset('')}}asset/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <script>
-            $.widget.bridge('uibutton', $.ui.button)
-        </script>
+        <script src="{{asset('asset/plugins/jquery/jquery.min.js')}}"></script>
         <!-- Bootstrap 4 -->
-        <script src="{{asset('')}}asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- ChartJS -->
-        <script src="{{asset('')}}asset/plugins/chart.js/Chart.min.js"></script>
-        <!-- Sparkline -->
-        <script src="{{asset('')}}asset/plugins/sparklines/sparkline.js"></script>
-        <!-- JQVMap -->
-        <script src="{{asset('')}}asset/plugins/jqvmap/jquery.vmap.min.js"></script>
-        <script src="{{asset('')}}asset/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-        <!-- jQuery Knob Chart -->
-        <script src="{{asset('')}}asset/plugins/jquery-knob/jquery.knob.min.js"></script>
-        <!-- daterangepicker -->
-        <script src="{{asset('')}}asset/plugins/moment/moment.min.js"></script>
-        <script src="{{asset('')}}asset/plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- Tempusdominus Bootstrap 4 -->
-        <script src="{{asset('')}}asset/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-        <!-- Summernote -->
-        <script src="{{asset('')}}asset/plugins/summernote/summernote-bs4.min.js"></script>
-        <!-- overlayScrollbars -->
-        <script src="{{asset('')}}asset/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        <script src="{{asset('asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}" defer></script>
+        <!-- Toastr-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" defer></script>
+        <!-- Select2 -->
+        <script src="{{asset('asset/plugins/select2/js/select2.full.min.js')}}"></script>
+        <!-- DataTables  & Plugins -->
+        <script src="{{asset('asset/plugins/datatables/jquery.dataTables.min.js')}}" defer></script>
+        <script src="{{asset('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}" defer></script>
+        <script src="{{asset('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}" defer>
+        </script>
+        {{--<script src="{{asset('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}" defer>
+        </script>--}}
+
         <!-- AdminLTE App -->
-        <script src="{{asset('')}}asset/dist/js/adminlte.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{asset('')}}asset/dist/js/demo.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="dist/js/pages/dashboard.js"></script>
+        <script src="{{asset('asset/dist/js/adminlte.js')}}" defer></script>
+
+
+
+        <!-- ========= CUSTOM ======== -->
+        <script src="{{asset('js/app.js')}}" defer></script>
+
+        <!-- config -->
+        <script src="{{asset('js/custom/admin/config/sweetalert.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/config/ajax-request.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/config/config.js')}}"></script>
+
+        <!-- state -->
+        <script src="{{asset('js/custom/admin/pages/state.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/pages/district.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/pages/city.js')}}" defer></script>
+
+
+        <!-- Notification -->
+        <script>
+            @if(Session::has('message'))
+        let status = {{Session::get('alert-type')}};
+        switch (status) {
+            case 'success':
+                toastr.success({{ Session::get('message')}});
+                break;
+            case 'warning':
+                toastr.warning({{ Session::get('message')}});
+                break;
+            case 'error':
+                toastr.error({{ Session::get('message')}});
+                break;
+            case 'info':
+                toastr.info({{ Session::get('message')}});
+                break;
+        }
+        @endif
+
+        </script>
     </body>
 
 </html>

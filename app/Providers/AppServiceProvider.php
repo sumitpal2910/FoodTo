@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\View\Components\Admin\ContentHeader;
 use App\View\Components\AuthError;
 use App\View\Components\AuthStatus;
 use Illuminate\Support\Facades\Blade;
@@ -30,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::component(AuthError::class, 'auth-error');
         # Auth Status
         Blade::component(AuthStatus::class, 'auth-status');
+
+        // =========== ADMIN ============
+        # content header
+        Blade::component(ContentHeader::class, 'admin-content-header');
     }
 }

@@ -19,6 +19,7 @@ class City extends Model
         'name',
         'state_id',
         'district_id',
+        'status',
     ];
 
     /**

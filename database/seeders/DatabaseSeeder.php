@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             // AdminTableSeeder::class,
             // RestaurantTableSeeder::class,
             // RiderTableSeeder::class,
-            StateDistrictTableSeeder::class
+            //StateDistrictTableSeeder::class
+            CityTableSeeder::class
         ]);
     }
 }

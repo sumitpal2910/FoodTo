@@ -989,10 +989,10 @@ class StateDistrictTableSeeder extends Seeder
         );
 
         foreach ($IndianStates as $key => $state) {
-            $stateId =  State::create(['name' => $state['name'], 'code' => $key]);
+            $stateId =  State::create(['name' => $state['name'], 'code' => $key, 'status' => rand(0, 1)]);
 
             foreach ($state['districts'] as $dist) {
-                District::create(['name' => $dist, 'state_id' => $stateId->id]);
+                District::create(['name' => $dist, 'state_id' => $stateId->id, 'status' => rand(0, 1)]);
             }
         }
     }

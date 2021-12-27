@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\NameAscScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,8 @@ class District extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'districts';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,9 +20,18 @@ class District extends Model
      */
     protected $fillable = [
         'name',
-        'code',
         'state_id',
+        'status',
     ];
+
+    /**
+     * Model boot method
+     */
+    static protected function booted()
+    {
+        # add global scope - orderby name, asc
+        static::addGlobalScope(new NameAscScope);
+    }
 
     /**
      * -----------------------------------
@@ -28,7 +40,7 @@ class District extends Model
      */
 
     /**
-     * Districts
+     * State
      */
     public function state()
     {
