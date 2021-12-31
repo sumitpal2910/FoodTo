@@ -1,7 +1,7 @@
 /**
  * Sweetalert Delete Alert
  */
-function sweetAlertDelete(link, dataTableCallback = "", title = "") {
+function sweetAlertDelete(link, dataTableCallback = "") {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -9,20 +9,24 @@ function sweetAlertDelete(link, dataTableCallback = "", title = "") {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then(result => {
+        confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
         if (result.isConfirmed) {
             // send request
             $.ajax({
                 url: url(link),
-                type: 'DELETE',
+                type: "DELETE",
                 dataType: "json",
                 success: function (res) {
                     //refresh datatale
                     dataTableCallback();
 
-                    Swal.fire("Deleted!", "Your file has been deleted", "success");
-                }
+                    Swal.fire(
+                        "Deleted!",
+                        "Your file has been deleted",
+                        "success"
+                    );
+                },
             });
         }
     });
@@ -36,15 +40,14 @@ function sweetAlertToaster(data, message = "") {
         toast: true,
         position: "top-right",
         showConfirmButton: false,
-        timer: 15000
+        timer: 15000,
     });
 
     Toast.fire({
         icon: data.status,
-        title: data.message
+        title: data.message,
     });
 }
-
 
 /**
  * Sweet alert for delete button of all
@@ -61,8 +64,8 @@ $(document).on("click", "#delete", function (event) {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then(result => {
+        confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
         if (result.isConfirmed) {
             form.submit();
             Swal.fire("Deleted!", "Your file has been deleted.", "success");

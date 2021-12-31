@@ -16,7 +16,7 @@ function districtDataTable(data = {}) {
         info: true,
         autoWidth: false,
         ajax: {
-            url: url("admin/service/district/data"),
+            url: url("admin/district/data"),
             type: "GET",
             data: data,
         },
@@ -88,7 +88,7 @@ $("#districtTable").on("click", ".edit", function () {
     let form = document.getElementById("districtEdit");
 
     //call getDatUsingAjax function to get data from config/config.js
-    let response = ajaxRequest(`admin/service/district/data/${id}`);
+    let response = ajaxRequest(`admin/district/data/${id}`);
 
     response.done(function (res) {
         let data = res.data;
@@ -107,7 +107,7 @@ $("#districtTable").on("click", ".edit", function () {
         }
 
         // set form action route
-        form.action = url(`admin/service/district/${data.id}`);
+        form.action = url(`admin/district/${data.id}`);
     });
 });
 
@@ -168,7 +168,7 @@ $("#districtTable").on("click", ".delete", function () {
     let id = $(this).attr("district");
 
     // call delete method
-    sweetAlertDelete(`admin/service/district/${id}`, districtDataTable);
+    sweetAlertDelete(`admin/district/${id}`, districtDataTable);
 });
 
 /**
@@ -179,7 +179,7 @@ $("#districtTable").on("click", ".restore", function () {
     let id = $(this).attr("district");
 
     // send ajax request
-    let response = ajaxRequest(`admin/service/district/restore/${id}`, "PUT");
+    let response = ajaxRequest(`admin/district/restore/${id}`, "PUT");
 
     response.done(function (res) {
         if (res.status === "success") {
@@ -204,7 +204,7 @@ $("#districtSearchForm").on("submit", function (e) {
     // call datatable
     districtDataTable(data);
 
-    showCount("admin/service/district/data", data);
+    showCount("admin/district/data", data);
 });
 
 /**
@@ -215,7 +215,7 @@ $("#districtTable").on("click", ".status", function () {
     let id = $(this).attr("district");
 
     // send ajax request
-    let response = ajaxRequest(`admin/service/district/status/${id}`, "PUT");
+    let response = ajaxRequest(`admin/district/status/${id}`, "PUT");
 
     response.done(function (res) {
         if (res.status === "success") {

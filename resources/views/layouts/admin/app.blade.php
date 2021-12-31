@@ -25,7 +25,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
         <!-- Select2 -->
         <link rel="stylesheet" href="{{asset('asset/plugins/select2/css/select2.min.css')}}">
-
+        <!-- daterange picker -->
+        <link rel="stylesheet" href="{{asset('asset/plugins/daterangepicker/daterangepicker.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('asset/dist/css/adminlte.min.css')}}">
     </head>
@@ -71,6 +72,10 @@
         </script>
         {{--<script src="{{asset('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}" defer>
         </script>--}}
+        <!-- bs-custom-file-input -->
+        <script src="{{asset('asset/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}" defer></script>
+        <!-- date-range-picker -->
+        <script src="{{asset('asset/plugins/daterangepicker/daterangepicker.js')}}" ></script>
 
         <!-- AdminLTE App -->
         <script src="{{asset('asset/dist/js/adminlte.js')}}" defer></script>
@@ -84,33 +89,37 @@
         <script src="{{asset('js/custom/admin/config/sweetalert.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/config/ajax-request.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/config/config.js')}}"></script>
+        <script src="{{asset('js/custom/admin/config/function.js')}}"></script>
 
         <!-- state -->
         <script src="{{asset('js/custom/admin/pages/state.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/pages/district.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/pages/city.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/pages/cuisine.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/pages/restaurant.js')}}" defer></script>
 
 
         <!-- Notification -->
         <script>
-            @if(Session::has('message'))
-        let status = {{Session::get('alert-type')}};
-        switch (status) {
-            case 'success':
-                toastr.success({{ Session::get('message')}});
-                break;
-            case 'warning':
-                toastr.warning({{ Session::get('message')}});
-                break;
-            case 'error':
-                toastr.error({{ Session::get('message')}});
-                break;
-            case 'info':
-                toastr.info({{ Session::get('message')}});
-                break;
-        }
-        @endif
-
+            $(document).ready(function() {
+                @if (Session::has('message'))
+                    let type = "{{ Session::get('alert-type', 'info') }}";
+                    switch (type) {
+                    case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                    case 'success':
+                    toastr.success(" {{ session('message') }}");
+                    break;
+                    case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+                    case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+                    }
+                @endif
+            })
         </script>
     </body>
 

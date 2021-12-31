@@ -1,4 +1,4 @@
-@extends('layouts.admin.guest')
+@extends('layouts.restaurant.guest')
 
 @section('title', 'Reset Password')
 
@@ -44,7 +44,7 @@
             </form>
 
             <p class="mt-3 mb-1">
-                <a href="{{route('admin.loginForm')}}">Login</a>
+                <a href="{{route('restaurant.loginForm')}}">Login</a>
             </p>
         </div>
         <!-- /.login-card-body -->

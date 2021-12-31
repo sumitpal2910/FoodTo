@@ -34,4 +34,15 @@ class DistrictController extends Controller
         return response()->json(['data' => $district]);
     }
 
+    /**
+     * get all city of a dis$district
+     */
+    public function city($district)
+    {
+        # get data
+        $data = District::with('city')->findOrFail($district);
+
+        # return json
+        return response()->json(['data' => $data]);
+    }
 }

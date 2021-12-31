@@ -21,7 +21,6 @@ $route = Route::currentRouteName();
                 <a href="#" class="d-block">Alexander Pierce</a>
             </div>
         </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -36,8 +35,10 @@ $route = Route::currentRouteName();
                 </li>
 
                 <!-- Service Area -->
-                <li class="nav-item {{$prefix === 'admin/service' ? 'menu-open' :''}}">
-                    <a href="#" class="nav-link  {{$prefix === 'admin/service' ? 'active' :''}}">
+                <li
+                    class="nav-item {{$prefix ===('admin/state' ||'admin/district' || 'admin/city') ? 'menu-open' :''}}">
+                    <a href="#"
+                        class="nav-link  {{$prefix === ('admin/state' ||'admin/district' || 'admin/city') ? 'active' :''}}">
                         <i class="nav-icon fas fa-copy"></i>
                         <p> Service Area <i class="fas fa-angle-left right"></i> </p>
                     </a>
@@ -68,11 +69,56 @@ $route = Route::currentRouteName();
                                 <p>City</p>
                             </a>
                         </li>
+                    </ul>
+                </li>
+
+                <!-- Cousine -->
+                <li class="nav-item {{$prefix === 'admin/cuisine' ? 'menu-open' :''}}">
+                    <a href="#" class="nav-link  {{$prefix === 'admin/cuisine' ? 'active' :''}}">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p> Cuisine <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!-- State -->
+                        <li class="nav-item">
+                            <a href="{{route('admin.cuisine.index')}}"
+                                class="nav-link {{$route === 'admin.cuisine.index' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cuisine</p>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
 
-            </ul>
+                <!-- Restaurant -->
+                <li class="nav-item {{$prefix === 'admin/restaurant' ? 'menu-open' :''}}">
+                    <a href="#" class="nav-link  {{$prefix === 'admin/restaurant' ? 'active' :''}}">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p> Restaurants <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!--Add Restaurant  -->
+                        {{--<li class="nav-item">
+                            <a href="{{route('admin.restaurant.create')}}"
+                                class="nav-link {{$route === 'admin.restaurant.create' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Restaurant</p>
+                            </a>
+                        </li>--}}
+
+                        <!-- Restaurant list -->
+                        <li class="nav-item">
+                            <a href="{{route('admin.restaurant.index')}}"
+                                class="nav-link {{$route === 'admin.restaurant.index' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Restaurant</p>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>
         </nav>
         <!-- /.sidebar-menu -->
     </div>

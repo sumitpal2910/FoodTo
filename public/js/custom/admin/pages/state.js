@@ -16,9 +16,9 @@ function stateDataTable(data = {}) {
         info: true,
         autoWidth: false,
         ajax: {
-            url: url("admin/service/state/data"),
+            url: url("admin/state/data"),
             type: "GET",
-            data: { status: status },
+            data: data,
         },
         columns: [
             { data: "#" },
@@ -38,7 +38,7 @@ $("#stateAdd").on("submit", function (e) {
     e.preventDefault();
 
     // get form
-    let form = document.getElementById("stateAdd");
+    let form = this;
 
     // Submit form data
     let response = sendFormData(form, "POST");
@@ -88,7 +88,7 @@ $("#stateTable").on("click", ".edit", function () {
     let form = document.getElementById("stateEdit");
 
     //call getDatUsingAjax function to get data from config/config.js
-    let response = ajaxRequest(`admin/service/state/data/${id}`);
+    let response = ajaxRequest(`admin/state/data/${id}`);
 
     response.done(function (res) {
         let data = res.data;
@@ -99,7 +99,7 @@ $("#stateTable").on("click", ".edit", function () {
         form.elements["name"].value = data.name;
         form.elements["code"].value = data.code;
 
-        form.action = url(`admin/service/state/${data.id}`);
+        form.action = url(`admin/state/${data.id}`);
     });
 });
 
@@ -155,7 +155,7 @@ $("#stateTable").on("click", ".delete", function () {
     let id = $(this).attr("state");
 
     // call delete method
-    sweetAlertDelete(`admin/service/state/${id}`, stateDataTable);
+    sweetAlertDelete(`admin/state/${id}`, stateDataTable);
 });
 
 /**
@@ -166,7 +166,7 @@ $("#stateTable").on("click", ".restore", function () {
     let id = $(this).attr("state");
 
     // send ajax request
-    let response = ajaxRequest(`admin/service/state/restore/${id}`, "PUT");
+    let response = ajaxRequest(`admin/state/restore/${id}`, "PUT");
 
     response.done(function (res) {
         if (res.status === "success") {
@@ -189,7 +189,7 @@ $("#stateStatus").on("change", function () {
     stateDataTable({ status: status });
 
     // change status count
-    showCount("admin/service/state/data", { status: status });
+    showCount("admin/state/data", { status: status });
 });
 
 /**
@@ -200,7 +200,7 @@ $("#stateTable").on("click", ".status", function () {
     let id = $(this).attr("state");
 
     // send ajax request
-    let response = ajaxRequest(`admin/service/state/status/${id}`, "PUT");
+    let response = ajaxRequest(`admin/state/status/${id}`, "PUT");
 
     response.done(function (res) {
         if (res.status === "success") {

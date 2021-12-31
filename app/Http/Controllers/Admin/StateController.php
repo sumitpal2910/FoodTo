@@ -85,7 +85,7 @@ class StateController extends Controller
         $data = State::withTrashed()->findOrFail($state);
 
         # update
-        $updated = $data->update(['name' => $request->input('name'), 'code' => $request->input('code')]);
+        $updated = $data->update(['name' => $request->input('name'), 'code' => $request->input('code'), 'status' => 1]);
 
         # restore
         if ($data->trashed()) $data->restore();

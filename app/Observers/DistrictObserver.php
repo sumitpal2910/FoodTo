@@ -39,6 +39,10 @@ class DistrictObserver
         if ($district->status === 1) {
             $district->state()->update(['status' => 1]);
             $district->city()->update(['status' => 1]);
+            $district->restaurants()->update(['status' => 1]);
+        } else {
+            $district->city()->update(['status' => 0]);
+            $district->restaurants()->update(['status' => 2]);
         }
     }
 
@@ -51,6 +55,7 @@ class DistrictObserver
     public function deleting(District $district)
     {
         $district->city()->delete();
+        $district->restaurants()->delete();
     }
 
     /**

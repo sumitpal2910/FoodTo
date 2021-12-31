@@ -19,7 +19,8 @@
                                     <div class="col-md-3 col-sm-12">
                                         <div class="form-group">
                                             <label for="">State *</label>
-                                            <select class="form-control select2 state" name="state_id" id="" required>
+                                            <select onchange="getDistrict(event)" class="form-control select2 state"
+                                                name="state_id" id="" required>
                                                 <option value="" disabled selected>--Select State--</option>
                                                 @foreach ($states as $state)
                                                 @if ($state->deleted_at)
@@ -38,7 +39,7 @@
                                         <div class="form-group">
                                             <label for="">District</label>
                                             <select class="form-control select2 district" name="district_id"
-                                                id="district" >
+                                                id="district">
                                                 <option value="" disabled selected>--Select District--</option>
                                             </select>
                                         </div>
@@ -132,7 +133,7 @@
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="">State</label>
-                                <select class="form-control select state" name="state_id" id="">
+                                <select onchange="getDistrict()" class="form-control select state" name="state_id">
                                     <option value="" disabled selected>--Select State--</option>
                                     @foreach ($states as $state)
                                     @if ($state->deleted_at)
@@ -194,7 +195,7 @@
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="">State</label>
-                                <select class="form-control state" name="state_id">
+                                <select onchange="getDistrict()" class="form-control state" name="state_id">
                                     <option value="" disabled selected>--Select State--</option>
                                     @foreach ($states as $state)
                                     @if ($state->deleted_at)

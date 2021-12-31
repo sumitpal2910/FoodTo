@@ -16,7 +16,7 @@ function cityDataTable(data = {}) {
         info: true,
         autoWidth: false,
         ajax: {
-            url: url("admin/service/city/data"),
+            url: url("admin/city/data"),
             type: "GET",
             data: data,
         },
@@ -32,38 +32,6 @@ function cityDataTable(data = {}) {
 }
 cityDataTable();
 
-/**
- * district ajax on state change
- */
-$(".state").on("change", function () {
-    //get id
-    let id = $(this).val();
-
-    //get district select
-    let district = $(this)
-        .parent()
-        .parent()
-        .parent()
-        .find("select.district")
-        .empty();
-    // send request
-    let response = ajaxRequest(`endpoint/state/${id}/district`);
-
-    // response
-    response.done(function (res) {
-        //loop over district
-        $(district).append(
-            `<option selected disabled value="">--Select District-- </option>`
-        );
-
-        for (let i = 0; i < res.data.district.length; i++) {
-            let dist = res.data.district[i];
-            $(district).append(
-                `<option value="${dist.id}">${dist.name}</option>`
-            );
-        }
-    });
-});
 
 /**
  * Submit form
@@ -122,7 +90,7 @@ $("#cityTable").on("click", ".edit", function () {
     let form = document.getElementById("cityEdit");
 
     //call getDatUsingAjax function to get data from config/config.js
-    let response = ajaxRequest(`admin/service/city/data/${id}`);
+    let response = ajaxRequest(`admin/city/data/${id}`);
 
     response.done(function (res) {
         let data = res.data;
@@ -144,7 +112,7 @@ $("#cityTable").on("click", ".edit", function () {
         }
 
         // set form action route
-        form.action = url(`admin/service/city/${data.id}`);
+        form.action = url(`admin/city/${data.id}`);
     });
 });
 
@@ -200,7 +168,7 @@ $("#cityTable").on("click", ".delete", function () {
     let id = $(this).attr("city");
 
     // call delete method
-    sweetAlertDelete(`admin/service/city/${id}`, cityDataTable);
+    sweetAlertDelete(`admin/city/${id}`, cityDataTable);
 });
 
 /**
@@ -211,7 +179,7 @@ $("#cityTable").on("click", ".restore", function () {
     let id = $(this).attr("city");
 
     // send ajax request
-    let response = ajaxRequest(`admin/service/city/restore/${id}`, "PUT");
+    let response = ajaxRequest(`admin/city/restore/${id}`, "PUT");
 
     response.done(function (res) {
         if (res.status === "success") {
@@ -232,7 +200,7 @@ $("#cityTable").on("click", ".status", function () {
     let id = $(this).attr("city");
 
     // send ajax request
-    let response = ajaxRequest(`admin/service/city/status/${id}`, "PUT");
+    let response = ajaxRequest(`admin/city/status/${id}`, "PUT");
 
     response.done(function (res) {
         if (res.status === "success") {
@@ -253,9 +221,10 @@ $("#citySearchForm").on("submit", function (e) {
 
     // get form data
     let data = getFormData(this);
+    console.log(data);
 
     // call datatable
     cityDataTable(data);
 
-    showCount("admin/service/city/data", data);
+    showCount("admin/city/data", data);
 });

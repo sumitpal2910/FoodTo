@@ -9,7 +9,7 @@ use App\Events\Admin\Auth\ResetPassword as AdminResetPassword;
 use App\Listeners\Admin\Auth\SendResetPasswordLink as AdminSendResetPasswordLink;
 use App\Listeners\Admin\Auth\NotifyAdminThatPasswordChanged;
 
-// Restaurant
+//Restaurant
 use App\Events\Restaurant\Auth\ResetPassword as RestaurantResetPassword;
 use App\Events\Restaurant\Auth\RestaurantPasswordChanged;
 
@@ -26,8 +26,10 @@ use App\Listeners\Rider\Auth\NotifyRiderThatPasswordChanged;
 
 use App\Events\UserRegistered;
 use App\Listeners\SendWelcomeMessageToUser;
+use App\Models\Cuisine;
 use App\Models\District;
 use App\Models\State;
+use App\Observers\CuisineObserver;
 use App\Observers\DistrictObserver;
 use App\Observers\StateObserver;
 use Illuminate\Auth\Events\Registered;
@@ -65,15 +67,15 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         /**
-         * RESTAURANT
+         * OWNER
          */
         // Authencation
         RestaurantResetPassword::class => [
-            # send a password reset link to restaurant
+            # send a password reset link toRestaurant
             RestaurantSendResetPasswordLink::class
         ],
         RestaurantPasswordChanged::class => [
-            # send a notification email to restaurant that password has changed
+            # send a notification email to Restaurant that password has changed
             NotifyRestaurantThatPasswordChanged::class
         ],
 
@@ -101,5 +103,6 @@ class EventServiceProvider extends ServiceProvider
     {
         State::observe(StateObserver::class);
         District::observe(DistrictObserver::class);
+        Cuisine::observe(CuisineObserver::class);
     }
 }

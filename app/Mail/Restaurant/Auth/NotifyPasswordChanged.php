@@ -3,6 +3,7 @@
 namespace App\Mail\Restaurant\Auth;
 
 use App\Models\Restaurant;
+use App\Models\Restaurant;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;

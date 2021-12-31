@@ -43,4 +43,12 @@ class City extends Model
     {
         return $this->belongsTo(District::class);
     }
+
+    /**
+     * Restaurants
+     */
+    public function restaurants()
+    {
+        return $this->hasMany(Restaurant::class);
+    }
 }

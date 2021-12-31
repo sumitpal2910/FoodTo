@@ -32,8 +32,8 @@ class RedirectIfAuthenticated
                         return redirect()->route('restaurant.dashboard');
                         break;
 
-                    case 'partner':
-                        return redirect()->route('partner.dashboard');
+                    case 'rider':
+                        return redirect()->route('rider.dashboard');
                         break;
 
                     default:

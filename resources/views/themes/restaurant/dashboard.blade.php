@@ -1,4 +1,4 @@
-Restaurant
+restaurant
 <br>
 {{Auth::guard('restaurant')->user()}}
 <br>

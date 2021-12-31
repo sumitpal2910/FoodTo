@@ -22,7 +22,7 @@ class ResetPassword extends Mailable
      */
     public function __construct(Restaurant $restaurant, $token)
     {
-        $this->restaurant = $restaurant;
+        $this->restaurant= $restaurant;
         $this->token = $token;
     }
 

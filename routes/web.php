@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CuisineController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\Admin\RestaurantOwnerController;
+
 use App\Http\Controllers\EndPoint\CityController as EndPointCityController;
 use App\Http\Controllers\EndPoint\DistrictController as EndPointDistrictController;
 use App\Http\Controllers\EndPoint\StateController as EndPointStateController;
+
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -43,7 +48,7 @@ Route::prefix('endpoint')->group(function () {
         Route::get('/{state}/district', [EndPointStateController::class, 'district']);
 
         # get district
-        Route::get('/{state}/city', [EndPointStateController::class, 'city']);
+        //Route::get('/{state}/city', [EndPointStateController::class, 'city']);
     });
 
     /**
@@ -57,6 +62,9 @@ Route::prefix('endpoint')->group(function () {
 
         # show
         Route::get('/{district}', [EndPointDistrictController::class, 'show']);
+
+        # get city
+        Route::get('/{district}/city', [EndPointDistrictController::class, 'city']);
     });
 
     /**
@@ -81,58 +89,105 @@ Route::prefix('admin')->name('admin.')->group(function () {
     /**
      * Service Area
      */
-    Route::prefix('service')->group(function () {
-        // ===  State   ===
-        Route::prefix('state')->group(function () {
-            # get all data in json
-            Route::get('data', [StateController::class, 'allData']);
 
-            # get one data in json
-            Route::get('data/{state}', [StateController::class, 'oneData']);
+    // ===  State   ===
+    Route::prefix('state')->name('state.')->group(function () {
+        # get all data in json
+        Route::get('data', [StateController::class, 'allData']);
 
-            # restore deleted data
-            Route::put('restore/{state}', [StateController::class, 'restore']);
+        # get one data in json
+        Route::get('data/{state}', [StateController::class, 'oneData']);
 
-            # update status
-            Route::put('status/{state}', [StateController::class, 'status']);
-        });
+        # restore deleted data
+        Route::put('restore/{state}', [StateController::class, 'restore']);
+
+        # update status
+        Route::put('status/{state}', [StateController::class, 'status']);
+
         # state resource
-        Route::resource('state', StateController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
+        Route::resource('', StateController::class)->parameters(['' => 'state'])->only(['index', 'show', 'store', 'update', 'destroy']);
+    });
 
-        // ===  District  ===
-        Route::prefix('district')->group(function () {
-            # get all data in json
-            Route::get('data', [DistrictController::class, 'allData']);
+    // ===  District  ===
+    Route::prefix('district')->name('district.')->group(function () {
+        # get all data in json
+        Route::get('data', [DistrictController::class, 'allData']);
 
-            # get one data in json
-            Route::get('data/{district}', [DistrictController::class, 'oneData']);
+        # get one data in json
+        Route::get('data/{district}', [DistrictController::class, 'oneData']);
 
-            # restore deleted data
-            Route::put('restore/{district}', [DistrictController::class, 'restore']);
+        # restore deleted data
+        Route::put('restore/{district}', [DistrictController::class, 'restore']);
 
-            # update status
-            Route::put('status/{district}', [DistrictController::class, 'status']);
-        });
+        # update status
+        Route::put('status/{district}', [DistrictController::class, 'status']);
+
         # district resource
-        Route::resource('district', DistrictController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::resource('', DistrictController::class)->parameters(['' => 'district'])->only(['index', 'store', 'update', 'destroy']);
+    });
 
 
-        // ===  City  ===
-        Route::prefix('city')->group(function () {
-            # get all data in json
-            Route::get('data', [CityController::class, 'allData']);
+    // ===  City  ===
+    Route::prefix('city')->name('city.')->group(function () {
+        # get all data in json
+        Route::get('data', [CityController::class, 'allData']);
 
-            # get one data in json
-            Route::get('data/{city}', [CityController::class, 'oneData']);
+        # get one data in json
+        Route::get('data/{city}', [CityController::class, 'oneData']);
 
-            # restore deleted data
-            Route::put('restore/{city}', [CityController::class, 'restore']);
+        # restore deleted data
+        Route::put('restore/{city}', [CityController::class, 'restore']);
 
-            # update status
-            Route::put('status/{city}', [CityController::class, 'status']);
-        });
+        # update status
+        Route::put('status/{city}', [CityController::class, 'status']);
+
         # city resource
-        Route::resource('city', CityController::class)->only(['index', 'create', 'store', 'update', 'destroy']);
+        Route::resource('', CityController::class)->parameters(['' => 'city'])->only(['index', 'create', 'store', 'update', 'destroy']);
+    });
+
+
+    /**
+     * Cuisine
+     */
+    Route::prefix('cuisine')->name('cuisine.')->group(function () {
+
+        # get all data in json datatable
+        Route::get('data', [CuisineController::class, 'allData']);
+
+        # get one data in json
+        Route::get('data/{cuisine}', [CuisineController::class, 'oneData']);
+
+        # restore deleted data
+        Route::put('restore/{cuisine}', [CuisineController::class, 'restore']);
+
+        # update status
+        Route::put('status/{cuisine}', [CuisineController::class, 'status']);
+
+        # resource- index, store, update, destory
+        Route::resource('', CuisineController::class)->parameters(['' => 'cuisine'])->only(['index', 'store', 'update', 'destroy']);
+    });
+
+    /**
+     * Restaurant
+     */
+    Route::prefix('restaurant')->name('restaurant.')->group(function () {
+
+        # get all data in json datatable
+        Route::get('data', [RestaurantController::class, 'allData']);
+
+        # get one data in json
+        //Route::get('data/{restaurant}', [RestaurantController::class, 'oneData']);
+
+        # restore deleted data
+        Route::put('restore/{restaurant}', [RestaurantController::class, 'restore']);
+
+        # update status
+        Route::put('status/{restaurant}', [RestaurantController::class, 'status']);
+
+        # search
+        Route::get('search', [RestaurantController::class, 'search']);
+
+        Route::resource('', RestaurantController::class)->parameters(['' => 'restaurant']);
     });
 });
 
