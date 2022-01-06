@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\RestaurantOwnerController;
 use App\Http\Controllers\EndPoint\CityController as EndPointCityController;
 use App\Http\Controllers\EndPoint\DistrictController as EndPointDistrictController;
 use App\Http\Controllers\EndPoint\StateController as EndPointStateController;
-
+use App\Http\Controllers\Frontend\RestaurantController as FrontendRestaurantController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -175,9 +175,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         # get all data in json datatable
         Route::get('data', [RestaurantController::class, 'allData']);
 
-        # get one data in json
-        //Route::get('data/{restaurant}', [RestaurantController::class, 'oneData']);
-
         # restore deleted data
         Route::put('restore/{restaurant}', [RestaurantController::class, 'restore']);
 
@@ -190,6 +187,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('', RestaurantController::class)->parameters(['' => 'restaurant']);
     });
 });
+
+
+/**
+ * ======================================================================================
+ * ==============  FRONTEND  =============
+ * ======================================================================================
+ */
+
+
+
 
 
 Route::get('/', function () {

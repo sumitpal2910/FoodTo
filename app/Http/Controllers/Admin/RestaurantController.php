@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Owner;
 use App\Models\Restaurant;
 use App\Models\RestaurantManager;
+use App\Models\RestaurantOwner;
 use App\Models\RestaurantTiming;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -166,7 +167,7 @@ class RestaurantController extends Controller
         }
 
         # create owner
-        $ownerCreated = Owner::create($owner);
+        $ownerCreated = RestaurantOwner::create($owner);
 
         # set owner id
         $restaurant['owner_id'] = $ownerCreated->id;

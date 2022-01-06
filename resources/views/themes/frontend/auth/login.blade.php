@@ -17,7 +17,7 @@
                                 @csrf
                                 <div class="form-label-group">
                                     <input type="email" id="email" name="email" class="form-control"
-                                        placeholder="Email address">
+                                        placeholder="Email address" autofocus>
                                     <label for="email">Email address </label>
                                 </div>
                                 <div class="form-label-group">
@@ -30,11 +30,11 @@
                                         id="customCheck1">
                                     <label class="custom-control-label" for="customCheck1">Remember me</label>
                                 </div>
-                                <a href="index.html"
+                                <button type="submit"
                                     class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign
-                                    in</a>
+                                    in</button>
                                 <div class="text-center pt-3">
-                                    Don’t have an account? <a class="font-weight-bold" href="register.html">Sign
+                                    Don’t have an account? <a class="font-weight-bold" href="">Sign
                                         Up</a>
                                 </div>
 

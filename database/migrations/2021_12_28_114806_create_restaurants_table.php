@@ -19,6 +19,10 @@ class CreateRestaurantsTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('remember_token');
+
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')->references('id')->on('restaurant_owners')->onDelete('cascade');
 
             $table->unsignedBigInteger('state_id');
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
@@ -29,7 +33,6 @@ class CreateRestaurantsTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
-            $table->string('owner_name');
             $table->string('slug');
             $table->string('phone');
             $table->string('alt_phone')->nullable();
@@ -43,9 +46,12 @@ class CreateRestaurantsTable extends Migration
             $table->string('bg_image')->nullable();
             $table->string('fssai_image');
             $table->string('license_image');
+            $table->string('menu');
 
             $table->string('address');
             $table->string('locality');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->integer('pincode');
             $table->tinyInteger('status')->default(0);
 

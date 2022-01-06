@@ -32,6 +32,7 @@ class RestaurantFactory extends Factory
         $license = $this->faker->image($path, 480, 640, null, false);
         $thumbnail = $this->faker->image($path, 256, 256, null, false);
         $bgImg = $this->faker->image($path, 1360, 430, null, false);
+        $menu = $this->faker->image($path, 480, 640, null, false);
 
         $path = "restaurants/{$slug}/";
 
@@ -41,7 +42,6 @@ class RestaurantFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
-            'owner_name' => $this->faker->name(),
             'slug' => $slug,
             'phone' => $this->faker->phoneNumber(),
             'alt_phone' => $this->faker->phoneNumber(),
@@ -54,7 +54,10 @@ class RestaurantFactory extends Factory
             'bg_image' => "{$path}{$bgImg}",
             'fssai_image' => "{$path}{$fssai}",
             'license_image' => "{$path}{$license}",
+            'menu' => "{$path}{$menu}",
             'address' => $this->faker->streetAddress(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
             'locality' => $this->faker->streetSuffix(),
             'pincode' => rand(100000, 999999),
             'status' => rand(0, 1),

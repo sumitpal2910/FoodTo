@@ -3,6 +3,7 @@
 use App\Http\Controllers\Restaurant\Auth\LoginController;
 use App\Http\Controllers\Restaurant\Auth\PasswordResetController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\RestaurantController;
 
 Route::prefix('restaurant')->name('restaurant.')->group(function () {
     // Login
@@ -27,3 +28,6 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
     Route::post('reset-password', [PasswordResetController::class, 'update'])
         ->name('password.update')->middleware('guest:restaurant');
 });
+
+Route::get('partner_with_us', [RestaurantController::class, 'index'])->name('partner_with_us');
+Route::post('partner_with_us',  [RestaurantController::class, 'store'])->name('restaurant.store');

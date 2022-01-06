@@ -13,3 +13,5 @@ window.Swal = Swal;
 import axios from "axios";
 window.axios = axios;
 
+import Stepper from "bs-stepper";
+window.Steeper = Stepper;
