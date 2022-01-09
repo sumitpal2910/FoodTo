@@ -19,6 +19,8 @@ class RestaurantFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->addProvider(new \FakerRestaurant\Provider\en_US\Restaurant($this->faker));
+
         $name = $this->faker->company();
         $slug = strtolower(str_replace("--", '-', preg_replace("/[^a-z]/i", '-', $name)));
         if (Storage::missing("restaurants/{$slug}")) {
@@ -26,7 +28,7 @@ class RestaurantFactory extends Factory
         }
 
         $path = "public/storage/restaurants/{$slug}";
-        //$path = "public/upload";
+
         $kyc = $this->faker->image($path, 480, 640, null, false);
         $fssai = $this->faker->image($path, 480, 640, null, false);
         $license = $this->faker->image($path, 480, 640, null, false);
@@ -43,6 +45,7 @@ class RestaurantFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'slug' => $slug,
+            'cuisine' => $this->faker->beverageName(),
             'phone' => $this->faker->phoneNumber(),
             'alt_phone' => $this->faker->phoneNumber(),
             'gst_no' => $this->faker->randomNumber(8),
@@ -58,9 +61,8 @@ class RestaurantFactory extends Factory
             'address' => $this->faker->streetAddress(),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),
-            'locality' => $this->faker->streetSuffix(),
             'pincode' => rand(100000, 999999),
-            'status' => rand(0, 1),
+            'status' => rand(0, 3),
         ];
     }
 

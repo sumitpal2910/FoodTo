@@ -17,5 +17,6 @@ class AdminTableSeeder extends Seeder
         $count = (int) $this->command->ask('How many admin would you like to create?', 1);
 
         Admin::factory($count)->create();
+        Admin::factory()->admin()->create();
     }
 }

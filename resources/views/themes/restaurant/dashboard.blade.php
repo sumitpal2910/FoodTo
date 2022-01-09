@@ -1,12 +1,7 @@
-restaurant
-<br>
-{{Auth::guard('restaurant')->user()}}
-<br>
-@auth('restaurant')
-<h1>Hello {{Auth::guard('restaurant')->user()->name}}</h1>
-@endauth
+@extends('layouts.restaurant.app')
 
-<form action="{{route('restaurant.logout')}}" method="post">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
+@section('title', 'Dashboard')
+
+@section('content')
+<div></div>
+@endsection

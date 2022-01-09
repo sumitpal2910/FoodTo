@@ -5,7 +5,7 @@
 @section('content')
 <div class="content-wrapper">
 
-    <x-admin-content-header title="Cuisine" :count="$count" />
+    restaurant title="Cuisine" :count="$count" />
 
     <section class="content">
         <div class="container-fluid">

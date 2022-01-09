@@ -15,12 +15,14 @@ class CreateRestaurantOwnersTable extends Migration
     {
         Schema::create('restaurant_owners', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('bank_id');
+            $table->foreign('bank_id')->references('id')->on('banks');
+
             $table->string('name');
             $table->string('phone');
             $table->string('alt_phone')->nullable();
             $table->string('account_no')->nullable();
             $table->string('ifsc')->nullable();
-            $table->string('bank')->nullable();
             $table->string('passbook')->nullable();
             $table->softDeletes();
             $table->timestamps();

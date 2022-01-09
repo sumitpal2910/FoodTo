@@ -8,7 +8,7 @@
         <meta name="description" content="Askbootstrap">
         <meta name="author" content="Askbootstrap">
         <meta name="csrf-token" content="{{csrf_token()}}">
-        <title>FoodTo Login</title>
+        <title>@yield('title')</title>
 
         <link rel="icon" type="image/png" href="img/favicon.png">
 
@@ -20,7 +20,7 @@
 
         <link href="{{asset('asset/frontend/vendor/select2/css/select2.min.css')}}" rel="stylesheet">
 
-        <link href="{{asset('asset/frontend/vendor/bs-stepper/css/bs-stepper.min.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('asset/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
 
         <link href="{{asset('asset/frontend/css/osahan.css')}}" rel="stylesheet">
     </head>
@@ -36,19 +36,20 @@
         <script src="{{asset('asset/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}" defer>
         </script>
 
-        <script src="{{asset('asset/frontend/vendor/select2/js/select2.min.js')}}"></script>
+        <script src="{{asset('asset/frontend/vendor/select2/js/select2.full.min.js')}}"></script>
         <!-- bs-custom-file-input -->
         <script src="{{asset('asset/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}" defer></script>
 
-        <script src="{{asset('asset/frontend/vendor/bs-stepper/js/bs-stepper.min.js')}}"></script>
+        <script src="{{asset('asset/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>
 
         <script src="{{asset('asset/frontend/js/custom.js')}}" defer> </script>
 
 
         {{--<script src="{{asset('js/app.js')}}"></script>--}}
-        <script src="{{asset('js/custom/frontend/config/config.js')}}"></script>
-        <script src="{{asset('js/custom/frontend/config/function.js')}}" defer></script>
-        <script src="{{asset('js/custom/frontend/config/ajax-request.js')}}" defer></script>
+        <script src="{{asset('js/custom/config/config.js')}}"></script>
+        <script src="{{asset('js/custom/config/function.js')}}" defer></script>
+        <script src="{{asset('js/custom/config/ajax-request.js')}}" defer></script>
+
         <script src="{{asset('js/custom/frontend/pages/restaurant.js')}}" defer></script>
 
         <script>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="content-wrapper">
-    <x-admin-content-header title="Add New City" prefix="City / Create" />
+    <x-content-header title="Add New City" prefix="City / Create" />
 
     <section class="content">
         <div class="container-fluid">

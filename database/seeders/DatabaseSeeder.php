@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,13 +14,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        if ($this->command->confirm('Do you want to refresh database?', true)) {
+            $this->command->call('migrate:refresh');
+            $this->command->info('Database was refreshed');
+
+            # delete all file and folder
+            Storage::deleteDirectory('restaurants');
+            Storage::deleteDirectory('owners');
+        }
+
         //\App\Models\User::factory(10)->create();
         $this->call([
-            //AdminTableSeeder::class,
-            // RestaurantTableSeeder::class,
-            //RiderTableSeeder::class,
+            AdminTableSeeder::class,
+            RiderTableSeeder::class,
+            BankTableSeeder::class,
             StateDistrictTableSeeder::class,
             CityTableSeeder::class,
+            RestaurantOwnerTableSeeder::class,
+            RestaurantTableSeeder::class,
+            RestaurantTimingTableSeeder::class,
+            RestaurantManagerTableSeeder::class,
         ]);
     }
 }

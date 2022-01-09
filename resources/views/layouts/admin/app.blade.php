@@ -86,10 +86,10 @@
         <script src="{{asset('js/app.js')}}" defer></script>
 
         <!-- config -->
-        <script src="{{asset('js/custom/admin/config/sweetalert.js')}}" defer></script>
-        <script src="{{asset('js/custom/admin/config/ajax-request.js')}}" defer></script>
-        <script src="{{asset('js/custom/admin/config/config.js')}}"></script>
-        <script src="{{asset('js/custom/admin/config/function.js')}}"></script>
+        <script src="{{asset('js/custom/config/sweetalert.js')}}" defer></script>
+        <script src="{{asset('js/custom/config/ajax-request.js')}}" defer></script>
+        <script src="{{asset('js/custom/config/config.js')}}"></script>
+        <script src="{{asset('js/custom/config/function.js')}}"></script>
 
         <!-- state -->
         <script src="{{asset('js/custom/admin/pages/state.js')}}" defer></script>
@@ -97,6 +97,7 @@
         <script src="{{asset('js/custom/admin/pages/city.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/pages/cuisine.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/pages/restaurant.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/pages/bank.js')}}" defer></script>
 
 
         <!-- Notification -->

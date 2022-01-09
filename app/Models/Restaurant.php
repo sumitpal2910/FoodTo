@@ -32,6 +32,7 @@ class Restaurant extends Authenticatable
         'district_id',
         'city_id',
         'slug',
+        'cuisine',
         'phone',
         'alt_phone',
         'gst_no',
@@ -45,7 +46,6 @@ class Restaurant extends Authenticatable
         'license_image',
         'menu',
         'address',
-        'locality',
         'latitude',
         'longitude',
         'pincode',
@@ -101,6 +101,13 @@ class Restaurant extends Authenticatable
         return $this->belongsTo(City::class);
     }
 
+    /**
+     * Owner
+     */
+    public function owner()
+    {
+        return $this->belongsTo(RestaurantOwner::class);
+    }
     /**
      * Manager
      */

@@ -5,7 +5,7 @@
 @section('content')
 <div class="content-wrapper">
 
-    <x-admin-content-header title="Edit Restaurant" />
+    restaurant title="Edit Restaurant" />
 
     <section class="content">
         <div class="container-fluid">

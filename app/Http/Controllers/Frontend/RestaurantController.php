@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bank;
 use App\Models\City;
+use App\Models\Cuisine;
 use App\Models\Restaurant;
 use App\Models\RestaurantManager;
 use App\Models\RestaurantOwner;
@@ -24,9 +26,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
+        # get states
         $states = State::get();
+        $banks = Bank::get();
 
-        return view('themes.frontend.restaurant.index', compact('states'));
+        return view('themes.frontend.restaurant.index', compact('states', 'banks'));
     }
 
     /**
@@ -48,6 +52,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
         $request->validate(['email' => 'unique:restaurants']);
+
         # get all input data
         $data = $request->input();
 
@@ -58,7 +63,7 @@ class RestaurantController extends Controller
             'alt_phone' => $data['owner_alt_phone'],
             'account_no' => $data['account_no'],
             'ifsc' => $data['ifsc'],
-            'bank' => $data['bank'],
+            'bank_id' => $data['bank_id'],
         ];
 
         # get manager data
@@ -83,7 +88,7 @@ class RestaurantController extends Controller
             'license_no' => $data['license_no'],
             'fssai_no' => $data['fssai_no'],
             'address' => $data['address'],
-            'locality' => $data['locality'],
+            'cuisine' => $data['cuisine'],
             'latitude' => $data['latitude'],
             'longitude' => $data['longitude'],
             'pincode' => $data['pincode'],
@@ -102,7 +107,7 @@ class RestaurantController extends Controller
         $restaurant['slug'] = $slug;
 
         # create folder
-        $path = "restaurants/" . str_replace("-", "_", $slugOld) . "_{$id}/image";
+        $path = "restaurants/{$id}/image";
         if (Storage::missing($path)) {
             Storage::makeDirectory($path);
         }
@@ -189,23 +194,16 @@ class RestaurantController extends Controller
         RestaurantManager::create($manager);
 
         # get timing
-        $timing = [];
-        if ($data['timing_status']) {
-            $timing = ['status' => $data['timing_status'], 'close' => $data['timing_close'], 'open' => $data['timing_open']];
-        }
+        $timing = ['day' => $data['timing_day'], 'close' => $data['timing_close'], 'open' => $data['timing_open']];
 
-        # timing
-        if ($timing) {
-            foreach ($timing['status'] as $key => $value) {
-                $time = [
-                    'day' => $key, 'open' => $timing['open'][$key],
-                    'close' => $timing['close'][$key], 'status' => 1,
-                    'restaurant_id' => $restaurantCreated->id,
-                ];
-
-                # create timing
-                RestaurantTiming::create($time);
-            }
+        foreach ($timing['day'] as $day) {
+            $time = new RestaurantTiming();
+            $time->day = $day;
+            $time->open = $timing['open'][$day];
+            $time->close = $timing['close'][$day];
+            $time->status = $timing['open'][$day] && $timing['close'][$day] ? 1 : 0;
+            $time->restaurant_id = $restaurantCreated->id;
+            $time->save();
         }
 
         # notification

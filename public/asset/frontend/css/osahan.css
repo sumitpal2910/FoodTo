@@ -20,15 +20,16 @@ Version: 1.0
 -- Mobile Media
 */
 /* Body */
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body {
     background: #f3f7f8;
     font-size: 13px;
     font-weight: 500;
-    font-family: 'Mulish', sans-serif;
+    font-family: "Mulish", sans-serif;
 }
-button, a {
+button,
+a {
     outline: none !important;
     color: #dd646e;
     text-decoration: none !important;
@@ -37,33 +38,44 @@ p {
     font-size: 13px;
     color: #7a7e8a;
 }
-img{
+img {
     image-rendering: auto;
 }
-.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #000000;
 }
 /* Nav */
 .dropdown:hover .dropdown-menu {
     display: block;
-   visibility: visible;
-   opacity:1;
-   transform: translateY(0px);
-   transition:.5s ease all;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 0.5s ease all;
 }
 .dropdown-menu {
-   display: block;
-   visibility: hidden;
-   opacity:0;
-   transform: translateY(50px);
-   transition:.5s ease all;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.5s ease all;
 }
 .dropdown-menu.show {
-   display: block;
-   visibility: visible;
-   opacity:1;
-   transform: translateY(0px);
-   transition:.5s ease all;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 0.5s ease all;
 }
 .osahan-nav {
     background: #fff none repeat scroll 0 0 !important;
@@ -131,7 +143,7 @@ img{
     min-height: 100vh;
 }
 .bg-image {
-    background-image: url('../img/login-bg.png');
+    background-image: url("../img/login-bg.png");
     background-size: cover;
     background-position: center;
 }
@@ -148,8 +160,8 @@ img{
     position: relative;
     margin-bottom: 1rem;
 }
-.form-label-group>input,
-.form-label-group>label {
+.form-label-group > input,
+.form-label-group > label {
     padding: 15px 0;
     border-radius: 0px;
     height: 51px;
@@ -158,7 +170,7 @@ img{
     border-bottom: 1px solid #ced4da;
     box-shadow: none !important;
 }
-.form-label-group>label {
+.form-label-group > label {
     position: absolute;
     top: 0;
     left: 0;
@@ -171,8 +183,8 @@ img{
     cursor: text;
     /* Match the input under the label */
     border: 1px solid transparent;
-    border-radius: .25rem;
-    transition: all .1s ease-in-out;
+    border-radius: 0.25rem;
+    transition: all 0.1s ease-in-out;
 }
 .form-label-group input::-webkit-input-placeholder {
     color: transparent;
@@ -190,10 +202,12 @@ img{
     color: transparent;
 }
 .form-label-group input:not(:placeholder-shown) {
-    padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+    padding-top: calc(
+        var(--input-padding-y) + var(--input-padding-y) * (2 / 3)
+    );
     padding-bottom: calc(var(--input-padding-y) / 3);
 }
-.form-label-group input:not(:placeholder-shown)~label {
+.form-label-group input:not(:placeholder-shown) ~ label {
     padding-top: calc(var(--input-padding-y) / 3);
     padding-bottom: calc(var(--input-padding-y) / 3);
     font-size: 12px;
@@ -208,7 +222,7 @@ img{
     background-color: #3b5998;
 }
 /* Homepage Search Block */
-.homepage-header{
+.homepage-header {
     background: url(../img/bg.png);
     position: relative;
     background-repeat: no-repeat;
@@ -284,7 +298,10 @@ img{
     right: 9px !important;
     top: 13px !important;
 }
-.select2-dropdown{
+.select2-selection__choice__remove {
+    display: inline;
+}
+.select2-dropdown {
     margin: 2px 0 0 0;
     border: none;
     border-radius: 6px !important;
@@ -303,14 +320,15 @@ img{
     border-radius: 6px;
     margin: 0 0 5px 0;
 }
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
+.select2-container--default
+    .select2-results__option--highlighted[aria-selected] {
     background-color: #dd646e;
     color: white;
 }
-.select2-container--default .select2-search--dropdown .select2-search__field{
-   border: 1px solid #ced4da;
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #ced4da;
 }
-.select2-search__field{
+.select2-search__field {
     outline: none !important;
     border: 1px solid #ced4da;
 }
@@ -328,7 +346,7 @@ img{
     overflow: hidden;
     text-align: center;
     padding: 0px;
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     -webkit-backdrop-filter: saturate(180%) blur(5px);
     backdrop-filter: saturate(180%) blur(5px);
     /* border: 1px solid #fff; */
@@ -347,12 +365,12 @@ img{
     width: 100%;
     height: 54px;
     object-fit: cover;
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-    transition: transform .7s ease;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    transition: transform 0.7s ease;
     margin: 0px 0 7px 0;
 }
 .osahan-category-item img:hover {
-	transform: scale(1.1);
+    transform: scale(1.1);
 }
 .line {
     background-color: #5e5e5e;
@@ -363,14 +381,18 @@ img{
     width: 50px;
 }
 /* Customize Bootstrap */
-.small, small {
+.small,
+small {
     font-size: 85%;
     font-weight: 600;
 }
-.select2, .select2 span {
+.select2 {
     width: 100% !important;
 }
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow
+    b {
     left: 96%;
 }
 .select2-container--default .select2-selection--single {
@@ -400,7 +422,7 @@ img{
     color: #3ecf8e !important;
 }
 .border-success {
-    border-color: #3ecf8e!important;
+    border-color: #3ecf8e !important;
 }
 .btn-danger,
 .badge-danger {
@@ -420,14 +442,15 @@ img{
     color: #f32129 !important;
 }
 .border-danger {
-    border-color: #f32129!important;
+    border-color: #f32129 !important;
 }
 .btn-primary,
 .badge-danger {
     background-color: #dd646e !important;
     border-color: #dd646e !important;
 }
-.btn-primary:hover, .btn-primary:focus {
+.btn-primary:hover,
+.btn-primary:focus {
     background-color: #db5359 !important;
     border-color: #db5359 !important;
 }
@@ -438,7 +461,7 @@ img{
 .btn-outline-primary:hover,
 .btn-outline-primary:not(:disabled):not(.disabled).active,
 .btn-outline-primary:not(:disabled):not(.disabled):active,
-.show>.btn-outline-primary.dropdown-toggle {
+.show > .btn-outline-primary.dropdown-toggle {
     color: #ffffff !important;
     border-color: #dd646e !important;
     background-color: #dd646e !important;
@@ -447,7 +470,7 @@ img{
     color: #dd646e !important;
 }
 .border-primary {
-    border-color: #dd646e!important;
+    border-color: #dd646e !important;
 }
 .btn-lg {
     font-size: 15px;
@@ -458,52 +481,52 @@ img{
 .modal-content {
     border: none;
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .btn {
     font-size: 13px;
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .form-control {
     font-size: 13px;
     border-radius: 6px;
-    box-shadow: 0 1px 6px rgba(0,0,0, 0.1)!important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1) !important;
     min-height: 38px;
 }
 .card {
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .rounded {
     border-radius: 6px !important;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .input-group-text {
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .custom-checkbox .custom-control-label::before {
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .nav-pills .nav-link {
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .alert,
 .badge,
 .dropdown-menu {
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
-.input-group-sm>.custom-select,
-.input-group-sm>.form-control,
-.input-group-sm>.input-group-append>.btn,
-.input-group-sm>.input-group-append>.input-group-text,
-.input-group-sm>.input-group-prepend>.btn,
-.input-group-sm>.input-group-prepend>.input-group-text {
-    box-shadow: 0 1px 6px rgba(0,0,0, 0.1)!important;
+.input-group-sm > .custom-select,
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-append > .btn,
+.input-group-sm > .input-group-append > .input-group-text,
+.input-group-sm > .input-group-prepend > .btn,
+.input-group-sm > .input-group-prepend > .input-group-text {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1) !important;
 }
 .bg-dark {
     background-color: #000 !important;
@@ -522,7 +545,7 @@ img{
 .dropdown-item {
     border-radius: 0 !important;
     padding: 7px 18px;
-    color: rgba(0,0,0,.5);
+    color: rgba(0, 0, 0, 0.5);
     font-weight: 500;
 }
 .dropdown-item:focus {
@@ -565,7 +588,7 @@ img{
     display: inline-block;
     border: 1px solid #6c757d;
     border-radius: 6px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     overflow: hidden;
 }
 .list-card .star {
@@ -575,7 +598,7 @@ img{
 .list-card .star .badge {
     font-size: 11px;
     padding: 5px 5px;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 .list-card .member-plan {
     left: 8px;
@@ -584,7 +607,7 @@ img{
 .list-card .member-plan .badge {
     font-size: 11px;
     padding: 5px 5px;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 .list-card .list-card-image {
     position: relative;
@@ -592,7 +615,7 @@ img{
 .list-card .favourite-heart {
     right: 8px;
     top: 8px;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 .list-card .favourite-heart i {
     background: #fff;
@@ -618,7 +641,7 @@ span.count-number.float-right {
     border: 1px solid #6c757d;
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .count-number-input {
     width: 24px;
@@ -633,11 +656,23 @@ span.count-number.float-right {
 }
 .generator-bg {
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#dd646e+1,fe792b+100 */
-background: #dd646e; /* Old browsers */
-background: -moz-linear-gradient(-45deg, #dd646e 1%, #fe792b 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, #dd646e 1%,#fe792b 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg, #dd646e 1%,#fe792b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', endColorstr='#fe792b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #dd646e; /* Old browsers */
+    background: -moz-linear-gradient(
+        -45deg,
+        #dd646e 1%,
+        #fe792b 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+        -45deg,
+        #dd646e 1%,
+        #fe792b 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+        135deg,
+        #dd646e 1%,
+        #fe792b 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', endColorstr='#fe792b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .restaurant-detailed-banner {
     position: relative;
@@ -652,9 +687,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', end
     padding: 65px 0 17px;
     position: absolute;
     right: 0;
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.83) 100%);
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.83) 100%);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.83) 100%);
+    background: -moz-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.83) 100%
+    );
+    background: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.83) 100%
+    );
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.83) 100%
+    );
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#d4000000', GradientType=0);
 }
 .homepage-great-deals-carousel .item img {
@@ -763,7 +810,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', end
 .total-like-user {
     border: 2px solid #fff;
     height: 34px;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     width: 34px;
 }
 .total-like-user-main a {
@@ -865,7 +912,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', end
     height: 88px;
     border-radius: 3px;
     object-fit: cover;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 /* Checkout Page */
 .addresses-item a.btn.btn-sm {
@@ -885,7 +932,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', end
     font-weight: 600;
     color: #535665;
     box-shadow: none !important;
-    border-radius: 6px 0px 0 6px !important
+    border-radius: 6px 0px 0 6px !important;
 }
 .osahan-payment .nav-link i {
     width: 28px;
@@ -1015,7 +1062,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', end
     width: 70px;
     height: 70px;
     object-fit: cover;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     border-radius: 2px;
 }
 .osahan-cart-item p.text-gray.float-right {
@@ -1036,12 +1083,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd646e', end
     border-radius: 50%;
     padding-bottom: 50%;
     pointer-events: none;
-    background-color: rgba(225, 48, 8, .2);
+    background-color: rgba(225, 48, 8, 0.2);
     border: 1px solid #dd646e;
 }
 /* Footer */
 .footer {
-    background: #EDF1F4;
+    background: #edf1f4;
 }
 .footer h6 {
     font-size: 14px;
@@ -1073,480 +1120,491 @@ footer {
 /* Mobile Media */
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-.dropdown-menu {
-    display: none;
-}
-.homepage-header .osahan-nav .nav-link {
-    border-color: rgb(255 255 255 / 11%);
-}
-.m-none{
-    display: none;
-}
-.homepage-search-title {
-    text-align: center;
-}
-.list-cate-page {
-    margin: 22px 0 0 0;
-}
-.d-none-m{
-	display:none;
-}
-.row.pt-2.pb-2 {
-    padding-bottom: 0px !important;
-    padding-top: 0px !important;
-}
-.row.pt-2 {
-    padding-top: 0px !important;
-}
-.offer-card-horizontal .col-md-4.col-4.p-4 {
-    padding: 0 0 0 15px !important;
-}
-.row.mt-4.pt-2 {
-    margin-top: 0px !important;
-    padding-top: 0px !important;
-}
-.homepage-add-section {
-    padding: 0 13px;
-}
-.breadcrumb-osahan h1 {
-    font-size: 34px;
-}
-.breadcrumb-osahan h6 {
-    font-size: 15px;
-}
-.breadcrumb-osahan {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.reviews-members .media .mr-3 {
-    width: 36px;
-    height: 36px;
-}
-.total-like {
-    font-size: 12px;
-}
-.restaurant-detailed-action-btn.float-right .btn {
-    margin: 3px 0px;
-    font-size: 13px;
-}
-.login  .col-md-9.col-lg-8.mx-auto.pl-5.pr-5 {
-    padding: 0 11px !important;
-}
-.login.d-flex.align-items-center.py-5 {
-    padding: 0 !important;
-}
-.h5, h5 {
-    font-size: 16px;
-}
-.homepage-add-section .col-md-3.col-6 {
-    padding: 2px 2px;
-}
-.homepage-ad .item {
-    padding: 0 2px;
-}
-.osahan-nav {
-    padding: 15px 15px;
-}
-.navbar-toggler {
-    padding: 5px 8px;
-    border-radius: 2px;
-}
-.osahan-nav .nav-link {
-    margin: 0px;
-    text-align: center;
-    padding: 14px 0 !important;
-    border-bottom: 1px solid #eef0ef;
-}
-.osahan-nav .dropdown-item {
-    text-align: center;
-}
-.osahan-slider {
-    padding: 18px 0 0 0px !important;
-}
-.pt-5, .py-5 {
-    padding-top: 3rem !important;
-}
-.pb-5, .py-5 {
-    padding-bottom: 3rem !important;
-}
-.homepage-search-block {
-    padding: 3rem 0 !important;
-}
-.mobile-none{
-    display: none;
-}
-.card {
-    margin-bottom: 15px !important;
-}
-p{
-    font-size: 12px;
-}
-.restaurant-detailed-header-left img {
-    float: none !important;
-    margin: 0 0 14px 0 !important;
-}
-.restaurant-detailed-header-left {
-    text-align: center;
-}
-.restaurant-detailed-header-right .btn-success {
-    margin-top: 18px;
-}
-.restaurant-detailed-header-right.text-right {
-    text-align: center !important;
-}
-.restaurant-detailed-action-btn.float-right {
-    float: none !important;
-    margin: auto;
-    text-align: center;
-    width: 100% !important;
-    display: block;
-    padding: 12px 0;
-    border-bottom: 1px solid #dedede;
-}
-.offer-dedicated-nav {
-    text-align: center;
-}
-.offer-dedicated-nav .nav-item {
-    flex: auto;
-    border-bottom: 1px solid #ccc;
-    padding: 0;
-    margin: 0 11px !important;
-}
-.offer-dedicated-nav {
-    text-align: center;
-}
-.address-map.float-right.ml-5 {
-    float: none !important;
-    margin: 0 0 20px 0 !important;
-}
-.address-map.float-right.ml-5 iframe {
-    width: 100%;
-}
-.osahan-track-order-detail p.text-gray.mb-5 {
-    margin: 1px 0 11px 0 !important;
-}
-.osahan-account-page-left .nav-tabs {
-    padding-left: 0px !important;
-}
-.osahan-account-page-left {
-    height: auto !important;
-    margin: 0 0 15px 0;
-}
-.order-list .float-right {
-    float: none !important;
-}
-.row.mb-4 {
-    margin-bottom: 0px !important;
-}
-.app {
-    margin-bottom: 26px;
-}
-.footer ul li a {
-    font-size: 12px;
-}
-.footer h6 {
-    font-size: 13px;
-    text-transform: capitalize;
-}
-.osahan-payment .col-sm-4.pr-0 {
-    padding-right: 15px !important;
-}
-.osahan-payment .col-sm-8.pl-0 {
-    padding-left: 15px !important;
-    margin: 14px 0 0 0;
-}
-.p-5.osahan-invoice.bg-white.shadow-sm {
-    padding: 15px !important;
-}
-.h3, h3 {
-    font-size: 22px;
-}
-.p-5 {
-    padding: 20px !important;
-}
-.osahan-account-page-right {
-    padding: 0px !important;
-    border: none;
-    background: transparent !important;
-    box-shadow: none !important;
-    margin-top: 15px;
-}
+    .dropdown-menu {
+        display: none;
+    }
+    .homepage-header .osahan-nav .nav-link {
+        border-color: rgb(255 255 255 / 11%);
+    }
+    .m-none {
+        display: none;
+    }
+    .homepage-search-title {
+        text-align: center;
+    }
+    .list-cate-page {
+        margin: 22px 0 0 0;
+    }
+    .d-none-m {
+        display: none;
+    }
+    .row.pt-2.pb-2 {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
+    .row.pt-2 {
+        padding-top: 0px !important;
+    }
+    .offer-card-horizontal .col-md-4.col-4.p-4 {
+        padding: 0 0 0 15px !important;
+    }
+    .row.mt-4.pt-2 {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
+    .homepage-add-section {
+        padding: 0 13px;
+    }
+    .breadcrumb-osahan h1 {
+        font-size: 34px;
+    }
+    .breadcrumb-osahan h6 {
+        font-size: 15px;
+    }
+    .breadcrumb-osahan {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .reviews-members .media .mr-3 {
+        width: 36px;
+        height: 36px;
+    }
+    .total-like {
+        font-size: 12px;
+    }
+    .restaurant-detailed-action-btn.float-right .btn {
+        margin: 3px 0px;
+        font-size: 13px;
+    }
+    .login .col-md-9.col-lg-8.mx-auto.pl-5.pr-5 {
+        padding: 0 11px !important;
+    }
+    .login.d-flex.align-items-center.py-5 {
+        padding: 0 !important;
+    }
+    .h5,
+    h5 {
+        font-size: 16px;
+    }
+    .homepage-add-section .col-md-3.col-6 {
+        padding: 2px 2px;
+    }
+    .homepage-ad .item {
+        padding: 0 2px;
+    }
+    .osahan-nav {
+        padding: 15px 15px;
+    }
+    .navbar-toggler {
+        padding: 5px 8px;
+        border-radius: 2px;
+    }
+    .osahan-nav .nav-link {
+        margin: 0px;
+        text-align: center;
+        padding: 14px 0 !important;
+        border-bottom: 1px solid #eef0ef;
+    }
+    .osahan-nav .dropdown-item {
+        text-align: center;
+    }
+    .osahan-slider {
+        padding: 18px 0 0 0px !important;
+    }
+    .pt-5,
+    .py-5 {
+        padding-top: 3rem !important;
+    }
+    .pb-5,
+    .py-5 {
+        padding-bottom: 3rem !important;
+    }
+    .homepage-search-block {
+        padding: 3rem 0 !important;
+    }
+    .mobile-none {
+        display: none;
+    }
+    .card {
+        margin-bottom: 15px !important;
+    }
+    p {
+        font-size: 12px;
+    }
+    .restaurant-detailed-header-left img {
+        float: none !important;
+        margin: 0 0 14px 0 !important;
+    }
+    .restaurant-detailed-header-left {
+        text-align: center;
+    }
+    .restaurant-detailed-header-right .btn-success {
+        margin-top: 18px;
+    }
+    .restaurant-detailed-header-right.text-right {
+        text-align: center !important;
+    }
+    .restaurant-detailed-action-btn.float-right {
+        float: none !important;
+        margin: auto;
+        text-align: center;
+        width: 100% !important;
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid #dedede;
+    }
+    .offer-dedicated-nav {
+        text-align: center;
+    }
+    .offer-dedicated-nav .nav-item {
+        flex: auto;
+        border-bottom: 1px solid #ccc;
+        padding: 0;
+        margin: 0 11px !important;
+    }
+    .offer-dedicated-nav {
+        text-align: center;
+    }
+    .address-map.float-right.ml-5 {
+        float: none !important;
+        margin: 0 0 20px 0 !important;
+    }
+    .address-map.float-right.ml-5 iframe {
+        width: 100%;
+    }
+    .osahan-track-order-detail p.text-gray.mb-5 {
+        margin: 1px 0 11px 0 !important;
+    }
+    .osahan-account-page-left .nav-tabs {
+        padding-left: 0px !important;
+    }
+    .osahan-account-page-left {
+        height: auto !important;
+        margin: 0 0 15px 0;
+    }
+    .order-list .float-right {
+        float: none !important;
+    }
+    .row.mb-4 {
+        margin-bottom: 0px !important;
+    }
+    .app {
+        margin-bottom: 26px;
+    }
+    .footer ul li a {
+        font-size: 12px;
+    }
+    .footer h6 {
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .osahan-payment .col-sm-4.pr-0 {
+        padding-right: 15px !important;
+    }
+    .osahan-payment .col-sm-8.pl-0 {
+        padding-left: 15px !important;
+        margin: 14px 0 0 0;
+    }
+    .p-5.osahan-invoice.bg-white.shadow-sm {
+        padding: 15px !important;
+    }
+    .h3,
+    h3 {
+        font-size: 22px;
+    }
+    .p-5 {
+        padding: 20px !important;
+    }
+    .osahan-account-page-right {
+        padding: 0px !important;
+        border: none;
+        background: transparent !important;
+        box-shadow: none !important;
+        margin-top: 15px;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
- @media (min-width: 576px) and (max-width: 767.98px) {
-.dropdown-menu {
-    display: none;
-}
-.homepage-header .osahan-nav .nav-link {
-    border-color: rgb(255 255 255 / 11%);
-}
-.homepage-add-section .col-md-3.col-6 {
-    padding: 2px 2px;
-}
-.homepage-search-title {
-    text-align: center;
-}
-.row.pt-2.pb-2 {
-    padding-bottom: 0px !important;
-    padding-top: 0px !important;
-}
-.row.pt-2 {
-    padding-top: 0px !important;
-}
-.d-none-m{
-	display:none;
-}
-.list-cate-page {
-    margin: 22px 0 0 0;
-}
-.row.mt-4.pt-2 {
-    margin-top: 0px !important;
-    padding-top: 0px !important;
-}
-.offer-card-horizontal .col-md-4.col-4.p-4 {
-    padding: 0 0 0 15px !important;
-}
-.homepage-add-section {
-    padding: 0 13px;
-}
-.homepage-ad .item {
-    padding: 0 2px;
-}
-.container {
-    max-width: 100%;
-}
-.osahan-nav {
-    padding: 15px 15px;
-}
-.navbar-toggler {
-    padding: 5px 8px;
-    border-radius: 2px;
-}
-.osahan-nav .nav-link {
-    margin: 0px;
-    text-align: center;
-    padding: 14px 0 !important;
-    border-bottom: 1px solid #eef0ef;
-}
-.osahan-nav .dropdown-item {
-    text-align: center;
-}
-.osahan-slider {
-    padding: 18px 0 0 0px !important;
-}
-.pt-5, .py-5 {
-    padding-top: 3rem !important;
-}
-.pb-5, .py-5 {
-    padding-bottom: 3rem !important;
-}
-.homepage-search-block {
-    padding: 3rem 0 !important;
-}
-.mobile-none{
-    display: none;
-}
-.card {
-    margin-bottom: 15px !important;
-}
-p{
-    font-size: 12px;
-}
-.restaurant-detailed-header-left img {
-    float: none !important;
-    margin: 0 0 14px 0 !important;
-}
-.restaurant-detailed-header-left {
-    text-align: center;
-}
-.restaurant-detailed-header-right .btn-success {
-    margin-top: 18px;
-}
-.restaurant-detailed-header-right.text-right {
-    text-align: center !important;
-}
-.restaurant-detailed-action-btn.float-right {
-    float: none !important;
-    margin: auto;
-    text-align: center;
-    width: 100% !important;
-    display: block;
-    padding: 12px 0;
-    border-bottom: 1px solid #dedede;
-}
-.offer-dedicated-nav {
-    text-align: center;
-}
-.offer-dedicated-nav .nav-item {
-    flex: auto;
-    border-bottom: 1px solid #ccc;
-    padding: 0;
-    margin: 0 11px !important;
-}
-.offer-dedicated-nav {
-    text-align: center;
-}
-.address-map.float-right.ml-5 {
-    float: none !important;
-    margin: 0 0 20px 0 !important;
-}
-.address-map.float-right.ml-5 iframe {
-    width: 100%;
-}
-.osahan-payment .nav-link i {
-    display: block;
-    margin: 0 auto 10px auto;
-}
-.osahan-payment .nav-link {
-    text-align: center;
-}
-.osahan-track-order-detail p.text-gray.mb-5 {
-    margin: 1px 0 11px 0 !important;
-}
-.osahan-account-page-left .nav-tabs {
-    padding-left: 0px !important;
-}
-.osahan-account-page-left {height: auto !important;margin: 0 0 15px 0;}
-.order-list .float-right {
-    float: none !important;
-}
-.row.mb-4 {
-    margin-bottom: 0px !important;
-}
-.app {
-    margin-bottom: 26px;
-}
-.footer ul li a {
-    font-size: 12px;
-}
-.footer h6 {
-    font-size: 13px;
-    text-transform: capitalize;
-}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .dropdown-menu {
+        display: none;
+    }
+    .homepage-header .osahan-nav .nav-link {
+        border-color: rgb(255 255 255 / 11%);
+    }
+    .homepage-add-section .col-md-3.col-6 {
+        padding: 2px 2px;
+    }
+    .homepage-search-title {
+        text-align: center;
+    }
+    .row.pt-2.pb-2 {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
+    .row.pt-2 {
+        padding-top: 0px !important;
+    }
+    .d-none-m {
+        display: none;
+    }
+    .list-cate-page {
+        margin: 22px 0 0 0;
+    }
+    .row.mt-4.pt-2 {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
+    .offer-card-horizontal .col-md-4.col-4.p-4 {
+        padding: 0 0 0 15px !important;
+    }
+    .homepage-add-section {
+        padding: 0 13px;
+    }
+    .homepage-ad .item {
+        padding: 0 2px;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .osahan-nav {
+        padding: 15px 15px;
+    }
+    .navbar-toggler {
+        padding: 5px 8px;
+        border-radius: 2px;
+    }
+    .osahan-nav .nav-link {
+        margin: 0px;
+        text-align: center;
+        padding: 14px 0 !important;
+        border-bottom: 1px solid #eef0ef;
+    }
+    .osahan-nav .dropdown-item {
+        text-align: center;
+    }
+    .osahan-slider {
+        padding: 18px 0 0 0px !important;
+    }
+    .pt-5,
+    .py-5 {
+        padding-top: 3rem !important;
+    }
+    .pb-5,
+    .py-5 {
+        padding-bottom: 3rem !important;
+    }
+    .homepage-search-block {
+        padding: 3rem 0 !important;
+    }
+    .mobile-none {
+        display: none;
+    }
+    .card {
+        margin-bottom: 15px !important;
+    }
+    p {
+        font-size: 12px;
+    }
+    .restaurant-detailed-header-left img {
+        float: none !important;
+        margin: 0 0 14px 0 !important;
+    }
+    .restaurant-detailed-header-left {
+        text-align: center;
+    }
+    .restaurant-detailed-header-right .btn-success {
+        margin-top: 18px;
+    }
+    .restaurant-detailed-header-right.text-right {
+        text-align: center !important;
+    }
+    .restaurant-detailed-action-btn.float-right {
+        float: none !important;
+        margin: auto;
+        text-align: center;
+        width: 100% !important;
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid #dedede;
+    }
+    .offer-dedicated-nav {
+        text-align: center;
+    }
+    .offer-dedicated-nav .nav-item {
+        flex: auto;
+        border-bottom: 1px solid #ccc;
+        padding: 0;
+        margin: 0 11px !important;
+    }
+    .offer-dedicated-nav {
+        text-align: center;
+    }
+    .address-map.float-right.ml-5 {
+        float: none !important;
+        margin: 0 0 20px 0 !important;
+    }
+    .address-map.float-right.ml-5 iframe {
+        width: 100%;
+    }
+    .osahan-payment .nav-link i {
+        display: block;
+        margin: 0 auto 10px auto;
+    }
+    .osahan-payment .nav-link {
+        text-align: center;
+    }
+    .osahan-track-order-detail p.text-gray.mb-5 {
+        margin: 1px 0 11px 0 !important;
+    }
+    .osahan-account-page-left .nav-tabs {
+        padding-left: 0px !important;
+    }
+    .osahan-account-page-left {
+        height: auto !important;
+        margin: 0 0 15px 0;
+    }
+    .order-list .float-right {
+        float: none !important;
+    }
+    .row.mb-4 {
+        margin-bottom: 0px !important;
+    }
+    .app {
+        margin-bottom: 26px;
+    }
+    .footer ul li a {
+        font-size: 12px;
+    }
+    .footer h6 {
+        font-size: 13px;
+        text-transform: capitalize;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-.dropdown-menu {
-    display: none;
-}
-.homepage-header .osahan-nav .nav-link {
-    border-color: rgb(255 255 255 / 11%);
-}
-.container {
-    max-width: 100%;
-}
-.osahan-nav {
-    padding: 15px 15px;
-}
-.navbar-toggler {
-    padding: 5px 8px;
-    border-radius: 2px;
-}
-.osahan-nav .nav-link {
-    margin: 0px;
-    text-align: center;
-    padding: 14px 0 !important;
-    border-bottom: 1px solid #eef0ef;
-}
-.osahan-nav .dropdown-item {
-    text-align: center;
-}
-.osahan-slider {
-    padding: 18px 0 0 0px !important;
-}
-.pt-5, .py-5 {
-    padding-top: 3rem !important;
-}
-.pb-5, .py-5 {
-    padding-bottom: 3rem !important;
-}
-.homepage-search-block {
-    padding: 3rem 0 !important;
-}
-.card {
-    margin-bottom: 15px !important;
-}
-p{
-    font-size: 12px;
-}
-.restaurant-detailed-header-left img {
-    float: none !important;
-    margin: 0 0 14px 0 !important;
-}
-.restaurant-detailed-header-left {
-    text-align: center;
-}
-.restaurant-detailed-header-right .btn-success {
-    margin-top: 18px;
-}
-.restaurant-detailed-header-right.text-right {
-    text-align: center !important;
-}
-.restaurant-detailed-action-btn.float-right {
-    float: none !important;
-    margin: auto;
-    text-align: center;
-    width: 100% !important;
-    display: block;
-    padding: 12px 0;
-    border-bottom: 1px solid #dedede;
-}
-.offer-dedicated-nav {
-    text-align: center;
-}
-.offer-dedicated-nav .nav-item {
-    margin: 0 8px !important;
-}
-.offer-dedicated-nav {
-    text-align: center;
-}
-.address-map.float-right.ml-5 {
-    float: none !important;
-    margin: 0 0 20px 0 !important;
-}
-.address-map.float-right.ml-5 iframe {
-    width: 100%;
-}
-.osahan-payment .nav-link i {
-    display: block;
-    margin: 0 auto 10px auto;
-}
-.osahan-payment .nav-link {
-    text-align: center;
-}
-.osahan-track-order-detail p.text-gray.mb-5 {
-    margin: 1px 0 11px 0 !important;
-}
-.osahan-account-page-left .nav-tabs {
-    padding-left: 0px !important;
-}
-.osahan-account-page-left {
-    height: auto !important;
-    margin: 0 0 15px 0;
-}
-.order-list .float-right {
-    float: none !important;
-}
-.row.mb-4 {
-    margin-bottom: 0px !important;
-}
-.app {
-    margin-bottom: 26px;
-}
-.footer ul li a {
-    font-size: 12px;
-}
-.footer h6 {
-    font-size: 13px;
-    text-transform: capitalize;
-}
+    .dropdown-menu {
+        display: none;
+    }
+    .homepage-header .osahan-nav .nav-link {
+        border-color: rgb(255 255 255 / 11%);
+    }
+    .container {
+        max-width: 100%;
+    }
+    .osahan-nav {
+        padding: 15px 15px;
+    }
+    .navbar-toggler {
+        padding: 5px 8px;
+        border-radius: 2px;
+    }
+    .osahan-nav .nav-link {
+        margin: 0px;
+        text-align: center;
+        padding: 14px 0 !important;
+        border-bottom: 1px solid #eef0ef;
+    }
+    .osahan-nav .dropdown-item {
+        text-align: center;
+    }
+    .osahan-slider {
+        padding: 18px 0 0 0px !important;
+    }
+    .pt-5,
+    .py-5 {
+        padding-top: 3rem !important;
+    }
+    .pb-5,
+    .py-5 {
+        padding-bottom: 3rem !important;
+    }
+    .homepage-search-block {
+        padding: 3rem 0 !important;
+    }
+    .card {
+        margin-bottom: 15px !important;
+    }
+    p {
+        font-size: 12px;
+    }
+    .restaurant-detailed-header-left img {
+        float: none !important;
+        margin: 0 0 14px 0 !important;
+    }
+    .restaurant-detailed-header-left {
+        text-align: center;
+    }
+    .restaurant-detailed-header-right .btn-success {
+        margin-top: 18px;
+    }
+    .restaurant-detailed-header-right.text-right {
+        text-align: center !important;
+    }
+    .restaurant-detailed-action-btn.float-right {
+        float: none !important;
+        margin: auto;
+        text-align: center;
+        width: 100% !important;
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid #dedede;
+    }
+    .offer-dedicated-nav {
+        text-align: center;
+    }
+    .offer-dedicated-nav .nav-item {
+        margin: 0 8px !important;
+    }
+    .offer-dedicated-nav {
+        text-align: center;
+    }
+    .address-map.float-right.ml-5 {
+        float: none !important;
+        margin: 0 0 20px 0 !important;
+    }
+    .address-map.float-right.ml-5 iframe {
+        width: 100%;
+    }
+    .osahan-payment .nav-link i {
+        display: block;
+        margin: 0 auto 10px auto;
+    }
+    .osahan-payment .nav-link {
+        text-align: center;
+    }
+    .osahan-track-order-detail p.text-gray.mb-5 {
+        margin: 1px 0 11px 0 !important;
+    }
+    .osahan-account-page-left .nav-tabs {
+        padding-left: 0px !important;
+    }
+    .osahan-account-page-left {
+        height: auto !important;
+        margin: 0 0 15px 0;
+    }
+    .order-list .float-right {
+        float: none !important;
+    }
+    .row.mb-4 {
+        margin-bottom: 0px !important;
+    }
+    .app {
+        margin-bottom: 26px;
+    }
+    .footer ul li a {
+        font-size: 12px;
+    }
+    .footer h6 {
+        font-size: 13px;
+        text-transform: capitalize;
+    }
 }
 /* Large devices (desktops, 992px and up) */
- @media (min-width: 992px) and (max-width: 1199.98px) {
-     .container {
-         max-width: 100%;
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        max-width: 100%;
     }
 }
 /* Extra large devices (large desktops, 1200px and up) */
- @media (min-width: 1200px) {
+@media (min-width: 1200px) {
 }

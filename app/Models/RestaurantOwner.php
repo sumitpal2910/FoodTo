@@ -11,12 +11,29 @@ class RestaurantOwner extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'bank_id',
         'name',
         'phone',
         'alt_phone',
         'account_no',
-        'bank',
-        'ifsc_code',
+        'ifsc',
         'passbook',
     ];
+
+
+    /**
+     * Restaurant
+     */
+    public function restaurant()
+    {
+        return $this->hasOne(Restaurant::class);
+    }
+
+    /**
+     * Bank
+     */
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
+    }
 }

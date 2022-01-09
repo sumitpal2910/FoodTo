@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CuisineController;
 use App\Http\Controllers\Admin\DistrictController;
@@ -73,6 +74,11 @@ Route::prefix('endpoint')->group(function () {
      * show - get one json data
      */
     Route::resource('city', EndPointCityController::class)->only('index', 'show');
+
+
+    /**
+     * Bank Endpoint
+     */
 });
 
 /**
@@ -149,23 +155,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
     /**
      * Cuisine
      */
-    Route::prefix('cuisine')->name('cuisine.')->group(function () {
-
-        # get all data in json datatable
-        Route::get('data', [CuisineController::class, 'allData']);
-
-        # get one data in json
-        Route::get('data/{cuisine}', [CuisineController::class, 'oneData']);
-
-        # restore deleted data
-        Route::put('restore/{cuisine}', [CuisineController::class, 'restore']);
-
-        # update status
-        Route::put('status/{cuisine}', [CuisineController::class, 'status']);
-
-        # resource- index, store, update, destory
-        Route::resource('', CuisineController::class)->parameters(['' => 'cuisine'])->only(['index', 'store', 'update', 'destroy']);
-    });
+    //    Route::prefix('cuisine')->name('cuisine.')->group(function () {
+    //
+    //        # get all data in json datatable
+    //        Route::get('data', [CuisineController::class, 'allData']);
+    //
+    //        # get one data in json
+    //        Route::get('data/{cuisine}', [CuisineController::class, 'oneData']);
+    //
+    //        # restore deleted data
+    //        Route::put('restore/{cuisine}', [CuisineController::class, 'restore']);
+    //
+    //        # update status
+    //        Route::put('status/{cuisine}', [CuisineController::class, 'status']);
+    //
+    //        # resource- index, store, update, destory
+    //        Route::resource('', CuisineController::class)->parameters(['' => 'cuisine'])->only(['index', 'store', 'update', 'destroy']);
+    //    });
 
     /**
      * Restaurant
@@ -186,15 +192,33 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('', RestaurantController::class)->parameters(['' => 'restaurant']);
     });
+
+
+    /**
+     * Bank
+     */
+    Route::prefix('bank')->name('bank.')->group(function () {
+        # get all data in json
+        Route::get('data', [BankController::class, 'allData']);
+
+        # get one data in json
+        Route::get('data/{state}', [BankController::class, 'oneData']);
+
+        # restore deleted data
+        Route::put('restore/{state}', [BankController::class, 'restore']);
+
+        # bank resource
+        Route::resource('', BankController::class)->only(['index', 'store', 'update', 'destroy'])->parameters(['' => 'bank']);
+    });
 });
 
 
 /**
  * ======================================================================================
- * ==============  FRONTEND  =============
+ * ==============  RESTAURANT =============
  * ======================================================================================
  */
-
+//Route::prefix('restaurant')->name()
 
 
 

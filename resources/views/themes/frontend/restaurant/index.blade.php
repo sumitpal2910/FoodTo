@@ -34,6 +34,23 @@
                                                     </div>
                                                 </div>
 
+                                                <!--Cuisine-->
+                                                <div class="col-md-12 ">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label style="" for="">Cuisine<span
+                                                                        class="text-danger">*</span></label>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <input type="text" name="cuisine" data-role="tagsinput"
+                                                                    class="form-control tagsinput" value="Briyani,Dosa">
+                                                            </div>
+                                                        </div>
+                                                        <x-error name="cuisine" />
+                                                    </div>
+                                                </div>
+
                                                 <!--Email-->
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -70,13 +87,11 @@
                                                     <div class="form-group">
                                                         <label for=""> Alternate Phone <span
                                                                 class="text-danger">*</span></label>
-                                                        <input required type="text" name="alt_phone"
-                                                            class="form-control" placeholder="Alternate Phone"
-                                                            value="{{old('alt_phone')}}">
+                                                        <input type="text" name="alt_phone" class="form-control"
+                                                            placeholder="Alternate Phone" value="{{old('alt_phone')}}">
                                                         <x-error name="alt_phone" />
                                                     </div>
                                                 </div>
-
 
                                             </div>
                                         </div>
@@ -180,8 +195,8 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Alternate Phone </label>
-                                                        <input required type="text" class="form-control"
-                                                            name="owner_alt_phone" placeholder="Alternate Phone"
+                                                        <input type="text" class="form-control" name="owner_alt_phone"
+                                                            placeholder="Alternate Phone"
                                                             value="{{old('owner_alt_phone')}}">
                                                         <x-error name="owner_alt_phone" />
                                                     </div>
@@ -204,215 +219,44 @@
                                         <div class="card-body">
                                             <div class="row">
 
+                                                @php
+                                                $days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+                                                "Friday",
+                                                "Saturday"];
+                                                @endphp
+                                                @foreach ($days as $day)
+
                                                 <!-- Sunday -->
                                                 <div class="col-md-12 row">
                                                     <div class="col-md-4 col-sm-12">
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">
-                                                                    <input  onchange="timingInput(event)"
-                                                                        type="checkbox" name="timing_status[Sunday]">
+                                                                    <input onchange="timingInput(event)" type="checkbox"
+                                                                        name="status[{{$day}}]">
                                                                 </span>
                                                             </div>
-                                                            <input  type="text" class="form-control"
-                                                                value="Sunday" readonly>
+                                                            <input type="text" name="timing_day[]" class="form-control"
+                                                                value="{{$day}}" readonly="">
                                                         </div>
                                                     </div>
                                                     <!-- Open -->
                                                     <div class="timingInput col-md-4 col-sm-6 invisible">
                                                         <div class="form-group">
-                                                            <input  type="time" name="timing_open[Sunday]"
+                                                            <input type="time" name="timing_open[{{$day}}]"
                                                                 class="form-control">
                                                         </div>
                                                     </div>
                                                     <!--Close-->
                                                     <div class="timingInput col-md-4 col-sm-6 invisible">
                                                         <div class="form-group">
-                                                            <input  type="time" name="timing_close[Sunday]"
+                                                            <input type="time" name="timing_close[{{$day}}]"
                                                                 class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <!-- Monday -->
-                                                <div class="col-md-12 row">
-                                                    <div class="col-md-4 col-sm-12">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <input  onchange="timingInput(event)"
-                                                                        type="checkbox" name="timing_status[Monday]">
-                                                                </span>
-                                                            </div>
-                                                            <input  type="text" class="form-control"
-                                                                value="Monday" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Open -->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_open[Monday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <!--Close-->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_close[Monday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Tuesday -->
-                                                <div class="col-md-12 row">
-                                                    <div class="col-md-4 col-sm-12">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <input  onchange="timingInput(event)"
-                                                                        type="checkbox" name="timing_status[Tuesday]">
-                                                                </span>
-                                                            </div>
-                                                            <input  type="text" class="form-control"
-                                                                value="Tuesday" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Open -->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_open[Tuesday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <!--Close-->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_close[Tuesday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Wednesday -->
-                                                <div class="col-md-12 row">
-                                                    <div class="col-md-4 col-sm-12">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <input  onchange="timingInput(event)"
-                                                                        type="checkbox" name="timing_status[Wednesday]">
-                                                                </span>
-                                                            </div>
-                                                            <input  type="text" class="form-control"
-                                                                value="Wednesday" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Open -->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_open[Wednesday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <!--Close-->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_close[Wednesday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Thursday -->
-                                                <div class="col-md-12 row">
-                                                    <div class="col-md-4 col-sm-12">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <input  onchange="timingInput(event)"
-                                                                        type="checkbox" name="timing_status[Thursday]">
-                                                                </span>
-                                                            </div>
-                                                            <input  type="text" class="form-control"
-                                                                value="Thursday" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Open -->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_open[Thursday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <!--Close-->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_close[Thursday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Friday -->
-                                                <div class="col-md-12 row">
-                                                    <div class="col-md-4 col-sm-12">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <input  onchange="timingInput(event)"
-                                                                        type="checkbox" name="timing_status[Friday]">
-                                                                </span>
-                                                            </div>
-                                                            <input  type="text" class="form-control"
-                                                                value="Friday" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Open -->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_open[Friday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <!--Close-->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_close[Friday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Saturday -->
-                                                <div class="col-md-12 row">
-                                                    <div class="col-md-4 col-sm-12">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <input  onchange="timingInput(event)"
-                                                                        type="checkbox" name="timing_status[Saturday]">
-                                                                </span>
-                                                            </div>
-                                                            <input  type="text" class="form-control"
-                                                                value="Saturday" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Open -->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_open[Saturday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <!--Close-->
-                                                    <div class="timingInput col-md-4 col-sm-6 invisible">
-                                                        <div class="form-group">
-                                                            <input  type="time" name="timing_close[Saturday]"
-                                                                class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
 
 
                                             </div>
@@ -526,17 +370,6 @@
                                                     </div>
                                                 </div>
 
-                                                <!-- locality -->
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="">Locality <span
-                                                                class="text-danger">*</span></label>
-                                                        <input required type="text" name="locality" class="form-control"
-                                                            placeholder="Locality" value="{{old('locality')}}">
-                                                        <x-error name="locality" />
-                                                    </div>
-                                                </div>
-
                                             </div>
                                             <!--end row-->
                                         </div>
@@ -558,9 +391,13 @@
                                                     <div class="form-group">
                                                         <label for=""> Bank Name <span
                                                                 class="text-danger">*</span></label>
-                                                        <input required type="text" class="form-control" name="bank"
-                                                            placeholder="Bank Name" value="{{old('bank')}}">
-                                                        <x-error name="bank" />
+                                                        <select name="bank_id" id="" required class="form-control">
+                                                            <option value="" selected disabled>--Select Bank--</option>
+                                                            @foreach ($banks as $bank)
+                                                            <option value="{{$bank->id}}">{{$bank->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <x-error name="bank_id" />
                                                     </div>
                                                 </div>
 
@@ -602,8 +439,6 @@
                                                         <small class="text-secondary">Passbook Details Page</small>
                                                     </div>
                                                 </div>
-
-
 
 
                                             </div>
@@ -668,8 +503,8 @@
                                                         <label for="">Menu <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="custom-file">
-                                                            <input name="menu" type="file"
-                                                                class="custom-file-input" id="customFile">
+                                                            <input name="menu" type="file" class="custom-file-input"
+                                                                id="customFile">
                                                             <label class="custom-file-label" for="customFile">Choose
                                                                 file</label>
                                                         </div>

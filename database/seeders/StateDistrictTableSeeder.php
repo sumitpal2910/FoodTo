@@ -988,14 +988,17 @@ class StateDistrictTableSeeder extends Seeder
             ),
         );
 
+        $i = 0;
         foreach ($IndianStates as $key => $state) {
-            if ($key == 5) break;
+            if ($i === 5) break;
             $stateId =  State::create(['name' => $state['name'], 'code' => $key, 'status' => rand(0, 1)]);
-
+            $j = 0;
             foreach ($state['districts'] as $dist) {
-                if ($key === 5) break;
+                if ($j === 5) break;
                 District::create(['name' => $dist, 'state_id' => $stateId->id, 'status' => rand(0, 1)]);
+                $j++;
             }
+            $i++;
         }
     }
 }

@@ -8,7 +8,7 @@ Version: 1.0
   "use strict"; // Start of use strict
 
   // ===========Select2============
-  $("select").select2();
+//  $("select").select2();
 
   // ===========My Account Tabs============
   $(window).on("hashchange", function() {

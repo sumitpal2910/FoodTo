@@ -15,12 +15,6 @@ class CreateRestaurantsTable extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('remember_token');
-
             $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')->references('id')->on('restaurant_owners')->onDelete('cascade');
 
@@ -33,7 +27,14 @@ class CreateRestaurantsTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
+            $table->string('name')->unique();
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('remember_token')->nullable();
+
             $table->string('slug');
+            $table->string('cuisine');
             $table->string('phone');
             $table->string('alt_phone')->nullable();
             $table->string('gst_no');
@@ -41,15 +42,14 @@ class CreateRestaurantsTable extends Migration
             $table->string('license_no');
             $table->string('fssai_no');
 
-            $table->string('kyc');
-            $table->string('thumbnail');
+            $table->string('kyc')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->string('bg_image')->nullable();
-            $table->string('fssai_image');
-            $table->string('license_image');
-            $table->string('menu');
+            $table->string('fssai_image')->nullable();
+            $table->string('license_image')->nullable();
+            $table->string('menu')->nullable();
 
             $table->string('address');
-            $table->string('locality');
             $table->string('latitude');
             $table->string('longitude');
             $table->integer('pincode');

@@ -37,7 +37,7 @@ class StateController extends Controller
     {
         # validate data
         $valid = Validator::make($request->input(), [
-            'name' => 'required',
+            'name' => 'required|unique:states',
             'code' => 'required'
         ]);
 
