@@ -5,7 +5,7 @@
 @section('content')
 <div class="content-wrapper">
 
-    restaurant title="Add Restaurant" />
+    <x-content-header title="Add Restaurant" />
 
     <section class="content">
         <div class="container-fluid">
@@ -561,7 +561,7 @@
                                         <div class="form-group">
                                             <label for="">Cover Image</label>
                                             <div class="custom-file">
-                                                <input  onchange="loadFile(event)" name="bg_image" type="file"
+                                                <input onchange="loadFile(event)" name="bg_image" type="file"
                                                     class="custom-file-input" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
@@ -609,7 +609,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Alternate Phone </label>
-                                            <input  type="text" class="form-control" name="manager_alt_phone"
+                                            <input type="text" class="form-control" name="manager_alt_phone"
                                                 placeholder="Alternate Phone" value="{{old('manager_alt_phone')}}">
                                             <x-error name="manager_alt_phone" />
                                         </div>

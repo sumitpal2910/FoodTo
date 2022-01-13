@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\View\Components\ContentHeader;
 use App\View\Components\AuthError;
 use App\View\Components\AuthStatus;
+use App\View\Components\Badge;
 use App\View\Components\Error;
 
 use Illuminate\Support\Facades\Blade;
@@ -38,8 +39,10 @@ class AppServiceProvider extends ServiceProvider
         # Validation error
         Blade::component(Error::class, 'error');
 
-        // =========== ADMIN ============
         # content header
         Blade::component(ContentHeader::class, 'content-header');
+
+        # bagde
+        Blade::component(Badge::class, 'badge');
     }
 }

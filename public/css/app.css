@@ -598,6 +598,9 @@ select {
     max-width: 1536px;
   }
 }
+.visible {
+  visibility: visible;
+}
 .invisible {
   visibility: hidden;
 }
@@ -680,11 +683,14 @@ select {
 .mt-2 {
   margin-top: 0.5rem;
 }
-.mr-2 {
-  margin-right: 0.5rem;
+.mr-5 {
+  margin-right: 1.25rem;
 }
 .ml-2 {
   margin-left: 0.5rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -1260,6 +1266,16 @@ select {
 .bs-stepper .content.dstepper-block,.bs-stepper-pane.dstepper-block{display:block}
 .bs-stepper:not(.vertical) .bs-stepper-pane.dstepper-none,.bs-stepper:not(.vertical) .content.dstepper-none{display:none}
 .vertical .bs-stepper-pane.fade.dstepper-none,.vertical .content.fade.dstepper-none{visibility:hidden}
+/*
+ text brown color
+ */
+.non-veg-icon {
+    outline: #8a0000 solid 1px;
+    outline-offset: 0px;
+    color: #8a0000;
+    padding: 0 2px;
+    border-radius: 1px;
+}
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));

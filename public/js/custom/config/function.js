@@ -5,6 +5,7 @@ function getFormData(form) {
     // get form elements
     let inputs = form.elements;
     let data = {};
+    let radioArray = [];
 
     // loop over and assign to data
     for (let i = 0; i < inputs.length; i++) {
@@ -17,9 +18,24 @@ function getFormData(form) {
             input.getAttribute("type") !== "submit" &&
             input.getAttribute("type") !== "button"
         ) {
-            // if input name is an array
-            data[name] = input.value;
+            if (input.getAttribute("type") === "radio") {
+                radioArray.push(name);
+                continue;
+            } else {
+                // if input name is an array
+                data[name] = input.value;
+            }
         }
+    }
+
+    for (let i = 0; i < radioArray.length; i++) {
+        let radios = inputs[radioArray[i]];
+        radios.forEach((radio) => {
+            if (radio.checked) {
+                data[radio.name] = radio.value;
+                return;
+            }
+        });
     }
 
     // return data object
@@ -99,4 +115,28 @@ function getCity(event) {
             );
         }
     });
+}
+
+/**
+ * show open close time input box
+ */
+function timingInput(event) {
+    // get value
+    let value = event.target.checked;
+
+    // get input divs
+    let divs = $(event.target)
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .find("div.timingInput");
+
+    // show hide
+    if (value) {
+        divs.removeClass("invisible");
+    } else {
+        divs.addClass("invisible");
+    }
 }

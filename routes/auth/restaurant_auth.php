@@ -37,31 +37,28 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
 
         Route::name('update.')->group(function () {
             # post details form
-            Route::put('{restaurant}/details', [ProfileController::class, 'details'])->name('details');
+            Route::put('details', [ProfileController::class, 'details'])->name('details');
 
             # update address
-            Route::put('{restaurant}/address', [ProfileController::class, 'address'])->name('address');
+            Route::put('address', [ProfileController::class, 'address'])->name('address');
 
             # update owner
-            Route::put('{restaurant}/owner', [ProfileController::class, 'owner'])->name('owner');
+            Route::put('owner', [ProfileController::class, 'owner'])->name('owner');
 
             # update manager
-            Route::put('{restaurant}/manager', [ProfileController::class, 'manager'])->name('manager');
+            Route::put('manager', [ProfileController::class, 'manager'])->name('manager');
 
             # update timing
-            Route::put('{restaurant}/timing', [ProfileController::class, 'timing'])->name('timing');
+            Route::put('timing', [ProfileController::class, 'timing'])->name('timing');
 
             # update document
-            Route::put('{restaurant}/document', [ProfileController::class, 'document'])->name('document');
+            Route::put('document', [ProfileController::class, 'document'])->name('document');
 
             # update files
-            Route::put('{restaurant}/files', [ProfileController::class, 'files'])->name('files');
-
-            # update timing
-            //Route::put('{restaurant}/timing', [ProfileController::class, 'timing'])->name('timing');
+            Route::put('files', [ProfileController::class, 'files'])->name('files');
 
             # password
-            Route::put('{restaurant}/password', [ProfileController::class, 'password'])->name('password');
+            Route::put('password', [ProfileController::class, 'password'])->name('password');
         });
     });
 });

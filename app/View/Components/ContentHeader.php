@@ -15,7 +15,7 @@ class ContentHeader extends Component
      *
      * @return void
      */
-    public function __construct($title, $count = '', $prefix = "")
+    public function __construct($title, $count = '', $prefix = null)
     {
         $this->title = $title;
         $this->count = $count;

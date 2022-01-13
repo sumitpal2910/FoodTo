@@ -3,3 +3,14 @@
 @import "tailwindcss/utilities";
 
 @import "bs-stepper/dist/css/bs-stepper.min";
+
+/*
+ text brown color
+ */
+.non-veg-icon {
+    outline: #8a0000 solid 1px;
+    outline-offset: 0px;
+    color: #8a0000;
+    padding: 0 2px;
+    border-radius: 1px;
+}

@@ -2,17 +2,13 @@
 
 use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\CityController;
-use App\Http\Controllers\Admin\CuisineController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\StateController;
-use App\Http\Controllers\Admin\RestaurantOwnerController;
 
 use App\Http\Controllers\EndPoint\CityController as EndPointCityController;
 use App\Http\Controllers\EndPoint\DistrictController as EndPointDistrictController;
 use App\Http\Controllers\EndPoint\StateController as EndPointStateController;
-use App\Http\Controllers\Frontend\RestaurantController as FrontendRestaurantController;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -218,7 +214,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
  * ==============  RESTAURANT =============
  * ======================================================================================
  */
-//Route::prefix('restaurant')->name()
 
 
 
@@ -255,3 +250,6 @@ require __DIR__ . "/auth/admin_auth.php";
 require __DIR__ . "/auth/restaurant_auth.php";
 
 require __DIR__ . "/auth/rider_auth.php";
+
+
+require __DIR__ . "/restaurant.php";

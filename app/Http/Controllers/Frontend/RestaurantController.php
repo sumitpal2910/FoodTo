@@ -74,26 +74,26 @@ class RestaurantController extends Controller
         ];
 
         # get restaurant data
-        $restaurant = [
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'state_id' => $data['state_id'],
-            'district_id' => $data['district_id'],
-            'city_id' => $data['city_id'],
-            'phone' => $data['phone'],
-            'alt_phone' => $data['alt_phone'],
-            'gst_no' => $data['gst_no'],
-            'trade_name' => $data['trade_name'],
-            'license_no' => $data['license_no'],
-            'fssai_no' => $data['fssai_no'],
-            'address' => $data['address'],
-            'cuisine' => $data['cuisine'],
-            'latitude' => $data['latitude'],
-            'longitude' => $data['longitude'],
-            'pincode' => $data['pincode'],
-            'status' => 0,
-        ];
+        $restaurant = $request->all([
+            'state_id',
+            'district_id',
+            'city_id',
+            'name',
+            'email',
+            'phone',
+            'alt_phone',
+            'gst_no',
+            'trade_name',
+            'license_no',
+            'fssai_no',
+            'address',
+            'cuisine',
+            'latitude',
+            'longitude',
+            'pincode',
+        ]);
+        $restaurant['password'] = Hash::make($data['password']);
+
         # get city
         $city = City::findOrFail($data['city_id']);
 
@@ -103,7 +103,11 @@ class RestaurantController extends Controller
 
         # slug
         $slugOld =  preg_replace("/[^a-z]/i", '-', $restaurant['name']);
-        $slug = str_replace("--", "-", strtolower(preg_replace("/[^a-z]/i", "-", "{$restaurant['name']}-{$restaurant['address']}-{$city->name}-{$id}")));
+        $slug = str_replace(
+            ["--", "---", "----"],
+            "-",
+            strtolower(preg_replace("/[^a-z0-9]/i", "-", "{$restaurant['name']}-{$restaurant['address']}-{$city->name}-{$id}"))
+        );
         $restaurant['slug'] = $slug;
 
         # create folder

@@ -1,7 +1,8 @@
+
 /**
  * Sweetalert Delete Alert
  */
-function sweetAlertDelete(link, dataTableCallback = "") {
+function sweetAlertDelete(link, dataTableCallback = null) {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -21,11 +22,7 @@ function sweetAlertDelete(link, dataTableCallback = "") {
                     //refresh datatale
                     dataTableCallback();
 
-                    Swal.fire(
-                        "Deleted!",
-                        "Your file has been deleted",
-                        "success"
-                    );
+                    toastr.success(res.message);
                 },
             });
         }

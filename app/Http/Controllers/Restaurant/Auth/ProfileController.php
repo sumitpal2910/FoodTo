@@ -56,8 +56,11 @@ class ProfileController extends Controller
     /**
      * Update General Details
      */
-    public function details(Request $request, Restaurant $restaurant)
+    public function details(Request $request)
     {
+        # get restaurant
+        $restaurant = Restaurant::findOrFail(Auth::guard('restaurant')->id());
+
         # path - restaurants/restaurant_name_id
         $path = "restaurants/{$restaurant->id}/image";
         if (Storage::missing($path)) {
@@ -122,8 +125,11 @@ class ProfileController extends Controller
     /**
      * Update Address
      */
-    public function address(Request $request, Restaurant $restaurant)
+    public function address(Request $request)
     {
+        # get restaurant
+        $restaurant = Restaurant::findOrFail(Auth::guard('restaurant')->id());
+
         # get data
         $data = $request->input();
 
@@ -141,8 +147,11 @@ class ProfileController extends Controller
     /**
      * Update Owner
      */
-    public function owner(Request $request, Restaurant $restaurant)
+    public function owner(Request $request)
     {
+        # get restaurant
+        $restaurant = Auth::guard('restaurant')->user();
+
         # get owner
         $owner = $restaurant->owner;
 
@@ -165,8 +174,11 @@ class ProfileController extends Controller
     /**
      * Update Manager
      */
-    public function manager(Request $request, Restaurant $restaurant)
+    public function manager(Request $request)
     {
+        # get restaurant
+        $restaurant = Auth::guard('restaurant')->user();
+
         # get manager
         $manager = $restaurant->manager;
 
@@ -189,8 +201,11 @@ class ProfileController extends Controller
     /**
      * Update Timing
      */
-    public function timing(Request $request, Restaurant $restaurant)
+    public function timing(Request $request)
     {
+        # get restaurant
+        $restaurant = Auth::guard('restaurant')->user();
+
         # get data
         $data = $request->input();
 
@@ -215,8 +230,10 @@ class ProfileController extends Controller
     /**
      * Update Document
      */
-    public function document(Request $request, Restaurant $restaurant)
+    public function document(Request $request)
     {
+        # get restaurant
+        $restaurant = Restaurant::findOrFail(Auth::guard('restaurant')->id());
         # get data
         $data = $request->input();
 
@@ -233,8 +250,11 @@ class ProfileController extends Controller
     /**
      * Update FIles
      */
-    public function files(Request $request, Restaurant $restaurant)
+    public function files(Request $request)
     {
+        # get restaurant
+        $restaurant = Restaurant::findOrFail(Auth::guard('restaurant')->id());
+
         # path - restaurants/restaurant_name_id
         $path = "restaurants/{$restaurant->id}/image";
         if (Storage::missing($path)) {
@@ -301,9 +321,11 @@ class ProfileController extends Controller
     /**
      * update password
      */
-    public function password(Request $request, Restaurant $restaurant)
+    public function password(Request $request)
     {
-
+        # get restaurant
+        $restaurant = Restaurant::findOrFail(Auth::guard('restaurant')->id());
+        
         # get data
         $data = $request->input();
         //dd(!Hash::check($data['passwordOld'], $restaurant->password));

@@ -35,7 +35,31 @@ $route = Route::currentRouteName();
                 </li>
 
 
-                <!-- Cousine -->
+                <!-- Food -->
+                <li class="nav-item {{$prefix === 'restaurant/food' ? 'menu-open' :''}}">
+                    <a href="#" class="nav-link  {{$prefix === 'restaurant/food' ? 'active' :''}}">
+                        <i class="fas fa-hamburger"></i> &nbsp;
+                        <p> Food <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!-- State -->
+                        <li class="nav-item">
+                            <a href="{{route('restaurant.food.create')}}"
+                                class="nav-link {{$route === 'restaurant.food.create' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Food</p>
+                            </a>
+                            <a href="{{route('restaurant.food.index')}}"
+                                class="nav-link {{$route === 'restaurant.food.index' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Food</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <!-- Setting -->
                 <li class="nav-item {{$prefix === 'restaurant/setting' ? 'menu-open' :''}}">
                     <a href="#" class="nav-link  {{$prefix === 'restaurant/setting' ? 'active' :''}}">
                         <i class="fas fa-cog"></i>

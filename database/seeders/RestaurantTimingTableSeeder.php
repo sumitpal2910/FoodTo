@@ -19,11 +19,13 @@ class RestaurantTimingTableSeeder extends Seeder
 
         foreach ($restaurants as $restaurant) {
 
-            # make timing
-            RestaurantTiming::factory(rand(1, 7))->make()->each(function ($timing) use ($restaurant) {
-                $timing->restaurant_id = $restaurant->id;
-                $timing->save();
-            });
+            $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+            foreach ($days as $day) {
+                $time = RestaurantTiming::factory()->make();
+                $time->day = $day;
+                $time->save();
+            }
         }
     }
 }

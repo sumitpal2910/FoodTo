@@ -2,13 +2,6 @@
 
 namespace App\Providers;
 
-// Admin
-use App\Events\Admin\Auth\AdminPasswordChanged;
-use App\Events\Admin\Auth\ResetPassword as AdminResetPassword;
-
-use App\Listeners\Admin\Auth\SendResetPasswordLink as AdminSendResetPasswordLink;
-use App\Listeners\Admin\Auth\NotifyAdminThatPasswordChanged;
-
 //Restaurant
 use App\Events\Restaurant\Auth\ResetPassword as RestaurantResetPassword;
 use App\Events\Restaurant\Auth\RestaurantPasswordChanged;
@@ -26,16 +19,15 @@ use App\Listeners\Rider\Auth\NotifyRiderThatPasswordChanged;
 
 use App\Events\UserRegistered;
 use App\Listeners\SendWelcomeMessageToUser;
-use App\Models\Cuisine;
 use App\Models\District;
+use App\Models\Food;
 use App\Models\State;
-use App\Observers\CuisineObserver;
 use App\Observers\DistrictObserver;
+use App\Observers\FoodObserver;
 use App\Observers\StateObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -103,6 +95,6 @@ class EventServiceProvider extends ServiceProvider
     {
         State::observe(StateObserver::class);
         District::observe(DistrictObserver::class);
-        Cuisine::observe(CuisineObserver::class);
+        Food::observe(FoodObserver::class);
     }
 }

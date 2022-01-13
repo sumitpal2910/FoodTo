@@ -2,11 +2,17 @@
 
 namespace App\Providers;
 
+use App\Models\Food;
+use App\Models\FoodTiming;
+use App\Models\Topping;
 use App\Models\RestaurantManager;
 use App\Models\RestaurantOwner;
+use App\Policies\FoodPolicy;
+use App\Policies\FoodTimingPolicy;
+use App\Policies\RestaurantManagerPolicy;
+use App\Policies\ToppingPolicy;
 use App\Policies\RestaurantOwnerPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,8 +23,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Food::class => FoodPolicy::class,
+        Topping::class => ToppingPolicy::class,
+        FoodTiming::class => FoodTimingPolicy::class,
         RestaurantOwner::class => RestaurantOwnerPolicy::class,
-        "App\Models\RestaurantManager" => "App\Policies\RestaurantManagerPolicy",
+        RestaurantManager::class => RestaurantManagerPolicy::class,
     ];
 
     /**

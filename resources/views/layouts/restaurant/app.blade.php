@@ -29,9 +29,20 @@
         <link rel="stylesheet" href="{{asset('asset/plugins/daterangepicker/daterangepicker.css')}}">
         <!-- tagsinput -->
         <link rel="stylesheet" href="{{asset('asset/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
+        <!-- iCheck for checkbox and radio button -->
+        <link rel="stylesheet" href="{{asset('asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+
+        <!-- Veg Nonveg icon -->
+        <link rel="stylesheet" href="http://static.sasongsmat.nu/fonts/vegetarian.css" />
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('asset/dist/css/adminlte.min.css')}}">
+        <script>
+            function prefix(link) {
+                return "restaurant/"+link
+            };
+        </script>
     </head>
 
     <body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
@@ -73,12 +84,10 @@
         <script src="{{asset('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}" defer></script>
         <script src="{{asset('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}" defer>
         </script>
-        {{--<script src="{{asset('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}" defer>
-        </script>--}}
         <!-- bs-custom-file-input -->
         <script src="{{asset('asset/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}" defer></script>
         <!-- date-range-picker -->
-        <script src="{{asset('asset/plugins/daterangepicker/daterangepicker.js')}}"></script>
+        <script src="{{asset('asset/plugins/daterangepicker/daterangepicker.js')}}" defer></script>
         <!--tagsinput-->
         <script src="{{asset('asset/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}" defer></script>
 
@@ -96,12 +105,9 @@
         <script src="{{asset('js/custom/config/ajax-request.js')}}" defer></script>
         <script src="{{asset('js/custom/config/function.js')}}"></script>
 
-        <!-- state -->
-        <script src="{{asset('js/custom/admin/pages/state.js')}}" defer></script>
-        <script src="{{asset('js/custom/admin/pages/district.js')}}" defer></script>
-        <script src="{{asset('js/custom/admin/pages/city.js')}}" defer></script>
-        <script src="{{asset('js/custom/admin/pages/cuisine.js')}}" defer></script>
-        <script src="{{asset('js/custom/admin/pages/restaurant.js')}}" defer></script>
+        <script src="{{asset('js\custom\restaurant\pages\food.js')}}" defer></script>
+        <script src="{{asset('js\custom\restaurant\pages\foodTopping.js')}}" defer></script>
+        <script src="{{asset('js\custom\restaurant\pages\foodTiming.js')}}" defer></script>
 
 
         <!-- Notification -->

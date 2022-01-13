@@ -67,7 +67,7 @@
                             @endphp
                             <p>
                                 @foreach ($cuisines as $item)
-                                <span class="badge badge-pill badge-danger">{{$item}}</span>
+                                <x-badge class="danger badge-pill" :text="$item" />
                                 @endforeach
                             </p>
                             <hr>
@@ -76,7 +76,14 @@
                             <strong><i class="far fa-clock mr-1"></i> Timing</strong>
                             <p>
                                 @foreach ($restaurant->timing as $timing)
-                                <span class="text-muted">{{$timing->day}}: {{$timing->open}} - {{$timing->close}}</span>
+                                <span class="text-muted"><strong> {{$timing->day}}:</strong>
+                                    @if ($timing->status === 1)
+                                    <x-badge class="success badge-pill" :text="$timing->open" /> -
+                                    <x-badge class="success badge-pill" :text="$timing->close" />
+                                    @else
+                                    <x-badge class="danger badge-pill" text="close" />
+                                    @endif
+                                </span>
                                 <br>
                                 @endforeach
                             </p>
