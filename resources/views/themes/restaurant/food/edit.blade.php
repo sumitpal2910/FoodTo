@@ -16,7 +16,7 @@
                     <!-- Food  -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <p class="card-title"> Food </p>
+                            <p class="card-title"> {{$food->name}} </p>
                         </div>
                         <div class="card-body">
                             <form action="{{route('restaurant.food.update', ['food'=>$food->id])}}" method="post"
@@ -230,7 +230,8 @@
                     <div class="card mb-5 card-primary">
                         <div class="card-header">
                             <p class="card-title">Timing</p>
-                            <button data-toggle="modal" data-target="#addTimingModal" class="btn btn-success float-right">Add New</button>
+                            <button data-toggle="modal" data-target="#addTimingModal"
+                                class="btn btn-success float-right">Add New</button>
                         </div>
                         <div class="card-body">
                             <table foodId={{$food->id}} class="table responsive" id="foodTimingTable">

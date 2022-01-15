@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Food;
+use App\Models\Menu;
 use App\Models\Restaurant;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FoodPolicy
+class MenuPolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,12 @@ class FoodPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\Restaurant  $restaurant
-     * @param  \App\Models\Food  $food
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Restaurant $restaurant, Food $food)
+    public function view(Restaurant $restaurant, Menu $menu)
     {
-        return $restaurant->id === $food->restaurant_id;
+        return $restaurant->id === $menu->restaurant->id;
     }
 
     /**
@@ -48,47 +48,47 @@ class FoodPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Restaurant  $restaurant
-     * @param  \App\Models\Food  $food
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Restaurant $restaurant, Food $food)
+    public function update(Restaurant $restaurant, Menu $menu)
     {
-        return $restaurant->id === $food->restaurant_id;
+        return $restaurant->id === $menu->restaurant->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Restaurant  $restaurant
-     * @param  \App\Models\Food  $food
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Restaurant $restaurant, Food $food)
+    public function delete(Restaurant $restaurant, Menu $menu)
     {
-        return $restaurant->id === $food->restaurant_id;
+        return $restaurant->id === $menu->restaurant->id;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\Restaurant  $restaurant
-     * @param  \App\Models\Food  $food
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Restaurant $restaurant, Food $food)
+    public function restore(Restaurant $restaurant, Menu $menu)
     {
-        return $restaurant->id === $food->restaurant_id;
+        return $restaurant->id === $menu->restaurant->id;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\Restaurant  $restaurant
-     * @param  \App\Models\Food  $food
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Restaurant $restaurant, Food $food)
+    public function forceDelete(Restaurant $restaurant, Menu $menu)
     {
-        return $restaurant->id === $food->restaurant_id;
+        return $restaurant->id === $menu->restaurant->id;
     }
 }

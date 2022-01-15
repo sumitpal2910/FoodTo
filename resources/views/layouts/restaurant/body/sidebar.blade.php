@@ -39,7 +39,7 @@ $route = Route::currentRouteName();
                 <li class="nav-item {{$prefix === 'restaurant/food' ? 'menu-open' :''}}">
                     <a href="#" class="nav-link  {{$prefix === 'restaurant/food' ? 'active' :''}}">
                         <i class="fas fa-hamburger"></i> &nbsp;
-                        <p> Food <i class="fas fa-angle-left right"></i> </p>
+                        <p> Foods <i class="fas fa-angle-left right"></i> </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <!-- State -->
@@ -53,6 +53,30 @@ $route = Route::currentRouteName();
                                 class="nav-link {{$route === 'restaurant.food.index' ? 'active' :''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Food</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <!-- Menu -->
+                <li class="nav-item {{$prefix === 'restaurant/menu' ? 'menu-open' :''}}">
+                    <a href="#" class="nav-link  {{$prefix === 'restaurant/menu' ? 'active' :''}}">
+                        <i class="fas fa-hamburger"></i> &nbsp;
+                        <p> Menus <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!-- State -->
+                        <li class="nav-item">
+                            <a href="{{route('restaurant.menus.create')}}"
+                                class="nav-link {{$route === 'restaurant.menus.create' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Menu</p>
+                            </a>
+                            <a href="{{route('restaurant.menus.index')}}"
+                                class="nav-link {{$route === 'restaurant.menus.index' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Menu</p>
                             </a>
                         </li>
 

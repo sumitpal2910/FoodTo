@@ -121,6 +121,9 @@ class FoodController extends Controller
             $query->withTrashed();
         }, 'timing'])->withTrashed()->findOrFail($food);
 
+        $this->authorizeForUser($this->restaurnat(), 'update', $food);
+
+
         # get restaurant Timing
         $restaurantTiming = Auth::guard('restaurant')->user()->timing;
 
@@ -279,8 +282,10 @@ class FoodController extends Controller
 
         # loop over all datas
         foreach ($foods as $key => $data) {
+            # veg / nonveg
+            $name = $data->type == 0 ? "<i class='veg-indian-vegetarian'></i> " : "<i class='fas fa-caret-up non-veg-icon'></i> ";
             # assign name
-            $name = $data->trashed() ? "<del class='text-muted'>{$data->name} (Deleted)</del> " : $data->name;
+            $name .= $data->trashed() ? "<del class='text-muted'>{$data->name} (Deleted)</del> " : $data->name;
 
             # available day
             $available = '<a href="#" data-toggle="modal" data-target="#timingModal" class=" badge badge-pill text-primary showTiming"

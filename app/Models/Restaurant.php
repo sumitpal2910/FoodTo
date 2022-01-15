@@ -131,4 +131,12 @@ class Restaurant extends Authenticatable
     {
         return $this->hasMany(Food::class);
     }
+
+    /**
+     * Menu
+     */
+    public function menu()
+    {
+        return $this->hasMany(Menu::class);
+    }
 }

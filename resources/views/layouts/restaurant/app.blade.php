@@ -108,6 +108,7 @@
         <script src="{{asset('js\custom\restaurant\pages\food.js')}}" defer></script>
         <script src="{{asset('js\custom\restaurant\pages\foodTopping.js')}}" defer></script>
         <script src="{{asset('js\custom\restaurant\pages\foodTiming.js')}}" defer></script>
+        <script src="{{asset('js\custom\restaurant\pages\menu.js')}}" defer></script>
 
 
         <!-- Notification -->

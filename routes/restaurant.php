@@ -3,6 +3,7 @@
 use App\Http\Controllers\Restaurant\FoodController;
 use App\Http\Controllers\Restaurant\FoodTimingController;
 use App\Http\Controllers\Restaurant\FoodToppingController;
+use App\Http\Controllers\Restaurant\MenuController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,9 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
         # resource
         Route::resource('', FoodController::class)->parameters(['' => 'food']);
 
-
+        /**
+         * Topping
+         */
         Route::prefix("{food}/topping")->name('topping.')->group(function () {
 
             # get all topping for data table
@@ -40,6 +43,9 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
             Route::put('{topping}/update-status', [FoodToppingController::class, 'updateStatus'])->name('update-status');
         });
 
+        /**
+         * Timing
+         */
         Route::prefix("{food}/timing")->name('timing.')->group(function () {
 
             # get all topping for data table
@@ -56,6 +62,26 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
         });
     });
 
+
+    /**
+     * Menu
+     */
+    Route::prefix('menus')->name('menus.')->group(function () {
+        # all data
+        Route::get('data', [MenuController::class, 'allData'])->name('data');
+
+        # restore
+        Route::put('{menu}/restore', [MenuController::class, 'restore'])->name('restore');
+
+        # update status
+        Route::put('{menu}/update-status', [MenuController::class, 'updateStatus'])->name('update-status');
+
+        # get all food
+        Route::get('{menu}/data/foods', [MenuController::class, 'foodData'])->name('food-data');
+    });
+
+
+    Route::resource('menus', MenuController::class)->only(['index', 'create', 'store', 'edit', 'upadte', 'destroy']);
 
     // Topping Resource
     Route::resource('food.topping', FoodToppingController::class)->only(['show', 'store', 'update', 'destroy']);

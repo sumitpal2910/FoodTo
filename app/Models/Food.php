@@ -49,4 +49,12 @@ class Food extends Model
     {
         return $this->hasMany(FoodTiming::class);
     }
+
+    /**
+     * Menus
+     */
+    public function menu()
+    {
+        return $this->belongsToMany(Menu::class, 'menu_food');
+    }
 }
