@@ -29,6 +29,11 @@
         <link rel="stylesheet" href="{{asset('asset/plugins/daterangepicker/daterangepicker.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('asset/dist/css/adminlte.min.css')}}">
+        <script>
+            function prefix(link){
+                return `admin/${link}`;
+            }
+        </script>
     </head>
 
     <body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
@@ -98,6 +103,7 @@
         <script src="{{asset('js/custom/admin/pages/cuisine.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/pages/restaurant.js')}}" defer></script>
         <script src="{{asset('js/custom/admin/pages/bank.js')}}" defer></script>
+        <script src="{{asset('js/custom/admin/pages/rider.js')}}" defer></script>
 
 
         <!-- Notification -->

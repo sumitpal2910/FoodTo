@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Cuisine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class CuisineController extends Controller
 {
@@ -49,21 +51,36 @@ class CuisineController extends Controller
         # validate data
         $valid = Validator::make($request->input(), [
             'name' => 'required',
+            'thumbnail' => 'image|mimes:png,jpg'
         ]);
+
+        $data = ['name' => $request->name];
 
         # return error if validation fails
         if ($valid->fails()) {
             return response()->json(['status' => 'error', 'data' => $valid->errors()->all()]);
         }
 
+        # make directory
+        $path = "cuisines";
+        if (Storage::missing($path)) Storage::makeDirectory($path);
+
+        # save image
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
+            $url = "{$path}/" . hexdec(uniqid()) . $file->getClientOriginalExtension();
+            $image = Image::make($file)->resize(256, null, function ($const) {
+                $const->aspectRatio();
+            });
+            Storage::put($url, (string) $image->encode());
+            $data['thumbnail'] = $url;
+        }
+
         # make slug
-        $slug = strtolower(str_replace("--", "-", preg_replace("/[^a-z]/i", '-', $request->input('name'))));
+        $data['slug'] = slug($data['name']);
 
         # insert data
-        $data = Cuisine::create([
-            'name' => $request->input('name'),
-            'slug' => $slug
-        ]);
+        $data = Cuisine::create($data);
 
         # return success
         return response()->json(['status' => 'success', 'message' => 'Cuisine add successfully', 'data' => $data]);
@@ -87,15 +104,37 @@ class CuisineController extends Controller
         if ($valid->fails()) {
             return response()->json(['status' => 'error', 'data' => $valid->errors()->all()]);
         }
+        # get data
+        $update = [
+            'name' => $request->input('name'),
+            'slug' => slug($request->name),
+            'status' => 1
+        ];
 
-        # make slug
-        $slug = strtolower(str_replace("--", "-", preg_replace("/[^a-z]/i", '-', $request->input('name'))));
 
         # get data
         $data = Cuisine::withTrashed()->findOrFail($cuisine);
 
+        # make directory
+        $path = "cuisines";
+        if (Storage::missing($path)) Storage::makeDirectory($path);
+
+        # save image
+        if ($request->hasFile('thumbnail')) {
+            # delete old image
+            if ($data->thumbnail) Storage::delete($data->thumbnail);
+
+            $file = $request->file('thumbnail');
+            $url = "{$path}/" . hexdec(uniqid()) . $file->getClientOriginalExtension();
+            $image = Image::make($file)->resize(256, null, function ($const) {
+                $const->aspectRatio();
+            });
+            Storage::put($url, (string) $image->encode());
+            $update['thumbnail'] = $url;
+        }
+
         # update
-        $updated = $data->update(['name' => $request->input('name'), 'slug' => $slug, 'status' => 1]);
+        $updated = $data->update($update);
 
         # restore
         if ($data->trashed()) $data->restore();
@@ -148,16 +187,16 @@ class CuisineController extends Controller
         # get data by status, all:0, active:1, inactive:2, deleted:3
         switch ($status) {
             case 1:
-                $cuisines = Cuisine::where('status', 1)->get();
+                $cuisines = Cuisine::where('status', 1)->latest()->get();
                 break;
             case 2:
-                $cuisines = Cuisine::where('status', 0)->get();
+                $cuisines = Cuisine::where('status', 0)->latest()->get();
                 break;
             case 3:
-                $cuisines = Cuisine::onlyTrashed()->get();
+                $cuisines = Cuisine::onlyTrashed()->latest()->get();
                 break;
             default:
-                $cuisines = Cuisine::withTrashed()->get();
+                $cuisines = Cuisine::withTrashed()->latest()->get();
                 break;
         }
 
@@ -168,12 +207,20 @@ class CuisineController extends Controller
             # assign name
             $name = $data->trashed() ? "<del class='text-muted'>{$data->name} (Deleted)</del> " : $data->name;
 
+            # image
+            if ($data->thumbnail) {
+                $image = "<img src='" . Storage::url($data->thumbnail) . "' width='40px'>";
+            } else {
+                $image = "<img src='" . Storage::url('asset/default-image.png') . "' width='40px'>";
+            }
+
             # status
             if ($data->status == 1) {
                 $status = "<span class='badge badge-pill badge-success'>Active</span>";
             } else {
                 $status = "<span class='badge badge-pill badge-warning'>Inactive</span>";
             }
+
 
             # action button
             $action = '<div class="row">
@@ -211,7 +258,7 @@ class CuisineController extends Controller
                 $status =  "<span class='badge badge-pill badge-danger'>Deleted</span>";
             };
 
-            $tableData = ['#' => $key + 1, 'name' => $name, 'status' => $status, 'action' => $action];
+            $tableData = ['#' => $key + 1, 'image' => $image, 'name' => $name, 'status' => $status, 'action' => $action];
             array_push($response, $tableData);
         }
 

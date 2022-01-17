@@ -54,6 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'short_url' => preg_replace("#^https?://#", '', env('APP_URL', 'http://localhost')),
+
     'asset_url' => env('ASSET_URL', null),
 
     /*

@@ -13,8 +13,11 @@ class CuisineFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->sentence(1);
         return [
-            //
+            'name' => $name,
+            'slug' => slug($name),
+            'status' => rand(0, 1),
         ];
     }
 }

@@ -7,7 +7,7 @@
         <meta name="description" content="Askbootstrap" />
         <meta name="author" content="Askbootstrap" />
         <meta name="csrf-token" content="{{csrf_token()}}">
-        <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
+        <title>@yield('title')</title>
 
         <link rel="icon" type="image/png" href="img/favicon.png" />
 
@@ -19,7 +19,13 @@
 
         <link href="{{asset('asset/frontend/vendor/select2/css/select2.min.css')}}" rel="stylesheet" />
 
+        <link href="{{asset('asset/plugins/toastr/toastr.min.css')}}" rel="stylesheet" />
+
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+
+
         <link href="{{asset('asset/frontend/css/osahan.css')}}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{asset('css/map.css')}}">
 
         <link rel="stylesheet" href="{{asset('asset/frontend/vendor/owl-carousel/css/owl.carousel.css')}}" />
         <link rel="stylesheet" href="{{asset('asset/frontend/vendor/owl-carousel/css/owl.theme.css')}}" />
@@ -33,16 +39,56 @@
 
         @include('layouts.frontend.body.footer')
 
-        <script src="{{asset('asset/frontend/vendor/jquery/jquery-3.3.1.slim.min.js')}}"></script>
+        @include('layouts.frontend.body.map')
 
-        <script src="{{asset('asset/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('asset\plugins\jquery\jquery.min.js')}}"></script>
 
-        <script src="{{asset('asset/frontend/vendor/select2/js/select2.min.js')}}"></script>
+        <script src="{{asset('asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}" defer></script>
 
-        <script src="{{asset('asset/frontend/vendor/owl-carousel/js/owl.carousel.js')}}"></script>
+        <script src="{{asset('asset/plugins/select2/js/select2.min.js')}}"></script>
 
-        <script src="{{asset('asset/frontend/js/custom.js')}}"></script>
+        <script src="{{asset('asset/frontend/vendor/owl-carousel/js/owl.carousel.js')}}" defer></script>
 
+        <script src="{{asset('asset/frontend/js/custom.js')}}" defer></script>
+
+        <!-- bs-custom-file-input -->
+        <script src="{{asset('asset/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}" defer></script>
+
+        <script src="{{asset('asset\plugins\toastr\toastr.min.js')}}" defer></script>
+
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+        <script src="{{asset('js/map.js')}}"></script>
+
+        <!-- config -->
+        <script src="{{asset('js/custom/config/sweetalert.js')}}" defer></script>
+        <script src="{{asset('js/custom/config/ajax-request.js')}}" defer></script>
+        <script src="{{asset('js/custom/config/config.js')}}"></script>
+        <script src="{{asset('js/custom/config/function.js')}}"></script>
+
+
+        <!-- Notification -->
+        <script>
+            $(document).ready(function() {
+                @if (Session::has('message'))
+                    let type = "{{ Session::get('alert-type', 'info') }}";
+                    switch (type) {
+                    case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                    case 'success':
+                    toastr.success(" {{ session('message') }}");
+                    break;
+                    case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+                    case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+                    }
+                @endif
+            })
+        </script>
     </body>
+
 
 </html>

@@ -1,12 +1,7 @@
-Admin
-<br>
-{{Auth::guard('rider')->user()}}
-<br>
-@auth('rider')
-hello
-@endauth
+@extends('layouts.rider.app')
 
-<form action="{{route('rider.logout')}}" method="post">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
+@section('title', 'Dashboard')
+
+@section('content')
+
+@endsection

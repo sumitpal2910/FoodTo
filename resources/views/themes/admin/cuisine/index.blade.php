@@ -5,7 +5,7 @@
 @section('content')
 <div class="content-wrapper">
 
-    restaurant title="Cuisine" :count="$count" />
+    <x-content-header title="Cuisine" :count="$count" />
 
     <section class="content">
         <div class="container-fluid">
@@ -43,6 +43,7 @@
                                 <thead>
                                     <tr>
                                         <th width="1%">#</th>
+                                        <th>Image</th>
                                         <th>Name</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -77,13 +78,25 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="cuisineAdd" action="{{route('admin.cuisine.store')}}" method="post">
+            <form id="cuisineAdd" action="{{route('admin.cuisine.store')}}" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="form-group">
                                 <label for="">Cusine</label>
                                 <input type="text" name="name" class="form-control" placeholder="Cuisine">
+                            </div>
+                        </div>
+                        <div class="col-md-12 ">
+                            <div class="form-group">
+                                <label for="">Image <span class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input required="" onchange="loadFile(event)" name="thumbnail" type="file"
+                                        class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose
+                                        file</label>
+                                </div>
+                                <img width="100px" src="" alt="" class="preview mt-3 ">
                             </div>
                         </div>
                         <div class="col-12 errorDiv">
@@ -118,6 +131,17 @@
                             <div class="form-group">
                                 <label for="">Cuisine</label>
                                 <input type="text" name="name" class="form-control" placeholder="Cuisine">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Image <span class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input required="" onchange="loadFile(event)" name="thumbnail" type="file"
+                                        class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose
+                                        file</label>
+                                </div>
+                                <img width="100px" src="" alt="" class="preview mt-3 ">
                             </div>
                         </div>
                         <div class="col-12" class="errorDiv">

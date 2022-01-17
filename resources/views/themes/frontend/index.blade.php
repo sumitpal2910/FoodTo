@@ -1,5 +1,9 @@
 @extends('layouts.frontend.app')
 
+
+@section('title', 'FoodTo')
+
+
 @section('content')
 
 <section class="pt-5 pb-5 homepage-search-block position-relative">

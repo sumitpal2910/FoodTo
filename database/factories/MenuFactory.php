@@ -16,7 +16,7 @@ class MenuFactory extends Factory
         $name = $this->faker->words(rand(1, 3), true);
         return [
             'title' => $name,
-            'slug' => str_replace(['--', '---'], '-', strtolower(preg_replace("/[^a-z0-9]/i", '-', $name))),
+            'slug' => slug($name),
             'summary' => $this->faker->sentence(),
             'status' => rand(0, 1 ),
         ];

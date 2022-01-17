@@ -1,3 +1,12 @@
+<section class="section pt-5 pb-5 text-center bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="m-0">Operate food store or restaurants? <a href="login.html">Work With Us</a></h5>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="footer pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -66,13 +75,13 @@
             <div class="col-xl-12">
                 <p class="text-black">POPULAR COUNTRIES</p>
                 <div class="search-links">
-                    <a href="#">Australia</a> | <a href="#">Brasil</a> | <a href="#">Canada</a> | <a
-                        href="#">Chile</a> | <a href="#">Czech Republic</a> | <a href="#">India</a> | <a
-                        href="#">Indonesia</a> | <a href="#">Ireland</a> | <a href="#">New Zealand</a> | <a
-                        href="#">United Kingdom</a> | <a href="#">Turkey</a> | <a href="#">Philippines</a> | <a
-                        href="#">Sri Lanka</a> | <a href="#">Australia</a> | <a href="#">Brasil</a> | <a
-                        href="#">Canada</a> | <a href="#">Chile</a> | <a href="#">Czech Republic</a> | <a
-                        href="#">India</a> | <a href="#">Indonesia</a> | <a href="#">Ireland</a> | <a href="#">New
+                    <a href="#">Australia</a> | <a href="#">Brasil</a> | <a href="#">Canada</a> | <a href="#">Chile</a>
+                    | <a href="#">Czech Republic</a> | <a href="#">India</a> | <a href="#">Indonesia</a> | <a
+                        href="#">Ireland</a> | <a href="#">New Zealand</a> | <a href="#">United Kingdom</a> | <a
+                        href="#">Turkey</a> | <a href="#">Philippines</a> | <a href="#">Sri Lanka</a> | <a
+                        href="#">Australia</a> | <a href="#">Brasil</a> | <a href="#">Canada</a> | <a href="#">Chile</a>
+                    | <a href="#">Czech Republic</a> | <a href="#">India</a> | <a href="#">Indonesia</a> | <a
+                        href="#">Ireland</a> | <a href="#">New
                         Zealand</a> | <a href="#">United Kingdom</a> | <a href="#">Turkey</a> | <a
                         href="#">Philippines</a> | <a href="#">Sri Lanka</a><a href="#">Australia</a> | <a
                         href="#">Brasil</a> | <a href="#">Canada</a> | <a href="#">Chile</a> | <a href="#">Czech
@@ -90,12 +99,12 @@
                         href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South
                         Indian</a> | <a href="#">Punjabi Food</a> | <a href="#">Fast Food</a> |
                     <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a href="#">Continental</a> | <a
-                        href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South Indian</a> | <a
-                        href="#">Punjabi Food</a><a href="#">Fast Food</a> | <a href="#">Chinese</a> | <a
-                        href="#">Street Food</a> | <a href="#">Continental</a> | <a href="#">Mithai</a> | <a
-                        href="#">Cafe</a> | <a href="#">South Indian</a> | <a href="#">Punjabi Food</a> | <a
-                        href="#">Fast Food</a> | <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a
+                        href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South Indian</a> | <a href="#">Punjabi
+                        Food</a><a href="#">Fast Food</a> | <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a
                         href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South
+                        Indian</a> | <a href="#">Punjabi Food</a> | <a href="#">Fast Food</a> | <a href="#">Chinese</a>
+                    | <a href="#">Street Food</a> | <a href="#">Continental</a> | <a href="#">Mithai</a> | <a
+                        href="#">Cafe</a> | <a href="#">South
                         Indian</a> | <a href="#">Punjabi Food</a>
                 </div>
             </div>

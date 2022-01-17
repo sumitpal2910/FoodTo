@@ -133,6 +133,13 @@ class Restaurant extends Authenticatable
     }
 
     /**
+     * Cuisine
+     */
+    public function cuisines()
+    {
+        return $this->belongsToMany(Cuisine::class, 'restaurant_cuisine');
+    }
+    /**
      * Menu
      */
     public function menu()

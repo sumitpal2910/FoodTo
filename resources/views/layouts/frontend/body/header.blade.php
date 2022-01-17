@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="index.html"><img alt="logo"
+        <a class="navbar-brand" href="{{route('index')}}"><img alt="logo"
                 src="{{Storage::url('asset/logo/logo-150px.png')}}"></a>
-        <p>Location home</p>
+
+        <a href="#" class="nav-item" data-target="#mapModal" data-toggle="modal"><b>Home</b> Location </a>
+
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,25 +20,57 @@
                             class="badge badge-danger">New</span></a>
                 </li>
 
+                @php
+                $user = Auth::user();
+                @endphp
+                @auth
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img alt="Generic placeholder image" src="img/user/4.png" class="nav-osahan-pic rounded-pill">
+                        @if ($user->thumbnail)
+                        <img alt="user image" src="{{Storage::url($user->thumbnail)}}"
+                            class="nav-osahan-pic rounded-pill">
+                        @else
+                        <img alt="user image" src="{{Storage::url('asset/default-user.png')}}"
+                            class="nav-osahan-pic rounded-pill">
+                        @endif
                         My Account
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                        <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i>
-                            Orders</a>
-                        <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i>
-                            Offers</a>
-                        <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i>
-                            Favourites</a>
-                        <a class="dropdown-item" href="orders.html#payments"><i class="icofont-credit-card"></i>
-                            Payments</a>
-                        <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i>
-                            Addresses</a>
+                        <a class="dropdown-item" href="{{route('account.orders')}}">
+                            <i class="icofont-food-cart"></i> Orders
+                        </a>
+
+                        <a class="dropdown-item" href="{{route('account.offers')}}">
+                            <i class="icofont-sale-discount"></i> Offers
+                        </a>
+
+                        <a class="dropdown-item" href="{{route('account.favourites')}}">
+                            <i class="icofont-heart"></i>Favourites
+                        </a>
+
+                        <a class="dropdown-item" href="{{route('account.address')}}">
+                            <i class="icofont-location-pin"></i> Addresses
+                        </a>
+
+                        <a class="dropdown-item" href="route('logout')"
+                            onclick="event.preventDefault();document.querySelector('#logoutForm').submit();"><i
+                                class="icofont-logout"></i> Logout
+                        </a>
+                        <form id="logoutForm" action="{{route('logout')}}" method="post" style="display: none">
+                            @csrf
+                        </form>
                     </div>
                 </li>
+                @endauth
+
+                @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}"> Login</a>
+                </li>
+                @endguest
+
                 <li class="nav-item dropdown dropdown-cart">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">

@@ -1,0 +1,36 @@
+/* MODAL FADE LEFT RIGHT BOTTOM */
+.modal.fade:not(.in).map .modal-dialog {
+    -webkit-transform: translate3d(-25%, 0, 0);
+    transform: translate3d(-25%, 0, 0);
+}
+.modal.fade:not(.in).right .modal-dialog {
+    -webkit-transform: translate3d(25%, 0, 0);
+    transform: translate3d(25%, 0, 0);
+}
+.modal.fade:not(.in).bottom .modal-dialog {
+    -webkit-transform: translate3d(0, 25%, 0);
+    transform: translate3d(0, 25%, 0);
+}
+
+.modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 450px;
+    height: 100vh;
+    left: 0px;
+}
+
+.modal-content.map {
+    border-radius: 0 !important;
+    height: 100vh;
+}
+
+.modal-dialog-scrollable .modal-content {
+    max-height: 100vh;
+}
+
+.map-header {
+    height: 50px;
+    width: 100%;
+
+}

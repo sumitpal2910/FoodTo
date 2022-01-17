@@ -17,6 +17,20 @@ class Cuisine extends Model
     protected $fillable = [
         'name',
         'slug',
+        'thumbnail',
         'status',
     ];
+
+    /**
+     * ------------------------------------
+     * ----     Relationship ----
+     * ------------------------------------
+     */
+    /**
+     * Restaurant
+     */
+    public function restaurants()
+    {
+        return $this->belongsToMany(Restaurant::class, 'restaurant_cuisine');
+    }
 }

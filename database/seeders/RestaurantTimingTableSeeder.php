@@ -24,7 +24,7 @@ class RestaurantTimingTableSeeder extends Seeder
             foreach ($days as $day) {
                 $time = RestaurantTiming::factory()->make();
                 $time->day = $day;
-                $time->save();
+                $restaurant->timing()->save($time);
             }
         }
     }

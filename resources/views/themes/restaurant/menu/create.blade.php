@@ -9,7 +9,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            <form class="mb-5" action="{{route('restaurant.menu.store')}}" method="POST" >
+            <form class="mb-5" action="{{route('restaurant.menus.store')}}" method="POST" >
                 @csrf
                 <div class="row mb-5">
                     <!-- Left Side -->

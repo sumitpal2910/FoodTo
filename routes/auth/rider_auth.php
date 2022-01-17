@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Rider\Auth\LoginController;
+use App\Http\Controllers\Rider\Auth\ProfileController;
 use App\Http\Controllers\Rider\Auth\PasswordResetController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,28 @@ Route::prefix('rider')->name('rider.')->group(function () {
 
     Route::post('reset-password', [PasswordResetController::class, 'update'])
         ->name('password.update')->middleware('guest:rider');
+
+
+    /**
+     * Profile
+     */
+    Route::prefix('setting/profile')->name('profile.')->group(function () {
+        # show profile
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+
+        /**
+         * Update
+         */
+        Route::prefix('update')->name('update.')->group(function () {
+
+            # update profile
+            Route::match(['PUT', 'PATCH'], 'profile', [ProfileController::class, 'update'])->name('profile');
+
+            # update profile
+            Route::match(['PUT', 'PATCH'], 'address', [ProfileController::class, 'address'])->name('address');
+
+            # update profile
+            Route::match(['PUT', 'PATCH'], 'password', [ProfileController::class, 'password'])->name('password');
+        });
+    });
 });

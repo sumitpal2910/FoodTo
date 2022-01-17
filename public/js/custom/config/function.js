@@ -41,6 +41,7 @@ function getFormData(form) {
     // return data object
     return data;
 }
+
 /**
  * show upload image
  */

@@ -27,14 +27,13 @@ class CreateRestaurantsTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('remember_token')->nullable();
+            $table->rememberToken();
 
             $table->string('slug');
-            $table->string('cuisine');
             $table->string('phone');
             $table->string('alt_phone')->nullable();
             $table->string('gst_no');

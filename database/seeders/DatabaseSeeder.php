@@ -25,18 +25,22 @@ class DatabaseSeeder extends Seeder
 
         //\App\Models\User::factory(10)->create();
         $this->call([
-            //AdminTableSeeder::class,
-            //RiderTableSeeder::class,
-            //BankTableSeeder::class,
-            //StateDistrictTableSeeder::class,
-            //CityTableSeeder::class,
-            //RestaurantOwnerTableSeeder::class,
-            //RestaurantTableSeeder::class,
-            //RestaurantTimingTableSeeder::class,
-            //RestaurantManagerTableSeeder::class,
-            //FoodTableSeeder::class,
+            AdminTableSeeder::class,
+            BankTableSeeder::class,
+            StateDistrictTableSeeder::class,
+            CityTableSeeder::class,
+            CuisineTableSeeder::class,
+            RiderTableSeeder::class,
+            RestaurantOwnerTableSeeder::class,
+            RestaurantTableSeeder::class,
+            RestaurantCuisineTableSeeder::class,
+            RestaurantTimingTableSeeder::class,
+            RestaurantManagerTableSeeder::class,
+            FoodTableSeeder::class,
             ToppingTableSeeder::class,
             FoodTimingTableSeeder::class,
+            MenuTableSeeder::class,
+            MenuFoodTableSeeder::class,
         ]);
     }
 }

@@ -22,6 +22,7 @@ function cuisineDataTable(data = {}) {
         },
         columns: [
             { data: "#" },
+            { data: "image" },
             { data: "name" },
             { data: "status" },
             { data: "action" },
@@ -37,10 +38,18 @@ $("#cuisineAdd").on("submit", function (e) {
     e.preventDefault();
 
     // get form
-    let form = document.getElementById("cuisineAdd");
+    let form = this;
 
-    // Submit form data
-    let response = sendFormData(form, "POST");
+    let data = new FormData(form);
+
+    // send form data
+    let response = $.ajax({
+        url: form.action,
+        method: "POST",
+        data: data,
+        processData: false,
+        contentType: false,
+    });
 
     // request done
     response.done(function (res) {
@@ -108,8 +117,16 @@ $("#cuisineEdit").on("submit", function (e) {
 
     let form = this;
 
-    // send form
-    let response = sendFormData(form, "PUT");
+    let data = new FormData(form);
+
+    // send form data
+    let response = $.ajax({
+        url: form.action,
+        method: "PUT",
+        data: data,
+        processData: false,
+        contentType: false,
+    });
 
     // response
     response.done(function (res) {

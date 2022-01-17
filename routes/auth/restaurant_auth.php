@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\PartnerController;
 use App\Http\Controllers\Restaurant\Auth\LoginController;
 use App\Http\Controllers\Restaurant\Auth\PasswordResetController;
 use Illuminate\Support\Facades\Route;
@@ -63,5 +64,5 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
     });
 });
 
-Route::get('partner_with_us', [RestaurantController::class, 'index'])->name('partner_with_us');
-Route::post('partner_with_us',  [RestaurantController::class, 'store'])->name('restaurant.store');
+Route::get('partner_with_us', [PartnerController::class, 'showRestaurant'])->name('partner_with_us');
+Route::post('partner_with_us',  [PartnerController::class, 'storeRestaurant'])->name('restaurant.store');

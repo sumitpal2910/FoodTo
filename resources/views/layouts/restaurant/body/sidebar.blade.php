@@ -27,8 +27,8 @@ $route = Route::currentRouteName();
 
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a href="{{route('admin.dashboard')}}"
-                        class="nav-link {{ $route === 'admin.dashboard' ? 'active' : '' }}">
+                    <a href="{{route('restaurant.dashboard')}}"
+                        class="nav-link {{ $route === 'restaurant.dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>

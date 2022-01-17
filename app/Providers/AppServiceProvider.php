@@ -7,7 +7,7 @@ use App\View\Components\AuthError;
 use App\View\Components\AuthStatus;
 use App\View\Components\Badge;
 use App\View\Components\Error;
-
+use App\View\Components\Frontend\UserSidebar;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -44,5 +44,8 @@ class AppServiceProvider extends ServiceProvider
 
         # bagde
         Blade::component(Badge::class, 'badge');
+
+        # user sidebar menu
+        Blade::component('user-sidebar', UserSidebar::class);
     }
 }

@@ -16,4 +16,14 @@ class Controller extends BaseController
     {
         return Auth::guard('restaurant')->user();
     }
+
+    public function rider()
+    {
+        return  Auth::guard('rider')->user();
+    }
+
+    public function user()
+    {
+        return Auth::user();
+    }
 }

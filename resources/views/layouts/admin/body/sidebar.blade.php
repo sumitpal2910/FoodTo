@@ -73,23 +73,23 @@ $route = Route::currentRouteName();
                 </li>
 
                 <!-- Cousine -->
-                {{--<li class="nav-item {{$prefix === 'admin/cuisine' ? 'menu-open' :''}}">
-                <a href="#" class="nav-link  {{$prefix === 'admin/cuisine' ? 'active' :''}}">
-                    <i class="nav-icon fas fa-copy"></i>
-                    <p> Cuisine <i class="fas fa-angle-left right"></i> </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <!-- State -->
-                    <li class="nav-item">
-                        <a href="{{route('admin.cuisine.index')}}"
-                            class="nav-link {{$route === 'admin.cuisine.index' ? 'active' :''}}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Cuisine</p>
-                        </a>
-                    </li>
+                <li class="nav-item {{$prefix === 'admin/cuisine' ? 'menu-open' :''}}">
+                    <a href="#" class="nav-link  {{$prefix === 'admin/cuisine' ? 'active' :''}}">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p> Cuisine <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!-- State -->
+                        <li class="nav-item">
+                            <a href="{{route('admin.cuisine.index')}}"
+                                class="nav-link {{$route === 'admin.cuisine.index' ? 'active' :''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cuisine</p>
+                            </a>
+                        </li>
 
-                </ul>
-                </li>--}}
+                    </ul>
+                </li>
 
                 <!-- Restaurant -->
                 <li class="nav-item {{$prefix === 'admin/restaurant' ? 'menu-open' :''}}">
@@ -120,6 +120,14 @@ $route = Route::currentRouteName();
             </ul>
             </li>
 
+            <!-- Rider -->
+            <li class="nav-item">
+                <a href="{{route('admin.rider.index')}}"
+                    class="nav-link {{ $route === 'admin.rider.index' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Riders</p>
+                </a>
+            </li>
 
             <!-- Payment -->
             <li class="nav-item {{$prefix === 'admin/bank' ? 'menu-open' :''}}">
