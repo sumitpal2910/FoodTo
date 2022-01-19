@@ -35,6 +35,8 @@ class CreateRestaurantsTable extends Migration
 
             $table->string('slug');
             $table->string('phone');
+            $table->string('cuisine');
+
             $table->string('alt_phone')->nullable();
             $table->string('gst_no');
             $table->string('trade_name');
@@ -48,7 +50,9 @@ class CreateRestaurantsTable extends Migration
             $table->string('license_image')->nullable();
             $table->string('menu')->nullable();
 
-            $table->string('address');
+            $table->string('full_address');
+            $table->string('area');
+            $table->string('landmark');
             $table->string('latitude');
             $table->string('longitude');
             $table->integer('pincode');

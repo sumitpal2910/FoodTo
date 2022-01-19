@@ -1,31 +1,31 @@
 @extends('layouts.frontend.app')
 
-@section('title', '')
+@section('title', $rest->name)
 
 @section('content')
 <section class="restaurant-detailed-banner">
     <div class="text-center">
-        <img class="img-fluid cover" src="img/mall-dedicated-banner.png">
+        <img class="img-fluid cover" src="{{Storage::url($rest->bg_image)}}">
     </div>
     <div class="restaurant-detailed-header">
         <div class="container">
             <div class="row d-flex align-items-end">
                 <div class="col-md-8">
                     <div class="restaurant-detailed-header-left">
-                        <img class="img-fluid mr-3 float-left" alt="osahan" src="img/1.jpg">
-                        <h2 class="text-white">Spice Hut Indian Restaurant</h2>
-                        <p class="text-white mb-1"><i class="icofont-location-pin"></i> 2036 2ND AVE, NEW YORK,
-                            NY 10029 <span class="badge badge-success">OPEN</span>
+                        <img class="img-fluid mr-3 float-left" alt="osahan" src="{{Storage::url($rest->thumbnail)}}">
+                        <h2 class="text-white">{{$rest->name}}</h2>
+                        <p class="text-white mb-1"><i class="icofont-location-pin"></i> {{$rest->landmark}},
+                            {{$rest->area}} <span class="badge badge-success">OPEN</span>
                         </p>
-                        <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast
-                            Food, South Indian
+                        <p class="text-white mb-0"><i class="icofont-food-cart"></i> {{$rest->cuisine}}
                         </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="restaurant-detailed-header-right text-right">
-                        <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> 25–35
-                            min
+                        <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i>
+                            {{$travelTime-5}}-{{$travelTime+5}}
+                            min {{$distance}} km.
                         </button>
                         <h6 class="text-white mb-0 restaurant-detailed-ratings"><span
                                 class="generator-bg rounded text-white"><i class="icofont-star"></i> 3.1</span>

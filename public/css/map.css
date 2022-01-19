@@ -32,5 +32,27 @@
 .map-header {
     height: 50px;
     width: 100%;
+}
 
+.map-card {
+    padding: 15px;
+    width: 100%;
+    border: 1px solid #cfcfcf;
+    background: none;
+    border-radius: 5px;
+}
+
+.box {
+    padding: 30px;
+}
+
+.map-dropdown {
+    width: 100%;
+    border: 1px soild #cfcfcf;
+}
+
+.map-input {
+    border: none;
+    border-radius: 0px;
+    padding: 20px 15px;
 }

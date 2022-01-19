@@ -16,7 +16,7 @@ class CreateRestaurantOwnersTable extends Migration
         Schema::create('restaurant_owners', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('bank_id');
-            $table->foreign('bank_id')->references('id')->on('banks');
+            $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
 
             $table->string('name');
             $table->string('phone');

@@ -21,19 +21,18 @@ class DatabaseSeeder extends Seeder
             # delete all file and folder
             Storage::deleteDirectory('restaurants');
             Storage::deleteDirectory('owners');
+            Storage::deleteDirectory('users');
         }
 
-        //\App\Models\User::factory(10)->create();
         $this->call([
+            UserTableSeeder::class,
             AdminTableSeeder::class,
             BankTableSeeder::class,
             StateDistrictTableSeeder::class,
             CityTableSeeder::class,
-            CuisineTableSeeder::class,
             RiderTableSeeder::class,
             RestaurantOwnerTableSeeder::class,
             RestaurantTableSeeder::class,
-            RestaurantCuisineTableSeeder::class,
             RestaurantTimingTableSeeder::class,
             RestaurantManagerTableSeeder::class,
             FoodTableSeeder::class,
@@ -41,6 +40,7 @@ class DatabaseSeeder extends Seeder
             FoodTimingTableSeeder::class,
             MenuTableSeeder::class,
             MenuFoodTableSeeder::class,
+            AddressTableSeeder::class,
         ]);
     }
 }

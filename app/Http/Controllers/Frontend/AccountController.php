@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['loggedin']);
     }
 
     /**
@@ -51,5 +52,17 @@ class AccountController extends Controller
     {
         $user =  $this->user();
         return view('themes.frontend.user.settings', compact('user'));
+    }
+
+    /**
+     * Logged in
+     */
+    public function loggedin()
+    {
+        if (Auth::check()) {
+            return response()->json(['login' => true, 'data' => Auth::user()]);
+        } else {
+            return response()->json(['login' => false]);
+        }
     }
 }

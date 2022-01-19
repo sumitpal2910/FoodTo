@@ -7,6 +7,7 @@ use App\View\Components\AuthError;
 use App\View\Components\AuthStatus;
 use App\View\Components\Badge;
 use App\View\Components\Error;
+use App\View\Components\Frontend\SidebarFilter;
 use App\View\Components\Frontend\UserSidebar;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -47,5 +48,8 @@ class AppServiceProvider extends ServiceProvider
 
         # user sidebar menu
         Blade::component('user-sidebar', UserSidebar::class);
+
+        # sidebar filter option
+        Blade::component('sidebar-filter', SidebarFilter::class);
     }
 }

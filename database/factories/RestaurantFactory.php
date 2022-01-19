@@ -45,6 +45,7 @@ class RestaurantFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'slug' => $slug,
+            'cuisine' => $this->faker->foodName(),
             'phone' => $this->faker->phoneNumber(),
             'alt_phone' => $this->faker->phoneNumber(),
             'gst_no' => $this->faker->randomNumber(8),
@@ -57,9 +58,11 @@ class RestaurantFactory extends Factory
             'fssai_image' => "{$path}{$fssai}",
             'license_image' => "{$path}{$license}",
             'menu' => "{$path}{$menu}",
-            'address' => $this->faker->streetAddress(),
-            'latitude' => $this->faker->latitude(),
-            'longitude' => $this->faker->longitude(),
+            'full_address' => $this->faker->address(),
+            'landmark' => $this->faker->buildingNumber(),
+            'area' => $this->faker->streetName(),
+            'longitude' => $this->faker->longitude(88.243502, 88.449927),
+            'latitude' => $this->faker->latitude(22.446713, 22.632607),
             'pincode' => rand(100000, 999999),
             'status' => rand(0, 3),
         ];

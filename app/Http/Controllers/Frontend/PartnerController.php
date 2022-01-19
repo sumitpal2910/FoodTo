@@ -29,9 +29,8 @@ class PartnerController extends Controller
         # get states
         $states = State::get();
         $banks = Bank::get();
-        $cuisines = Cuisine::get();
 
-        return view('themes.frontend.partner.restaurant', compact('states', 'banks', 'cuisines'));
+        return view('themes.frontend.partner.restaurant', compact('states', 'banks'));
     }
 
     /**
@@ -72,12 +71,15 @@ class PartnerController extends Controller
             'name',
             'email',
             'phone',
+            'cuisine',
             'alt_phone',
             'gst_no',
             'trade_name',
             'license_no',
             'fssai_no',
-            'address',
+            'full_address',
+            'landmark',
+            'area',
             'cuisine',
             'latitude',
             'longitude',
@@ -184,8 +186,6 @@ class PartnerController extends Controller
         # create restaurant
         $restaurantCreated =  Restaurant::create($restaurant);
 
-        # create cuisine
-        $restaurantCreated->cuisines()->attach($request->input('cuisine_id'));
 
         # create manager
         $manager['restaurant_id'] = $restaurantCreated->id;

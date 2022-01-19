@@ -86,4 +86,7 @@ Route::prefix('account')->name('account.')->group(function () {
 
     # Setting tab
     Route::get('settings', [AccountController::class, 'settings'])->name('settings');
+
+    # check if user is login or not
+    Route::get('logged-in', [AccountController::class, 'loggedin'])->name('loggedin');
 });

@@ -1,9 +1,24 @@
+@php
+$user = Auth::user();
+@endphp
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{route('index')}}"><img alt="logo"
                 src="{{Storage::url('asset/logo/logo-150px.png')}}"></a>
 
-        <a href="#" class="nav-item" data-target="#mapModal" data-toggle="modal"><b>Home</b> Location </a>
+        <a href="#" class="nav-item" data-target="#mapModal" data-toggle="modal"> <span id="header-full-address">
+                @if (Session::exists('user-address'))
+                @php
+                $address = Session::get('user-address');
+                @endphp
+                <b>{{$address['type']}}</b>
+
+                {{substr($address['full_address'], 0,40)}}
+
+                @else
+                Select a Adddress
+                @endif</span><i class="icofont-location-arrow"></i></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -20,9 +35,7 @@
                             class="badge badge-danger">New</span></a>
                 </li>
 
-                @php
-                $user = Auth::user();
-                @endphp
+
                 @auth
 
                 <li class="nav-item dropdown">

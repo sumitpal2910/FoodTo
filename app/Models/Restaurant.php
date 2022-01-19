@@ -45,7 +45,9 @@ class Restaurant extends Authenticatable
         'fssai_image',
         'license_image',
         'menu',
-        'address',
+        'full_address',
+        'landmark',
+        'area',
         'latitude',
         'longitude',
         'pincode',
@@ -70,6 +72,49 @@ class Restaurant extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * 0 - pending listing
+     * 1 - listed
+     * 2 - delisted
+     * 3 - reject listing
+     */
+
+    /**
+     * ------------------------
+     * ---  QUERY SCOPE ---
+     * ------------------------
+     */
+    /**
+     * Active
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+    /**
+     * Pending Listed
+     */
+    public function scopePending($query)
+    {
+        return $query->where('status', 0);
+    }
+
+    /**
+     * Delisted
+     */
+    public function scopeDelisted($query)
+    {
+        return $query->where('status', 2);
+    }
+
+    /**
+     * Rejected
+     */
+    public function scopeRejectd($query)
+    {
+        return $query->where('status', 2);
+    }
 
     /**
      * -----------------------------------
@@ -132,13 +177,7 @@ class Restaurant extends Authenticatable
         return $this->hasMany(Food::class);
     }
 
-    /**
-     * Cuisine
-     */
-    public function cuisines()
-    {
-        return $this->belongsToMany(Cuisine::class, 'restaurant_cuisine');
-    }
+
     /**
      * Menu
      */

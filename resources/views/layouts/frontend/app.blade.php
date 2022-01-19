@@ -41,7 +41,7 @@
 
         @include('layouts.frontend.body.map')
 
-        <script src="{{asset('asset\plugins\jquery\jquery.min.js')}}"></script>
+        <script src="{{asset('asset/plugins/jquery/jquery.min.js')}}"></script>
 
         <script src="{{asset('asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}" defer></script>
 
@@ -56,14 +56,21 @@
 
         <script src="{{asset('asset\plugins\toastr\toastr.min.js')}}" defer></script>
 
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-        <script src="{{asset('js/map.js')}}"></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js' defer></script>
+
+
+        <script src="{{asset('js/app.js')}}"></script>
 
         <!-- config -->
         <script src="{{asset('js/custom/config/sweetalert.js')}}" defer></script>
-        <script src="{{asset('js/custom/config/ajax-request.js')}}" defer></script>
+        <script src="{{asset('js/custom/config/ajax-request.js')}}"></script>
         <script src="{{asset('js/custom/config/config.js')}}"></script>
         <script src="{{asset('js/custom/config/function.js')}}"></script>
+
+
+        <script src="{{asset('js/custom/frontend/map/helper.js')}}" defer></script>
+        <script src="{{asset('js/custom/frontend/map/map.js')}}" defer></script>
+        <script src="{{asset('js/custom/frontend/map/autocomplete.js')}}" defer></script>
 
 
         <!-- Notification -->

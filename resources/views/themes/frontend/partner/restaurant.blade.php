@@ -43,13 +43,11 @@
                                                                         class="text-danger">*</span></label>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <select name="cuisine_id[]" id=""
-                                                                    class="form-control select2" multiple>
-                                                                    @foreach ($cuisines as $cuisine)
-                                                                    <option value="{{$cuisine->id}}">{{$cuisine->name}}
-                                                                    </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                <div class="form-group">
+                                                                    <label for="">Cuisine</label>
+                                                                    <input type="text" name="cuisine"
+                                                                        class="form-control">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <x-error name="cuisine" />
@@ -345,10 +343,31 @@
                                                 <div class="col-md-12 col-sm-12">
                                                     <div class="form-group">
                                                         <label for="">Address <span class="text-danger">*</span></label>
-                                                        <input required name="address" class="form-control"
+                                                        <input required name="full_address" class="form-control"
                                                             placeholder="Building and Street"
-                                                            value="{{old('address')}}">
-                                                        <x-error name="address" />
+                                                            value="{{old('full_address')}}">
+                                                        <x-error name="full_address" />
+                                                    </div>
+                                                </div>
+
+                                                <!-- Area -->
+                                                <div class="col-md-12 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="">Area <span class="text-danger">*</span></label>
+                                                        <input required name="area" class="form-control"
+                                                            placeholder="Area" value="{{old('area')}}">
+                                                        <x-error name="area" />
+                                                    </div>
+                                                </div>
+
+                                                <!-- Landmark -->
+                                                <div class="col-md-12 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="">Landmark <span
+                                                                class="text-danger">*</span></label>
+                                                        <input required name="landmark" class="form-control"
+                                                            placeholder="Landmark" value="{{old('landmark')}}">
+                                                        <x-error name="landmark" />
                                                     </div>
                                                 </div>
 

@@ -3,7 +3,7 @@
  */
 function debounce(callback, wait = 500) {
     let timeout;
-    return (...agrs) => {
+    return (...args) => {
         clearTimeout(timeout);
         timeout = setTimeout(function () {
             callback.apply(this, args);
@@ -69,4 +69,3 @@ function showCount(link, data = {}, id = "count") {
 //
 //    console.log(resp.data);
 //}
-
