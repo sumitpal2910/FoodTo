@@ -17,16 +17,30 @@ class Food extends Model
      */
     protected $fillable = [
         'restaurant_id',
+        'menu_id',
         'name',
         'slug',
         'thumbnail',
         'price',
         'description',
         'qty',
+        'left_qty',
         'status',
-        'type',
+        'veg',
     ];
 
+    /**
+     * --------------------------------------
+     * ----      SCOPE   ----
+     * --------------------------------------
+     */
+    /**
+     * Active status -1
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 
     /**
      * -----------------------------------
@@ -39,7 +53,7 @@ class Food extends Model
      */
     public function toppings()
     {
-        return $this->hasMany(Topping::class);
+        return $this->belongsToMany(Topping::class, 'food_topping');
     }
 
     /**
@@ -55,6 +69,14 @@ class Food extends Model
      */
     public function menu()
     {
-        return $this->belongsToMany(Menu::class, 'menu_food');
+        return $this->belongsTo(Menu::class);
+    }
+
+    /**
+     * Restaurant
+     */
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
     }
 }

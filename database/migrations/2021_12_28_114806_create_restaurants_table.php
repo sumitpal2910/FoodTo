@@ -53,10 +53,11 @@ class CreateRestaurantsTable extends Migration
             $table->string('full_address');
             $table->string('area');
             $table->string('landmark');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('lat');
+            $table->string('long');
             $table->integer('pincode');
             $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('veg')->default(0);
 
             $table->softDeletes();
             $table->timestamps();

@@ -792,7 +792,7 @@
          * zoomOptions.y            y coordinate of the point to focus on
          * - OR -
          * zoomOptions.latitude     latitude of the point to focus on
-         * zoomOptions.longitude    longitude of the point to focus on
+         * zoomOptions.long    long of the point to focus on
          * - OR -
          * zoomOptions.plot         plot ID to focus on
          * - OR -
@@ -874,8 +874,8 @@
                     zoomOptions.x = self.plots[zoomOptions.plot].coords.x;
                     zoomOptions.y = self.plots[zoomOptions.plot].coords.y;
                 } else {
-                    if (zoomOptions.latitude !== undefined && zoomOptions.longitude !== undefined) {
-                        var coords = self.mapConf.getCoords(zoomOptions.latitude, zoomOptions.longitude);
+                    if (zoomOptions.latitude !== undefined && zoomOptions.long !== undefined) {
+                        var coords = self.mapConf.getCoords(zoomOptions.latitude, zoomOptions.long);
                         zoomOptions.x = coords.x;
                         zoomOptions.y = coords.y;
                     }
@@ -1351,7 +1351,7 @@
                     y: areaBBox.cy
                 };
             } else {
-                plot.coords = self.mapConf.getCoords(plot.options.latitude, plot.options.longitude);
+                plot.coords = self.mapConf.getCoords(plot.options.latitude, plot.options.long);
             }
         },
 
@@ -1434,8 +1434,8 @@
                         y: p1BBox.cy
                     };
                 }
-                else if (p1.latitude !== undefined && p1.longitude !== undefined) {
-                    coordsP1 = self.mapConf.getCoords(p1.latitude, p1.longitude);
+                else if (p1.latitude !== undefined && p1.long !== undefined) {
+                    coordsP1 = self.mapConf.getCoords(p1.latitude, p1.long);
                 } else {
                     coordsP1.x = p1.x;
                     coordsP1.y = p1.y;
@@ -1448,8 +1448,8 @@
                         y: p2BBox.cy
                     };
                 }
-                else if (p2.latitude !== undefined && p2.longitude !== undefined) {
-                    coordsP2 = self.mapConf.getCoords(p2.latitude, p2.longitude);
+                else if (p2.latitude !== undefined && p2.long !== undefined) {
+                    coordsP2 = self.mapConf.getCoords(p2.latitude, p2.long);
                 } else {
                     coordsP2.x = p2.x;
                     coordsP2.y = p2.y;

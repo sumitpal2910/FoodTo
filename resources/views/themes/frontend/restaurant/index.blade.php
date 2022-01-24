@@ -125,10 +125,10 @@
                     if(Session::exists('user-address')){
                     $user = Session::get('user-address');
                     }else {
-                    $user = ['latitude'=> $rest->latutude, 'longitude'=>$rest->longitude];
+                    $user = ['lat'=> $rest->lat, 'long'=>$rest->long];
                     }
 
-                    $dist= distance($user['longitude'], $user['latitude'], $rest->lognitude, $rest->latitude);
+                    $dist= distance($user['long'], $user['lat'], $rest->long, $rest->lat);
                     $timing = roundNumber(travelTime($dist));
                     @endphp
 

@@ -37,23 +37,23 @@
                 width: 1008.77,
                 // Height of the map, in pixel
                 height: 651.44,
-                // Longitude of the left side of the map, in degree
+                // long of the left side of the map, in degree
                 leftLongitude: -169.6,
-                // Longitude of the right side of the map, in degree
+                // long of the right side of the map, in degree
                 rightLongitude: 190.25,
                 // Latitude of the top of the map, in degree
                 topLatitude: 83.68,
                 // Latitude of the bottom of the map, in degree
                 bottomLatitude: -55.55,
                 /*
-                 * Transform a longitude coordinate into projection-specific x' coordinate
+                 * Transform a long coordinate into projection-specific x' coordinate
                  * Note: this is not in pixel
                  *
-                 * @param lon longitude value in degree
+                 * @param lon long value in degree
                  * @return x' projection-specific value
                  */
                 _projectLongitude: function (lon) {
-                    // Compute longitude in radian
+                    // Compute long in radian
                     return lon * Math.PI / 180;
                 },
                 /*
@@ -79,7 +79,7 @@
                  * Source: http://jkwiens.com/2009/01/23/miller-projection/
                  *
                  * @param lat latitude value in degree
-                 * @param lon longitude value in degree
+                 * @param lon long value in degree
                  * @return {x, y} coordinate in pixel
                  */
                 getCoords: function (lat, lon) {

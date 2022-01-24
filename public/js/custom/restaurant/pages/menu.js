@@ -23,7 +23,6 @@ function menuDataTable(data = {}) {
         columns: [
             { data: "#" },
             { data: "name" },
-            { data: "summary" },
             { data: "foods" },
             { data: "status" },
             { data: "action" },
@@ -31,6 +30,87 @@ function menuDataTable(data = {}) {
     });
 }
 menuDataTable();
+
+/**
+ * Add New Topping
+ *
+ */
+$("#addMenu").on("submit", function (e) {
+    e.preventDefault();
+
+    let form = this;
+    // get form data
+    let data = new FormData(this);
+
+    // send form data
+    $.ajax({
+        url: form.action,
+        method: "POST",
+        data: data,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+            $("#addModal").modal("hide");
+            toastr.success(res.message);
+            menuDataTable();
+        },
+    });
+});
+
+/**
+ * Get one data on click edit button
+ */
+$("#menuTable").on("click", ".edit", function () {
+    // get topping id
+    let id = $(this).attr("data");
+
+    // get form
+    let form = document.getElementById("editMenu");
+    form.reset();
+
+    // send request
+    let response = ajaxRequest(prefix(`menus/${id}`));
+
+    response.done(function (res) {
+        // set value
+        form.elements["title"].value = res.data.title;
+
+        form.setAttribute("action", "/" + prefix(`menus/${res.data.id}`));
+    });
+});
+
+/**
+ * update topping
+ */
+$("#editMenu").on("submit", function (e) {
+    e.preventDefault();
+
+    let form = this;
+    // send form data
+    let formData = getFormData(this);
+
+    let response = $.ajax({
+        url: form.action,
+        data: formData,
+        method: "PUT",
+        dataType: "json",
+    });
+
+    // reposne
+    response.done(function (res) {
+        //hide modal
+        $("#editModal").modal("hide");
+
+        // reset form
+        form.reset();
+
+        // refrsh table
+        menuDataTable();
+
+        // show toastr notification
+        toastr.info(res.message);
+    });
+});
 
 /**
  * Delete

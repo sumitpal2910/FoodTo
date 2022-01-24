@@ -1,3 +1,4 @@
+
 /**
  * send request when stop writing
  */
@@ -16,7 +17,7 @@ function debounce(callback, wait = 500) {
  */
 function sendFormData(form, method = "POST") {
     // get form data by calling 'formdData' function
-    let data = getFormData(form);
+    let data = new FormData(form);
 
     //reset form
     form.reset();
@@ -26,7 +27,8 @@ function sendFormData(form, method = "POST") {
         url: form.action,
         type: method,
         data: data,
-        dataType: "json",
+        processData: false,
+        contentType: false,
     });
 }
 

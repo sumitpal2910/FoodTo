@@ -20,7 +20,7 @@ class MenuTableSeeder extends Seeder
         $restaurants = Restaurant::get();
 
         Menu::factory($count)->make()->each(function ($menu) use ($restaurants) {
-            $restaurants->random()->menu()->save($menu);
+            $restaurants->random()->menus()->save($menu);
         });
     }
 }

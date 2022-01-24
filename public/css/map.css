@@ -12,7 +12,7 @@
     transform: translate3d(0, 25%, 0);
 }
 
-.modal-dialog {
+.map-modal-dialog {
     position: fixed;
     margin: auto;
     width: 450px;

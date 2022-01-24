@@ -15,13 +15,14 @@ class CreateToppingsTable extends Migration
     {
         Schema::create('toppings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('food_id');
-            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
+            $table->unsignedBigInteger('restaurant_id');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
             $table->string('name');
             $table->string('price');
             $table->integer('qty')->default(0);
+            $table->integer('qty_left')->default(0);
             $table->tinyInteger('status')->default(1);
-            $table->tinyInteger('type')->default(0);
+            $table->tinyInteger('veg')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

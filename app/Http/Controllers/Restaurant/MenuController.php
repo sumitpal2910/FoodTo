@@ -30,17 +30,14 @@ class MenuController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show return json data
      */
-    public function create()
+    public function show($menuId)
     {
-        $foods = $this->restaurnat()->foods;
+        $menu = Menu::withTrashed()->findOrFail($menuId);
 
-        return view('themes.restaurant.menu.create', compact('foods'));
+        return response()->json(['data' => $menu]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,46 +47,17 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         # get data
-        $data = $request->all('title', 'summary');
+        $data = $request->all('title');
         $data['slug'] = slug($data['title']);
-        $data['restaurant_id'] = $this->restaurnat()->id;
+        $data['restaurant_id'] = $this->restaurant()->id;
 
         # create menu
         $menu =   Menu::create($data);
 
-        # add food to menu
-        $menu->foods()->attach($request->input('food_id'));
-
-        return redirect()->route('restaurant.menu.index');
+        return response()->json(['status' => 'success', 'message' => 'Menu created', 'data' => $menu]);
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Menu  $menu
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($menu)
-    {
-        # get menu
-        $menu = Menu::with(['foods' => function ($query) {
-            $query->orderBy('name', 'asc');
-        }])->withTrashed()->findOrFail($menu);
-
-        # get foods id
-        $foodId = [];
-
-        foreach ($menu->foods as $key => $value) {
-            array_push($foodId, $value->id);
-        }
-
-        # get foods that don't in this menu
-        $foods = Food::where('restaurant_id', $this->restaurnat()->id)->whereNotIn('id', $foodId)->withTrashed()->orderBy('name', 'asc')->get();
-
-        # show edit page
-        return view('themes.restaurant.menu.edit', compact('menu', 'foods'));
-    }
 
     /**
      * Update the specified resource in storage.
@@ -101,23 +69,20 @@ class MenuController extends Controller
     public function update(Request $request, $menuId)
     {
         # get menu
-        $menu = Menu::where('restaurant_id', $this->restaurnat()->id)->withTrashed()->findOrFail($menuId);
+        $menu = Menu::where('restaurant_id', $this->restaurant()->id)->withTrashed()->findOrFail($menuId);
 
         # validate
-        $this->authorizeForUser($this->restaurnat(), 'update', $menu);
+        $this->authorizeForUser($this->restaurant(), 'update', $menu);
 
         # get input data
-        $data = $request->all('title', 'summary');
+        $data = $request->all('title');
         $data['slug'] = slug($data['title']);
 
         # update menu
         $menu->update($data);
 
-        # update foods
-        $menu->foods()->sync($request->input('food_id'));
-
         # return resposne
-        return back()->with(['alert-type' => 'success', 'message' => 'Menu updated']);
+        return response()->json(['status' => 'success', 'message' => 'Menu updated', 'data' => $menu]);
     }
 
     /**
@@ -132,7 +97,7 @@ class MenuController extends Controller
         $data = Menu::withTrashed()->findOrFail($menu);
 
         # authorize
-        $this->authorizeForUser($this->restaurnat(), 'delete', $data);
+        $this->authorizeForUser($this->restaurant(), 'delete', $data);
 
         # delete
         if ($data->trashed()) {
@@ -155,7 +120,7 @@ class MenuController extends Controller
         $data = Menu::withTrashed()->findOrFail($menu);
 
         # authorize
-        $this->authorizeForUser($this->restaurnat(), 'restore', $data);
+        $this->authorizeForUser($this->restaurant(), 'restore', $data);
 
         # restore
         if ($data->trashed()) $data->restore();
@@ -170,7 +135,7 @@ class MenuController extends Controller
     public function updateStatus(Menu $menu)
     {
         # authorize
-        $this->authorizeForUser($this->restaurnat(), 'update', $menu);
+        $this->authorizeForUser($this->restaurant(), 'update', $menu);
 
         # update
         $menu->status =  $menu->status === 0 ? 1 : 0;
@@ -206,9 +171,6 @@ class MenuController extends Controller
             # assign name
             $name = $data->trashed() ? "<del class='text-muted'>{$data->title} (Deleted)</del> " : $data->title;
 
-            # assign summary
-            $summary = $data->trashed() ? "<del class='text-muted'>{$data->summary} (Deleted)</del> " : $data->summary;
-
             # foods
             $foods = "<a href='#' data-toggle='modal' data-target='#foodModal' class='badge badge-pill badge-success showFood'
                             title='Show Foods' data='{$data->id}'>" . count($data->foods)  . "</a>";
@@ -223,8 +185,8 @@ class MenuController extends Controller
 
             # action button
             $action = '<div class="row">
-                           <a href="' . route('restaurant.menus.edit', ['menu' => $data->id]) .  '"
-                               class="edit btn btn-sm btn-outline-info "><i class="fas fa-pencil-alt"></i></a>';
+                           <button data-toggle="modal" data-target="#editModal" data="' . $data->id . '"
+                               class="edit btn btn-sm btn-outline-info "><i class="fas fa-pencil-alt"></i></button>';
 
             if ($data->status == 1) {
                 $action .=  '<button title="Inactive" type="button" data="' . $data->id . '" class="status btn btn-sm btn-outline-warning ml-3">
@@ -242,9 +204,9 @@ class MenuController extends Controller
             # deleted data action buttons
             if ($data->trashed()) {
                 $action = '<div class="row">
-                                <a href="' . route('restaurant.menus.edit', ['menu' => $data->id]) .  '"
+                                <button data-toggle="modal" data-target="#editModal" data="' . $data->id . '"
                                     class="edit btn btn-sm btn-outline-info "><i class="fas fa-pencil-alt"></i>
-                                </a>
+                                </button>
                                <button title="Restore" data="' . $data->id . '" class="restore btn btn-sm btn-outline-primary ml-3">
                                    <i class="fas fa-trash-restore"></i>
                                </button>
@@ -260,7 +222,6 @@ class MenuController extends Controller
             $tableData = [
                 '#' => $key + 1,
                 'name' => $name,
-                'summary' => $summary,
                 'foods' => $foods,
                 'status' => $status,
                 'action' => $action

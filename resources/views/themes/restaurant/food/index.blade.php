@@ -80,7 +80,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-borderless table-sm table-responsive">
+                <table class="table table-sm table-responsive">
                     <thead>
                         <tr>
                             <th width="1%">#</th>

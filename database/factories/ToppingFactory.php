@@ -14,13 +14,14 @@ class ToppingFactory extends Factory
     public function definition()
     {
         $this->faker->addProvider(new \FakerRestaurant\Provider\en_US\Restaurant($this->faker));
-
+        $qty = rand(1, 1000);
         return [
             'name' => $this->faker->beverageName(),
             'price' => rand(10, 100),
-            'qty' => rand(0, 100),
+            'qty' => $qty,
+            'left_qty' => $qty,
             'status' => rand(0, 1),
-            'type' => rand(0, 1),
+            'veg' => rand(0, 1),
         ];
     }
 }

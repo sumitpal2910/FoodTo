@@ -31,7 +31,7 @@ class ToppingPolicy
      */
     public function view(Restaurant $restaurant, Topping $topping)
     {
-        return  $restaurant->id = $topping->food->restaurant_id;
+        return  $restaurant->id = $topping->restaurant_id;
     }
 
     /**
@@ -55,7 +55,7 @@ class ToppingPolicy
      */
     public function update(Restaurant $restaurant, Topping $topping)
     {
-        return  $restaurant->id === $topping->food->restaurant_id;
+        return  $restaurant->id === $topping->restaurant_id;
     }
 
     /**
@@ -67,7 +67,7 @@ class ToppingPolicy
      */
     public function delete(Restaurant $restaurant, Topping $topping)
     {
-        return  $restaurant->id === $topping->food->restaurant_id;
+        return  $restaurant->id === $topping->restaurant_id;
     }
 
     /**
@@ -79,7 +79,7 @@ class ToppingPolicy
      */
     public function restore(Restaurant $restaurant, Topping $topping)
     {
-        return  $restaurant->id === $topping->food->restaurant_id;
+        return  $restaurant->id === $topping->restaurant_id;
     }
 
     /**
@@ -91,6 +91,6 @@ class ToppingPolicy
      */
     public function forceDelete(Restaurant $restaurant, Topping $topping)
     {
-        return  $restaurant->id === $topping->food->restaurant_id;
+        return  $restaurant->id === $topping->restaurant_id;
     }
 }

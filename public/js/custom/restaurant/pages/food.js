@@ -99,7 +99,7 @@ $("#foodTable").on("click", ".showTopping", function () {
     //$("toppingName").html('');
 
     // send request
-    let response = ajaxRequest(prefix(`food/${id}/topping/data/json`));
+    let response = ajaxRequest(prefix(`food/${id}/topping/data`));
 
     // response
     response.done(function (res) {
@@ -115,7 +115,7 @@ $("#foodTable").on("click", ".showTopping", function () {
                 : element.name;
             // type veg/ non veg
             let type =
-                element.type == 0
+                element.veg == 1
                     ? "<i class='veg-indian-vegetarian'></i> "
                     : "<i class='fas fa-caret-up non-veg-icon'></i> ";
 
@@ -129,7 +129,7 @@ $("#foodTable").on("click", ".showTopping", function () {
                 status = `<span class='badge badge-pill badge-danger'>Deleted</span>`;
             }
 
-            toppings += `<tr>
+            toppings += `<tr >
                             <td>${key + 1}</td>
                             <td>${type} ${name}</td>
                             <td>&#8377; ${element.price} </td>

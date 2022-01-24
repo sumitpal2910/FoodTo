@@ -141,3 +141,8 @@ function timingInput(event) {
         divs.addClass("invisible");
     }
 }
+
+/**
+ * get button target
+ */
+

@@ -24,6 +24,19 @@ class Menu extends Model
 
     /**
      * --------------------------------------
+     * ----      SCOPE   ----
+     * --------------------------------------
+     */
+    /**
+     * Active status -1
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    /**
+     * --------------------------------------
      * ----      RELATIONSHIP    ----
      * --------------------------------------
      */
@@ -40,6 +53,6 @@ class Menu extends Model
      */
     public function foods()
     {
-        return $this->belongsToMany(Food::class, 'menu_food');
+        return $this->hasMany(Food::class);
     }
 }

@@ -1,0 +1,84 @@
+.sticky-div {
+    position: sticky;
+    top: 12%;
+}
+
+.sticky-nav {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}
+
+.mt-4px {
+    padding: 0.5rem 1rem;
+}
+
+.btn-unset {
+    all: unset;
+    cursor: pointer;
+}
+
+.add-btn {
+    border-radius: 2px;
+    width: 70px;
+    background: white;
+    color: #dd646e;
+    border-color: #dd646e;
+    font-weight: 500;
+    box-shadow: none !important;
+    margin-top: 1rem;
+}
+.add-btn:hover {
+    color: #dd646e;
+    font-weight: 600;
+}
+.add-btn-with-img {
+    position: relative;
+    left: 26%;
+    top: -5%;
+    margin-top: 0;
+}
+
+.add-btn-no-img {
+    position: absolute;
+    left: 25%;
+    bottom: 10%;
+}
+
+.food-hr {
+    height: 1px;
+    background: #dee2e6 !important;
+}
+
+.food-img {
+    width: 125%;
+    max-width: 130px;
+    border-radius: 5%;
+}
+
+.menu-list {
+    line-height: 2;
+    text-align: right;
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.topping-label:hover {
+    cursor: pointer;
+}
+.topping-name {
+    display: inline;
+    margin: 0;
+}
+
+.topping-label:hover .topping-name {
+    color: #383838;
+    font-weight: 700;
+}
+.br-0 {
+    border-radius: 0 !important;
+}
+
+.cart {
+    max-height: 250px;
+}

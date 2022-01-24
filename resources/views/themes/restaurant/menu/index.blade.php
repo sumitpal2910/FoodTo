@@ -28,7 +28,7 @@
                                     <h3 style="display: inline;"> <span id="count"
                                             class="badge badge-pill badge-success">{{$count}}</span>
                                     </h3>
-                                    <a href="{{route('restaurant.menus.create')}}"
+                                    <a data-toggle="modal" data-target="#addModal"
                                         class="btn btn-success btn-lg float-right">Add Menu </a>
                                 </div>
                             </div>
@@ -41,7 +41,6 @@
                                     <tr>
                                         <th width="1%">#</th>
                                         <th>Name</th>
-                                        <th>Summary</th>
                                         <th>Foods</th>
                                         <th width="10%">Status</th>
                                         <th width="15%">Action</th>
@@ -65,6 +64,65 @@
     </section>
 </div>
 
+
+<!-- Add Menu Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> <span id="MenuName"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addMenu" action="{{route('restaurant.menus.create')}}" method="post">
+                <div class="modal-body">
+                    <!--Title-->
+                    <div class="form-group">
+                        <label for="">Menu Title <span class="text-danger">*</span></label>
+                        <input required type="text" name="title" class="form-control" placeholder="Menu Title"
+                            value="{{old('title')}}">
+                        <x-error name="title" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Add New</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Menu Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> <span id="MenuName"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editMenu" method="post">
+                <div class="modal-body">
+                    <!--Title-->
+                    <div class="form-group">
+                        <label for="">Menu Title <span class="text-danger">*</span></label>
+                        <input required type="text" name="title" class="form-control" placeholder="Menu Title"
+                            value="{{old('title')}}">
+                        <x-error name="title" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Add New</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Topping Modal -->
 <div class="modal fade" id="foodModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

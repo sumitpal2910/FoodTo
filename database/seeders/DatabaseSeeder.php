@@ -35,11 +35,11 @@ class DatabaseSeeder extends Seeder
             RestaurantTableSeeder::class,
             RestaurantTimingTableSeeder::class,
             RestaurantManagerTableSeeder::class,
+            MenuTableSeeder::class,
             FoodTableSeeder::class,
             ToppingTableSeeder::class,
             FoodTimingTableSeeder::class,
-            MenuTableSeeder::class,
-            MenuFoodTableSeeder::class,
+            FoodToppingTableSeeder::class,
             AddressTableSeeder::class,
         ]);
     }

@@ -61,10 +61,11 @@ class RestaurantFactory extends Factory
             'full_address' => $this->faker->address(),
             'landmark' => $this->faker->buildingNumber(),
             'area' => $this->faker->streetName(),
-            'longitude' => $this->faker->longitude(88.243502, 88.449927),
-            'latitude' => $this->faker->latitude(22.446713, 22.632607),
+            'lat' => $this->faker->latitude(),
+            'long' => $this->faker->longitude(),
             'pincode' => rand(100000, 999999),
             'status' => rand(0, 3),
+            'veg' => rand(0, 1),
         ];
     }
 

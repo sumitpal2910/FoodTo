@@ -319,23 +319,23 @@
                                             </div>
                                         </div>
 
-                                        <!-- Latitude -->
+                                        <!-- lat -->
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                <label for="">Latitude<span class="text-danger">*</span></label>
-                                                <input required type="text" name="latitude" class="form-control"
-                                                    placeholder="Latitude" value="{{$restaurant->latitude}}">
-                                                <x-error name="latitude" />
+                                                <label for="">lat<span class="text-danger">*</span></label>
+                                                <input required type="text" name="lat" class="form-control"
+                                                    placeholder="lat" value="{{$restaurant->lat}}">
+                                                <x-error name="lat" />
                                             </div>
                                         </div>
 
-                                        <!-- Longitude -->
+                                        <!-- long -->
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                <label for="">Longitude <span class="text-danger">*</span></label>
-                                                <input required type="text" name="longitude" class="form-control"
-                                                    placeholder="Longitude" value="{{$restaurant->longitude}}">
-                                                <x-error name="longitude" />
+                                                <label for="">long <span class="text-danger">*</span></label>
+                                                <input required type="text" name="long" class="form-control"
+                                                    placeholder="long" value="{{$restaurant->long}}">
+                                                <x-error name="long" />
                                             </div>
                                         </div>
 

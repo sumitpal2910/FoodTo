@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Food;
 use App\Models\FoodTiming;
 use App\Models\FoodTopping;
+use App\Models\Topping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +17,7 @@ class FoodController extends Controller
     public function __construct()
     {
         $this->middleware('restaurant');
+        $this->user = Auth::guard('restaurant')->user();
     }
 
     /**
@@ -42,8 +44,13 @@ class FoodController extends Controller
         # get restaurant Timing
         $restaurantTiming = Auth::guard('restaurant')->user()->timing;
 
+        # get toppings
+        $toppings = $this->restaurant()->toppings;
+
+        $menus = $this->restaurant()->menus;
+
         # show create page
-        return view('themes.restaurant.food.create', compact('restaurantTiming'));
+        return view('themes.restaurant.food.create', compact('restaurantTiming', 'toppings', 'menus'));
     }
 
     /**
@@ -56,6 +63,7 @@ class FoodController extends Controller
     {
         # get last insert food
         $lastFood = Food::get()->last();
+
         # get restaurant
         $restaurant = Auth::guard('restaurant')->user();
 
@@ -65,11 +73,11 @@ class FoodController extends Controller
         # get timing data
         $timingData = $request->all(['day', 'open', 'close', 'status']);
 
-
         # slug
-        $slug = strtolower(str_replace(["--", "---", "----", "-----"], "-", preg_replace("/[^a-z]/i", "-", $foodData['name'])));
+        $slug = slug($foodData['name']);
         $foodData['slug'] = $slug . "-" .  $lastFood ? $lastFood->id + 1 : 1;
         $foodData['restaurant_id'] = $restaurant->id;
+        $foodData['left_qty'] = $foodData['qty'];
 
         # make directory
         $path = "restaurants/{$restaurant->id}/foods";
@@ -89,12 +97,9 @@ class FoodController extends Controller
         # add food
         $food = Food::create($foodData);
 
-        # add food id to topping
-        $request->request->add(['food_id' => $food->id]);
 
         # insert topping
-        $topping = new FoodToppingController();
-        $topping->insert($request, $food);
+        $food->toppings()->sync($request->input('topping_id'));
 
         # add timing
         foreach ($timingData['status'] as $day => $status) {
@@ -117,18 +122,24 @@ class FoodController extends Controller
     public function edit($food)
     {
         # get food
-        $food = Food::with(['toppings' => function ($query) {
-            $query->withTrashed();
-        }, 'timing'])->withTrashed()->findOrFail($food);
+        $food = Food::with('timing', 'toppings')->withTrashed()->findOrFail($food);
 
-        $this->authorizeForUser($this->restaurnat(), 'update', $food);
+        $this->authorizeForUser(Auth::guard('restaurant')->user(), 'update', $food);
 
+        $toppingId = [];
+        foreach ($food->toppings as $topping) {
+            array_push($toppingId, $topping->id);
+        }
+
+        $toppings = Topping::where('restaurant_id', $this->restaurant()->id)->whereNotIn('id', $toppingId)->withTrashed()->get();
 
         # get restaurant Timing
         $restaurantTiming = Auth::guard('restaurant')->user()->timing;
 
+        $menus = Auth::guard('restaurant')->user()->menus;
+
         # show edit page
-        return view('themes.restaurant.food.edit', compact('food', 'restaurantTiming'));
+        return view('themes.restaurant.food.edit', compact('food', 'restaurantTiming', "toppings", 'menus'));
     }
 
     /**
@@ -139,18 +150,16 @@ class FoodController extends Controller
         # get food
         $food = Food::withTrashed()->findOrFail($food);
 
-        # get restaurant
-        $restaurant = Auth::guard('restaurant')->user();
-
         # authorize
-        $this->authorizeForUser($restaurant, 'update', $food);
+        $this->authorizeForUser(Auth::guard('restaurant')->user(), 'update', $food);
 
         # make directory
-        $path = "restaurants/{$restaurant->id}/foods";
+        $path = "restaurants/" . Auth::guard('restaurant')->id() . "/foods";
         if (Storage::missing($path)) Storage::makeDirectory($path);
 
         # get all data
         $data = $request->input();
+        $data['left_qty'] = $data['qty'];
 
         # update image
         if ($request->hasFile('thumbnail')) {
@@ -169,6 +178,9 @@ class FoodController extends Controller
 
         # update data
         $food->update($data);
+
+        # update toppings
+        $food->toppings()->sync($request->input('topping_id'));
 
         # return back
         return back()->with(['alert-type' => 'info', 'message' => 'Food updated']);
@@ -242,6 +254,19 @@ class FoodController extends Controller
         return response()->json(['status' => 'success', 'message' => 'Food status changed', 'data' => $food]);
     }
 
+    /**
+     * Get all Toppings of Food
+     */
+    public function toppingData($food)
+    {
+        # get food wit toppings
+        $data = Food::with(['toppings' => function ($query) {
+            $query->withTrashed();
+        }])->withTrashed()->findOrFail($food);
+
+        # return resposne
+        return response()->json(['data' => $data]);
+    }
     /**
      * get all data in json
      */

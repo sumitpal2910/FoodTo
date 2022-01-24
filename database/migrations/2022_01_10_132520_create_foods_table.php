@@ -17,14 +17,17 @@ class CreateFoodsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+            $table->unsignedBigInteger('menu_id');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
             $table->string('name');
             $table->string('slug');
             $table->string('thumbnail')->nullable();
             $table->string('price');
             $table->string('description');
             $table->integer('qty')->default(0);
+            $table->integer('left_qty')->default(0);
             $table->tinyInteger('status')->default(1);
-            $table->tinyInteger('type')->default(0);
+            $table->tinyInteger('veg')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

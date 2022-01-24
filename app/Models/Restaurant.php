@@ -48,10 +48,11 @@ class Restaurant extends Authenticatable
         'full_address',
         'landmark',
         'area',
-        'latitude',
-        'longitude',
+        'lat',
+        'long',
         'pincode',
         'status',
+        'veg',
     ];
 
     /**
@@ -115,6 +116,14 @@ class Restaurant extends Authenticatable
     {
         return $query->where('status', 2);
     }
+    /**
+     * menu that has foods
+     */
+    public function scopeThatHasMenuFoods($query)
+    {
+        return $query->has('menus', '>=', 1)->has('menus.foods', '>=', 1);
+    }
+
 
     /**
      * -----------------------------------
@@ -164,10 +173,21 @@ class Restaurant extends Authenticatable
     /**
      * Timing
      */
-    public function timing()
+    public function timings()
     {
         return $this->hasMany(RestaurantTiming::class);
     }
+
+    /**
+     * Timing
+     */
+    public function todayTiming()
+    {
+        $day = date('l');
+        return $this->hasOne(RestaurantTiming::class, 'restaurant_id', 'id')->where('day', $day);
+    }
+
+
 
     /**
      * Food
@@ -177,11 +197,18 @@ class Restaurant extends Authenticatable
         return $this->hasMany(Food::class);
     }
 
+    /**
+     * Toppings
+     */
+    public function toppings()
+    {
+        return $this->hasMany(Topping::class);
+    }
 
     /**
      * Menu
      */
-    public function menu()
+    public function menus()
     {
         return $this->hasMany(Menu::class);
     }

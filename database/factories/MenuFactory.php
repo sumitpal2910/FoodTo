@@ -17,7 +17,6 @@ class MenuFactory extends Factory
         return [
             'title' => $name,
             'slug' => slug($name),
-            'summary' => $this->faker->sentence(),
             'status' => rand(0, 1 ),
         ];
     }

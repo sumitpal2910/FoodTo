@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Restaurant\FoodController;
 use App\Http\Controllers\Restaurant\FoodTimingController;
-use App\Http\Controllers\Restaurant\FoodToppingController;
+use App\Http\Controllers\Restaurant\ToppingController;
 use App\Http\Controllers\Restaurant\MenuController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
@@ -22,26 +22,12 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
         # update status
         Route::put('{food}/update-status', [FoodController::class, 'updateStatus'])->name('update-status');
 
+        # get all data in json
+        Route::get('{food}/topping/data', [FoodController::class, 'toppingData'])->name('topping-data');
+
         # resource
         Route::resource('', FoodController::class)->parameters(['' => 'food']);
 
-        /**
-         * Topping
-         */
-        Route::prefix("{food}/topping")->name('topping.')->group(function () {
-
-            # get all topping for data table
-            Route::get('data', [FoodToppingController::class, 'allData'])->name('data');
-
-            # get all data in json
-            Route::get('data/json', [FoodToppingController::class, 'dataJson'])->name('data-json');
-
-            // restore
-            Route::put('{topping}/restore', [FoodToppingController::class, 'restore'])->name('restore');
-
-            # update status
-            Route::put('{topping}/update-status', [FoodToppingController::class, 'updateStatus'])->name('update-status');
-        });
 
         /**
          * Timing
@@ -64,6 +50,25 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
 
 
     /**
+     * Topping
+     */
+    Route::prefix("topping")->name('topping.')->group(function () {
+
+        # get all topping for data table
+        Route::get('data', [ToppingController::class, 'allData'])->name('data');
+
+        # get all data in json
+        Route::get('data/json', [ToppingController::class, 'dataJson'])->name('data-json');
+
+        // restore
+        Route::put('{topping}/restore', [ToppingController::class, 'restore'])->name('restore');
+
+        # update status
+        Route::put('{topping}/update-status', [ToppingController::class, 'updateStatus'])->name('update-status');
+    });
+
+
+    /**
      * Menu
      */
     Route::prefix('menus')->name('menus.')->group(function () {
@@ -81,10 +86,10 @@ Route::prefix('restaurant')->name('restaurant.')->group(function () {
     });
 
 
-    Route::resource('menus', MenuController::class)->only(['index', 'create', 'store', 'edit', 'upadte', 'destroy']);
+    Route::resource('menus', MenuController::class);
 
     // Topping Resource
-    Route::resource('food.topping', FoodToppingController::class)->only(['show', 'store', 'update', 'destroy']);
+    Route::resource('topping', ToppingController::class);
 
     // Food Timing Resource
     Route::resource('food.timing', FoodTimingController::class)->only(['show', 'store', 'update', 'destroy']);

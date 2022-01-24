@@ -26,9 +26,11 @@
 
         <link href="{{asset('asset/frontend/css/osahan.css')}}" rel="stylesheet" />
         <link rel="stylesheet" href="{{asset('css/map.css')}}">
+        <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
         <link rel="stylesheet" href="{{asset('asset/frontend/vendor/owl-carousel/css/owl.carousel.css')}}" />
         <link rel="stylesheet" href="{{asset('asset/frontend/vendor/owl-carousel/css/owl.theme.css')}}" />
+
     </head>
 
     <body>
@@ -42,6 +44,24 @@
         @include('layouts.frontend.body.map')
 
         <script src="{{asset('asset/plugins/jquery/jquery.min.js')}}"></script>
+        <script>
+            if(!window.userLoggedIn){
+                $.ajax({
+                url: `${window.location.origin}/account/logged-in`,
+                method: "get",
+                dataType: "json",
+                success:function(res){
+                    window.userLoggedIn = res.login;
+
+                    if(res.login && window.location.pathname == "/"){
+                        window.location.pathname = "restaurants";
+                    }
+                }
+            });
+        }else{
+            //window.location.pathname == "/"
+        }
+        </script>
 
         <script src="{{asset('asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}" defer></script>
 
@@ -67,10 +87,14 @@
         <script src="{{asset('js/custom/config/config.js')}}"></script>
         <script src="{{asset('js/custom/config/function.js')}}"></script>
 
-
+        <!--Map-->
         <script src="{{asset('js/custom/frontend/map/helper.js')}}" defer></script>
         <script src="{{asset('js/custom/frontend/map/map.js')}}" defer></script>
         <script src="{{asset('js/custom/frontend/map/autocomplete.js')}}" defer></script>
+
+        <!--Pages-->
+        <script src="{{asset('js/custom/frontend/pages/restaurant.js')}}" defer></script>
+        <script src="{{asset('js/custom/frontend/pages/cart.js')}}" defer></script>
 
 
         <!-- Notification -->
@@ -93,7 +117,8 @@
                     break;
                     }
                 @endif
-            })
+            });
+
         </script>
     </body>
 

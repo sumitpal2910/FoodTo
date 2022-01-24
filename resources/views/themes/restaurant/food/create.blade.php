@@ -22,6 +22,19 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
+                                    <!--Menu-->
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Menu <span class="text-danger">*</span></label>
+                                            <select required name="menu_id" id="" class="form-control select2">
+                                                <option value="" disabled selected>--Select Menu--</option>
+                                                @foreach ($menus as $item)
+                                                <option value="{{$item->id}}">{{$item->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <!--Name-->
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
@@ -70,18 +83,32 @@
                                         <label for="">Veg / Non Veg </label>
                                         <div class="form-group">
                                             <div class="icheck-primary d-inline mr-5">
-                                                <input type="radio" id="radioPrimary1" name="type" value="0" checked>
+                                                <input type="radio" id="radioPrimary1" name="veg" value="1" checked>
                                                 <label for="radioPrimary1">Veg </label>
                                             </div>
                                             <div class="icheck-primary d-inline">
-                                                <input type="radio" id="radioPrimary2" name="type" value="1">
+                                                <input type="radio" id="radioPrimary2" name="veg" value="0">
                                                 <label for="radioPrimary2">Non Veg </label>
                                             </div>
                                         </div>
                                     </div>
 
+
+
+                                    <!--Toppings-->
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Toppings</label>
+                                            <select name="topping_id[]" id="" multiple class="form-control select2">
+                                                @foreach ($toppings as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <!--Image -->
-                                    <div class="col-lg-4 col-md-6 col-sm-12 ">
+                                    <div class=" col-md-6 col-sm-12 ">
                                         <div class="form-group">
                                             <label for="">Image </label>
                                             <div class="custom-file">
@@ -94,7 +121,6 @@
                                             <img width="100px" src="" alt="" class="preview mt-3 ">
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -104,79 +130,7 @@
                         <!--  ------------------------------------------------------------------------------------------------------ -->
 
 
-                        <!-- Add Toppings  -->
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <p class="card-title">Add Toppings (Optional) </p>
-                            </div>
-                            <div class="card-body ">
-                                <div class="addToppingDiv">
-                                    <div class="row" id="0">
-                                        <!--Name-->
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label for="">Topping Name <span class="text-danger">*</span></label>
-                                                <input type="text" name="topping_name[]" class="form-control"
-                                                    placeholder="Topping Name" value="{{old('topping_name[]')}}">
-                                            </div>
-                                        </div>
 
-                                        <!--Price-->
-                                        <div class="col-lg-2 col-md-6 col-sm-12 ">
-                                            <div class="form-group">
-                                                <label for="">Price <span class="text-danger">*</span></label>
-                                                <input min="0" type="number" name="topping_price[]" class="form-control"
-                                                    placeholder="Price" value="{{old('topping_price[]')}}">
-                                            </div>
-                                        </div>
-
-                                        <!--Quantity-->
-                                        <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label for=""> Quantity </label>
-                                                <input min="0" type="number" name="topping_qty[]" class="form-control"
-                                                    placeholder="Quantity" value="{{old('topping_qty[]')}}">
-                                            </div>
-                                        </div>
-
-                                        <!--Veg / Non Veg-->
-                                        <div class="col-lg-3 col-md-5 col-sm-12 ">
-                                            <label for="">Veg / Non Veg </label>
-                                            <div class="form-group clearfix">
-                                                <div class="icheck-primary d-inline mr-5">
-                                                    <input type="radio" id="radio0" name="topping_type[0]" value="0"
-                                                        checked>
-                                                    <label for="radio0">Veg </label>
-                                                </div>
-                                                <div class="icheck-primary d-inline">
-                                                    <input type="radio" id="radio1" name="topping_type[0]" value="1">
-                                                    <label for="radio1">Non Veg </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--Remove Button-->
-                                        <div class="col-md-1 col-sm-12">
-                                            <div class="form-group">
-                                                <label for="">Remove</label>
-                                                <button onclick="removeTopping('0')" type="button"
-                                                    class="btn text-danger"><i class="fas fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <button radio="1" id="addTopping" type="button" title="Add New Topping"
-                                        class="btn text-success"><i class="fas fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Add Toppings: End -->
-
-
-                        <!--  ------------------------------------------------------------------------------------------------------ -->
 
 
                         <!--  Timing -->
@@ -184,13 +138,6 @@
                             <div class="card-header">
                                 <p class="card-title"><b class="mr-5"> Timing</b>
 
-                                    @foreach ($restaurantTiming as $timing)
-                                    @if ($timing->status ===1 )
-                                    <x-badge class="success ml-2" :text="$timing->day" />
-                                    @else
-                                    <x-badge class="danger ml-2" :text="$timing->day" />
-                                    @endif
-                                    @endforeach
                                 </p>
                             </div>
                             <div class="card-body">

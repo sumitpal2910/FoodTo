@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade " id="mapModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-lg modal-dialog-scrollable  ">
+    <div class="map-modal-dialog modal-dialog  modal-lg modal-dialog-scrollable  ">
         <div class="modal-content map">
             <div class="map-header">
 
@@ -53,8 +53,8 @@
                                 placeholder="pincode" name="pincode">
                         </div>
 
-                        <input type="hidden" name="latitude">
-                        <input type="hidden" name="longitude">
+                        <input type="hidden" name="lat">
+                        <input type="hidden" name="long">
 
                         <button type="button" onclick="addressDetail(event)" class="map-card mb-3">
                             <b>Add More Details </b>
